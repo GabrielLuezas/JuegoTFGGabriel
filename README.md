@@ -80,4 +80,12 @@ El Pingüino Emperador está diseñado para absorber daño y proteger a tus otra
 
 ---
 
+#### 2. Plumas puntiagudas
+- **Nivel 1**: Cada vez que es golpeado (Cuerpo a cuerpo) daña al atacante 10 puntos de vida
+- **Nivel 2**: Cada vez que es golpeado (Cuerpo a cuerpo) daña al atacante 15 puntos de vida
+- **Nivel 3**: Cada vez que es golpeado (Cuerpo a cuerpo) daña al atacante 20 puntos de vida
+- **Nivel 4**: Cada vez que es golpeado (Cuerpo a cuerpo) daña al atacante 25 puntos de vida y realentiza al atacante un 25%
+
+---
+
 
