@@ -72,7 +72,12 @@ El Pingüino Emperador está diseñado para absorber daño y proteger a tus otra
 
 ### Mejoras del Pingüino Emperador
 
-
+#### 1. Plumas endurecidas
+- **Nivel 1**: Aumenta la vida maxima del pinguino a 275.
+- **Nivel 2**: Aumenta la vida maxima del pinguino a 300.
+- **Nivel 3**: Aumenta la vida maxima del pinguino a 325.
+- **Nivel 4**: Aumenta la vida maxima del pinguino a 350 y le cura 10 puntos de vida cada 3 segundos.
 
 ---
+
 
