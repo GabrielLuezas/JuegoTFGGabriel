@@ -73,6 +73,9 @@ El Pingüino Emperador está diseñado para absorber daño y proteger a tus otra
 ### Mejoras del Pingüino Emperador
 
 #### 1. Plumas endurecidas
+
+El pinguino emperador congela sus plumas para hacerlas mas resistentes
+
 - **Nivel 1**: Aumenta la vida maxima del pinguino a 275.
 - **Nivel 2**: Aumenta la vida maxima del pinguino a 300.
 - **Nivel 3**: Aumenta la vida maxima del pinguino a 325.
@@ -81,6 +84,9 @@ El Pingüino Emperador está diseñado para absorber daño y proteger a tus otra
 ---
 
 #### 2. Plumas puntiagudas
+
+El pinguino emperador congela sus plumas formando pinchos de hielo los cuales dañan a sus atacantes
+
 - **Nivel 1**: Cada vez que es golpeado (Cuerpo a cuerpo) daña al atacante 10 puntos de vida
 - **Nivel 2**: Cada vez que es golpeado (Cuerpo a cuerpo) daña al atacante 15 puntos de vida
 - **Nivel 3**: Cada vez que es golpeado (Cuerpo a cuerpo) daña al atacante 20 puntos de vida
@@ -88,4 +94,13 @@ El Pingüino Emperador está diseñado para absorber daño y proteger a tus otra
 
 ---
 
+#### 3. Oleada gélida 
 
+El pinguino emperador genera una rafaga de viendo helado que empuja a sus enemigos
+
+- **Nivel 1**: Despues de rebibir 4 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo realentiza un 25% durante 1 segundo
+- **Nivel 2**: Despues de rebibir 4 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo realentiza un 25% durante 2 segundos
+- **Nivel 3**: Despues de rebibir 4 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo realentiza un 50% durante 2 segundos
+- **Nivel 4**:  Despues de rebibir 2 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo inmoviliza durante 2 segundos
+
+---
