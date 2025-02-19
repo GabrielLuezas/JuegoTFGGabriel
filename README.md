@@ -100,7 +100,18 @@ El pinguino emperador genera una rafaga de viendo helado que empuja a sus enemig
 
 - **Nivel 1**: Despues de rebibir 4 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo realentiza un 25% durante 1 segundo
 - **Nivel 2**: Despues de rebibir 4 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo realentiza un 25% durante 2 segundos
-- **Nivel 3**: Despues de rebibir 4 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo realentiza un 50% durante 2 segundos
+- **Nivel 3**: Despues de rebibir 3 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo realentiza un 50% durante 2 segundos
 - **Nivel 4**:  Despues de rebibir 2 golpes empuja a su enemigo (o enemigos) 2 casillas hacia atras y lo inmoviliza durante 2 segundos
+
+---
+
+#### 4. Espíritu del emperador
+
+El Pingüino Emperador inspira a los aliados cercanos con su presencia imponente, otorgándoles bonificaciones mientras esté en el campo de batalla.
+
+- **Nivel 1**: Los pingüinos en la misma fila reciben +10% de vida máxima.
+- **Nivel 2**: Los pingüinos en la misma fila reciben +10% de reducción de daño.
+- **Nivel 3**: Los pingüinos en la misma fila reciben +15% de aumento de daño.
+- **Nivel 4**: Los pinguinos en la misma fila se curan 5 puntos de vida cada 10 segundos. (Esto no incluye al emperador)
 
 ---
