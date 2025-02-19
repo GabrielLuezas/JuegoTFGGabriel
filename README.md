@@ -8,6 +8,15 @@ En este juego, los pingüinos tienen roles muy específicos. A continuación, se
 
 **Precio:** 5
 
+**Vida:** 100
+
+**Tipo de Pinguino:** Atacante
+
+**Daño base** 10
+
+**Cadencia de disparo:** 1.0
+
+
 Este pingüino lanza bolas de nieve a sus objetivos. Actualmente, estamos decidiendo el tiempo entre disparo y disparo, pero tendrá diferentes mejoras disponibles con el **Pez Dorado**. A continuación se detallan las mejoras de este pingüino:
 
 ### Mejoras del Pingüino Real
@@ -52,11 +61,18 @@ Dispara de una vez 6 bolas de nieve que congelan al enemigo. Para que el objetiv
 
 ## Pingüino Emperador (Equivalente a la Nuez / Tanque)
 
-Este pingüino hincha el pecho para bloquear ataques enemigos, y tiene una vida de aproximadamente **250**.
+**Precio:** 3
 
-### Habilidades del Pingüino Emperador
+**Vida:** 250
+
+**Tipo de Pinguino:** Defensivo
 
 El Pingüino Emperador está diseñado para absorber daño y proteger a tus otras unidades. Su habilidad de hincharse le permite bloquear ataques enemigos de forma eficiente durante un tiempo limitado.
+
+
+### Mejoras del Pingüino Emperador
+
+
 
 ---
 
