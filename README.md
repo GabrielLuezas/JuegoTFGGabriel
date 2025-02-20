@@ -225,7 +225,7 @@ El Pingüino Pico Largo empieza a girar cuando detecta enemigos cercanos en un r
 
 ---
 
-#### 3. **Pico cortante**
+#### 4. **Pico cortante**
 
 El Pingüino Pico Largo afila su pico lo cual hace que tenga mas daño, sea mas rapido y aplique sangrado a sus enemigos (Cada 30 segundos el Pinguino pico largo deja de golpear enemeigos durante 5 segundos para afilar su pico) 
 
