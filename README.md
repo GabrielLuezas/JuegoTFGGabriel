@@ -132,13 +132,15 @@ Este pingüino lanza los pescados que caza a sus enemigos aunque tambien puede a
 
 ### Mejoras del Pingüino Adelia
 
-#### 1. **Pescado Atún **
+#### 1. **Atún **
 El Pingüino de adelia lanza un **atún**, que tiene **alto daño y velocidad**, pero debido a su tamaño, el Pingüino tarda más en cazarlo.
 
 - **Nivel 1:** El atún **causa 30 de daño** y **se caza un 25% más lento** que el proyectil básico.  
 - **Nivel 2:** El daño aumenta a **40**, **se caza un 20% más lento**
 - **Nivel 3:** El daño aumenta a **50**, y el atún tiene un **50% de probabilidad de aturdir** al enemigo durante 1 segundo.  
 - **Nivel 4:** El daño aumenta a **60**, y el atún **causa un 25% de daño extra a enemigos grandes**.  
+
+---
 
 #### 2. **Pez Espada**
 El Pingüino de adelia lanza un **pez espada**, que es un **pez largo, rápido y con un daño moderado**. Se especializa en **penetrar defensas**.
@@ -148,6 +150,8 @@ El Pingüino de adelia lanza un **pez espada**, que es un **pez largo, rápido y
 - **Nivel 3:** El daño aumenta a **30**, y ahora el pez espada tiene un **20% de probabilidad de aplicar un "daño por sangrado"**, causando **5 de daño extra por 3 segundos**.  
 - **Nivel 4:** El daño aumenta a **35**, el pez espada **atraviesa 2 enemigos**, y el **daño por sangrado** aumenta a **10 por 3 segundos**, además de que la **velocidad del pez** se **aumenta en un 30%**.  
 
+---
+
 #### 3. **Anguila Eléctrica**
 El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los enemigos en un campo eléctrico**, causando daño en área y efectos secundarios.
 
@@ -155,6 +159,8 @@ El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los
 - **Nivel 2:** El daño aumenta a **17**, y la anguila **reduce la velocidad de los enemigos un 25%** por 3 segundos, ademas de dañar a los enemigos cercanos con una corriente electrica que hace 10 de daño a los enemigos cercanos..  
 - **Nivel 3:** El daño aumenta a **19**, y ahora la anguila eléctrica tiene un **50% de probabilidad de aturdir a los enemigos** durante 1 segundo, ademas de dañar a los enemigos cercanos con una corriente electrica que hace 12 de daño a los enemigos cercanos..  
 - **Nivel 4:** El daño aumenta a **22**, la anguila **causa 20% más de daño** a los enemigos cercanos y tiene un **75% de probabilidad de aturdir** a los enemigos alcanzados por 2 segundos, ademas de dañar a los enemigos cercanos con una corriente electrica que hace 15 de daño a los enemigos cercanos..  
+
+---
 
 #### 4. **Pesca Eficiente**
  El pinguino Cazador aumenta su eficiencia de caza permitiendo generar peces extra.
