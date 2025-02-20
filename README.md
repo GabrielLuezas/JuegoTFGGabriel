@@ -132,7 +132,7 @@ Este pingüino lanza los pescados que caza a sus enemigos aunque tambien puede a
 
 ### Mejoras del Pingüino Adelia
 
-#### 1. **Atún **
+#### 1. **Atún**
 El Pingüino de adelia lanza un **atún**, que tiene **alto daño y velocidad**, pero debido a su tamaño, el Pingüino tarda más en cazarlo.
 
 - **Nivel 1:** El atún **causa 30 de daño** y **se caza un 25% más lento** que el proyectil básico.  
