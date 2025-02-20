@@ -9,11 +9,13 @@ Son las tropas que puede desplegar el jugador para defender los iglus y ganar lo
 
 **Vida:** 100
 
-**Tipo de Pinguino:** Atacante
+**Tipo de Pinguino:** Atacante larga distancia
 
 **Daño base** 10
 
 **Cadencia de disparo:** 1.0
+
+**Alcance:** Toda la linea
 
 
 Este pingüino lanza bolas de nieve a sus objetivos. A continuación se detallan las mejoras de este pingüino:
@@ -121,11 +123,13 @@ El Pingüino Emperador inspira a los aliados cercanos con su presencia imponente
 
 **Vida:** 125
 
-**Tipo de Pinguino:** Atacante / Apoyo
+**Tipo de Pinguino:** Atacante larga distancia / Apoyo
 
 **Daño base** 15
 
 **Cadencia de disparo:** 0.85
+
+**Alcance:** Toda la linea
 
 
 Este pingüino lanza los pescados que caza a sus enemigos aunque tambien puede ayudar a la recoleccion de peces para tener mas pinguinos, el pinguino caza peces con intervalos de 5 y 8 segundos
@@ -171,3 +175,64 @@ El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los
 - **Nivel 4:** La probabilidad aumenta al **15%**, y **los peces dorados recolectados otorgan 15 de vida** al Pingüino Cazador.  
 
 ---
+
+## Pingüino Pico Largo (Equivalente al Brocoli de PVZ2) Especie Real (Kairuku grebneffi)
+
+**Precio:** 7
+
+**Vida:** 150
+
+**Tipo de Pinguino:** Atacante Corta Distancia
+
+**Daño base** 20
+
+**Cadencia de disparo:** 1.5
+
+**Alcance:** 1 Casilla
+
+El pinguino de pico largo o Kairuku grebneffi es el pinguino con el pico mas grande registrado y usa este para atacar a sus enemigos cercanos a el
+
+### Mejoras del Pingüino Pico Largo
+
+#### 1. **Alcance extendido**
+El Pingüino Pico Largo consigue dañar a enemigos desde mas lejos
+
+- **Nivel 1:** El rango de ataque se incrementa en 0.5 casillas.  
+- **Nivel 2:** El rango de ataque se incrementa en 0.75 casillas.
+- **Nivel 3:** El rango de ataque se incrementa en 1 casilla.
+- **Nivel 4:** El rango de ataque se incrementa en 1.25 casillas y recibe un 25% mas de daño base.
+
+---
+
+#### 2. **Pico cañon**
+El Pingüino Pico Largo carga su pico durante 2.5 segundos para luego inflinjir un daño considerado y alterar estados enemigos (Al seleccionar esta mejora el pinguino pasa a tener 0.4 de cadencia de disparo y solo empieza a hacer la carga cuando un enemigo entra en su rango de accion)
+
+- **Nivel 1:** El daño por ataque aumenta un 100%.  
+- **Nivel 2:** El daño por ataque aumenta un 125% y quema a los enemigos durante 2 segundos (Quemado significa que el daño de el enemigo se ve reducido en un 25% y pierde 3 de vida cada segundo quemado).  
+- **Nivel 3:** El daño por ataque aumenta un 150% y quema a los enemigos durante 4 segundos.
+- **Nivel 4:** Si el enemigo tiene menos vida que el pinguino lo aplasta oneshooteandolo y si no le aplica un daño de 175% y quema a los enemigos durante 6 segundos (La cadendia de disparo pasa de 0.4 a 0.2).
+
+---
+
+
+#### 3. **Pico giratorio**
+El Pingüino Pico Largo empieza a girar cuando detecta enemigos cercanos en un radio de cirular (Afecha a lineas adyacentes y a la espalda del propio pinguino), si despues de 6 segundos sigue habiendo enemigos este se marea y descansa durante 3 segundos
+
+- **Nivel 1:** 
+- **Nivel 2:**  
+- **Nivel 3:**
+- **Nivel 4:** 
+
+---
+
+#### 3. **Pico cortante**
+
+El Pingüino Pico Largo afila su pico lo cual hace que tenga mas daño, sea mas rapido y aplique sangrado a sus enemigos (Cada 30 segundos el Pinguino pico largo deja de golpear enemeigos durante 5 segundos para afilar su pico) 
+
+- **Nivel 1:** 
+- **Nivel 2:**  
+- **Nivel 3:**
+- **Nivel 4:** 
+
+---
+
