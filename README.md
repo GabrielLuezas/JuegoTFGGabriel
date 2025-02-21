@@ -188,7 +188,7 @@ El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los
 
 **Cadencia de disparo:** 1.5
 
-**Alcance:** 1 Casilla
+**Alcance:** 1.5 Casillas
 
 El pinguino de pico largo o Kairuku grebneffi es el pinguino con el pico mas grande registrado y usa este para atacar a sus enemigos cercanos a el
 
