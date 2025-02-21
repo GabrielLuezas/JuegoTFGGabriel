@@ -310,3 +310,5 @@ El Pingüino de Fjordland lanza una piedra magica que cuando impacta en un objet
 - **Nivel 4:** Los enemigos dentro de la niebla tienen un 30% de fallar su ataque y se ven realentizados un 50%
 
 ---
+
+[Ir a otra página](enlace.md)
