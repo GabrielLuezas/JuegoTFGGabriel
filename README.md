@@ -17,6 +17,8 @@ Son las tropas que puede desplegar el jugador para defender los iglus y ganar lo
 
 **Alcance:** Toda la linea
 
+**Afecta a enemigos voladores:** No
+
 
 Este pingüino lanza bolas de nieve a sus objetivos. A continuación se detallan las mejoras de este pingüino:
 
@@ -67,6 +69,10 @@ Dispara de una vez 6 bolas de nieve que congelan al enemigo. Para que el objetiv
 **Vida:** 250
 
 **Tipo de Pinguino:** Defensivo
+
+**Alcance:** (Protege 1 casilla)
+
+**Afecta a enemigos voladores:** No
 
 El Pingüino Emperador está diseñado para absorber daño y proteger a tus otras unidades. Su habilidad de hincharse le permite bloquear ataques enemigos de forma eficiente durante un tiempo limitado.
 
@@ -131,6 +137,8 @@ El Pingüino Emperador inspira a los aliados cercanos con su presencia imponente
 
 **Alcance:** Toda la linea
 
+**Afecta a enemigos voladores:** No
+
 
 Este pingüino lanza los pescados que caza a sus enemigos aunque tambien puede ayudar a la recoleccion de peces para tener mas pinguinos, el pinguino caza peces con intervalos de 5 y 8 segundos
 
@@ -159,7 +167,7 @@ El Pingüino de adelia lanza un **pez espada**, que es un **pez largo, rápido y
 #### 3. **Anguila Eléctrica**
 El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los enemigos en un campo eléctrico**, causando daño en área y efectos secundarios.
 
-- **Nivel 1:** La anguila eléctrica **causa 15 de daño** y **ralentiza a los enemigos un 15%** por 2 segundos, ademas de dañar a los enemigos cercanos con una corriente electrica que hace 5 de daño a los enemigos cercanos.  
+- **Nivel 1:** La anguila eléctrica **causa 15 de daño** y **ralentiza a los enemigos un 15%** por 2 segundos, ademas de dañar a los enemigos cercanos con una corriente electrica que hace 5 de daño a los enemigos cercanos, el daño de descargar tambien afecta a enemigos voladores  
 - **Nivel 2:** El daño aumenta a **17**, y la anguila **reduce la velocidad de los enemigos un 25%** por 3 segundos, ademas de dañar a los enemigos cercanos con una corriente electrica que hace 10 de daño a los enemigos cercanos..  
 - **Nivel 3:** El daño aumenta a **19**, y ahora la anguila eléctrica tiene un **50% de probabilidad de aturdir a los enemigos** durante 1 segundo, ademas de dañar a los enemigos cercanos con una corriente electrica que hace 12 de daño a los enemigos cercanos..  
 - **Nivel 4:** El daño aumenta a **22**, la anguila **causa 20% más de daño** a los enemigos cercanos y tiene un **75% de probabilidad de aturdir** a los enemigos alcanzados por 2 segundos, ademas de dañar a los enemigos cercanos con una corriente electrica que hace 15 de daño a los enemigos cercanos..  
@@ -188,7 +196,9 @@ El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los
 
 **Cadencia de disparo:** 1.5
 
-**Alcance:** 1.5 Casillas
+**Alcance:** 1.2 Casillas
+
+**Afecta a enemigos voladores:** No
 
 El pinguino de pico largo o Kairuku grebneffi es el pinguino con el pico mas grande registrado y usa este para atacar a sus enemigos cercanos a el
 
@@ -205,12 +215,12 @@ El Pingüino Pico Largo consigue dañar a enemigos desde mas lejos
 ---
 
 #### 2. **Pico cañon**
-El Pingüino Pico Largo carga su pico durante 2.5 segundos para luego inflinjir un daño considerado y alterar estados enemigos (Al seleccionar esta mejora el pinguino pasa a tener 0.4 de cadencia de disparo y solo empieza a hacer la carga cuando un enemigo entra en su rango de accion)
+El Pingüino Pico Largo carga su pico durante 2.5 segundos para luego inflinjir un daño considerado y alterar estados enemigos (Al seleccionar esta mejora el pinguino pasa a tener 1.0 de cadencia de disparo y solo empieza a hacer la carga cuando un enemigo entra en su rango de accion)
 
 - **Nivel 1:** El daño por ataque aumenta un 100%.  
 - **Nivel 2:** El daño por ataque aumenta un 125% y quema a los enemigos durante 2 segundos (Quemado significa que el daño de el enemigo se ve reducido en un 25% y pierde 3 de vida cada segundo quemado).  
 - **Nivel 3:** El daño por ataque aumenta un 150% y quema a los enemigos durante 4 segundos.
-- **Nivel 4:** Si el enemigo tiene menos vida que el pinguino lo aplasta oneshooteandolo y si no le aplica un daño de 175% y quema a los enemigos durante 6 segundos (La cadendia de disparo pasa de 0.4 a 0.2).
+- **Nivel 4:** Si el enemigo tiene menos vida que el pinguino lo aplasta oneshooteandolo y si no le aplica un daño de 200% y quema a los enemigos durante 6 segundos (En vez de 2.5 de recarga pasa a tener 3 segundos).
 
 ---
 
@@ -218,10 +228,10 @@ El Pingüino Pico Largo carga su pico durante 2.5 segundos para luego inflinjir 
 #### 3. **Pico giratorio**
 El Pingüino Pico Largo empieza a girar cuando detecta enemigos cercanos en un radio de cirular (Afecha a lineas adyacentes y a la espalda del propio pinguino), si despues de 6 segundos sigue habiendo enemigos este se marea y descansa durante 3 segundos
 
-- **Nivel 1:** 
-- **Nivel 2:**  
-- **Nivel 3:**
-- **Nivel 4:** 
+- **Nivel 1:** El giro afecta arriba abajo derecha y izquierda del pinguino en 1 casilla, el daño por segundo es el daño base del pinguino, despues de 6 segundos girando descansa durante 3
+- **Nivel 2:** El giro afecta en un radio 3 x 3 (Pinguino en el medio), el daño por segundo es aumentado en 5 y ahora aguanta 7 segundos sin marearse  
+- **Nivel 3:** El giro ahora se aumenta 5 puntos mas y ahora agunata 8 segundos sin marearse
+- **Nivel 4:** El giro ahora realentiza un 75% a los enemigos que alcanza y ademas la recuperacion entre giro y giro pasa de 3 segundos a 1.5
 
 ---
 
@@ -229,10 +239,31 @@ El Pingüino Pico Largo empieza a girar cuando detecta enemigos cercanos en un r
 
 El Pingüino Pico Largo afila su pico lo cual hace que tenga mas daño, sea mas rapido y aplique sangrado a sus enemigos (Cada 30 segundos el Pinguino pico largo deja de golpear enemeigos durante 5 segundos para afilar su pico) 
 
-- **Nivel 1:** 
-- **Nivel 2:**  
-- **Nivel 3:**
-- **Nivel 4:** 
+- **Nivel 1:** La cadencia aumenta a 2 el daño a 25 y aplica sangrado durante 3 segundos
+- **Nivel 2:** La cadencua aumenta a 2.25 el daño a 30 y aplica sangrado durante 5 segundos
+- **Nivel 3:** Ahora el pico traspasa armaduras (Las ignora)
+- **Nivel 4:** La cadencia aumenta a 2.5 el daño a 35 y aplica sangrado durante 6 segundos
 
 ---
+
+## Pingüino de Fjordland (Equivalente a la coliflor/lanza maiz)
+
+**Precio:** 8
+
+**Vida:** 75
+
+**Tipo de Pinguino:** Atacante Larga Distancia (Tambien afecta a enemigos voladores)
+
+**Daño base** 25
+
+**Cadencia de disparo:** 0.9
+
+**Alcance:** Toda la linea
+
+**Afecta a enemigos voladores:** Si
+
+El Pingüino de Fjordland se especializa en lanzar proyectiles como rocas, estos proyectiles pueden dañar a enemigos voladores 
+
+### Mejoras del Pingüino de Fjordland
+
 
