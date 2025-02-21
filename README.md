@@ -302,11 +302,11 @@ El Pingüino de Fjordland frota 2 amatistas las cuales resuenan, lanza la amatis
 
 #### 4. **Roca de Niebla**
 
-El Pingüino de Fjordland lanza una piedra magica que cuando impactar en un objetivo crea una niebla en la posicion, esta niebla entorpece a los enemigos cercanos haciendo que fallen sus ataques o aturdiendolos
+El Pingüino de Fjordland lanza una piedra magica que cuando impacta en un objetivo crea una niebla en la posicion, esta niebla entorpece a los enemigos cercanos haciendo que fallen sus ataques o aturdiendolos
 
-- **Nivel 1:** 
-- **Nivel 2:** 
-- **Nivel 3:** 
-- **Nivel 4:** 
+- **Nivel 1:** La niebla dura 3 segundos y los enemigos dentro de la niebla tienen un 10% de fallar su ataque
+- **Nivel 2:** Los enemigos dentro de la niebla tienen un 20% de fallar su ataque
+- **Nivel 3:** La niebla ahora dura 5 segundos
+- **Nivel 4:** Los enemigos dentro de la niebla tienen un 30% de fallar su ataque y se ven realentizados un 50%
 
 ---
