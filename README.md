@@ -175,7 +175,7 @@ El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los
 ---
 
 #### 4. **Pesca Eficiente**
- El pinguino Cazador aumenta su eficiencia de caza permitiendo generar peces extra.
+ El pinguino Cazador aumenta su eficiencia de caza permitiendo generar peces extra, ahora pesca un pez cada 4 segundos y en vez de lanzarlo este suma al contador de peces 
 
 - **Nivel 1:** El Pingüino Cazador **tiene un 11% de probabilidad** de obtener un pez dorado cada vez que pesca un pescado.  
 - **Nivel 2:** La probabilidad aumenta al **12%**.  
@@ -248,7 +248,7 @@ El Pingüino Pico Largo afila su pico lo cual hace que tenga mas daño, sea mas 
 
 ## Pingüino de Fjordland (Equivalente a la coliflor/lanza maiz)
 
-**Precio:** 8
+**Precio:** 9
 
 **Vida:** 75
 
@@ -256,9 +256,9 @@ El Pingüino Pico Largo afila su pico lo cual hace que tenga mas daño, sea mas 
 
 **Daño base** 25
 
-**Cadencia de disparo:** 0.9
+**Cadencia de disparo:** 0.75
 
-**Alcance:** Toda la linea
+**Alcance:** 6 Casillas
 
 **Afecta a enemigos voladores:** Si
 
@@ -266,4 +266,47 @@ El Pingüino de Fjordland se especializa en lanzar proyectiles como rocas, estos
 
 ### Mejoras del Pingüino de Fjordland
 
+#### 1. **Roca Explosiva**
 
+El Pingüino de Fjordland frota 2 piedras y lanza una de ellas, esta explota despues de tocar a un enemigo (Aereo) o al impactar en el suelo (tambien explota tocando a un enemigo terrestre), en caso de que toque el suelo no se podra colocar un pinguino en esa casilla
+
+- **Nivel 1:**  La roca explota en un área de 1 casilla alrededor del impacto, causando 20 de daño extra a los enemigos cercanos. Si cae en el suelo, impide colocar un pingüino en esa casilla por 10 segundos.
+- **Nivel 2:** El daño extra aumenta a 25, y el bloqueo de casilla dura 15 segundos.
+- **Nivel 3:** El daño extra aumenta a 30, y el bloqueo de casilla dura 20 segundos, ademas los enemigos que pisen la casilla afectada por la explosion son realentizados un 50% mientras esten en la casilla
+- **Nivel 4:** El daño extra aumenta a 35, y el bloque de casilla dura 25 segundos, ademas los enemigos que pisel la casilla afectada por la explosion son realtentizados un 50% y quemados, cada segundo que pasen en la casilla quita 5 de vida.
+
+---
+
+#### 2. **Roca Boomerang**
+
+El Pingüino de Fjordland al seleccionar esta mejora tarda 5 segundos en crear una roca boomerang la cual lanza y despues de unos segundos vuelve a el
+
+- **Nivel 1:** La roca pega a la ida y a la vuelta, a la vuelta pega un 50% menos del daño base
+- **Nivel 2:** La roca pega a la ida y a la vuelta, a la vuelta pega un 25% menos del daño base
+- **Nivel 3:** El daño de vuelta es el mismo que el original 
+- **Nivel 4:** El pinguino crea otro boomearng que lanza cuando el primero esta volviendo
+
+---
+
+#### 3. **Roca Sonica**
+
+El Pingüino de Fjordland frota 2 amatistas las cuales resuenan, lanza la amatista y cuando golpea a un enemigo tiene una posibilidad de confundirlo con las ondas sonicas generadas y esto hace que el enemigo alcanzado golpee a el enemigo mas cercano (Si golpea a 1 aereo este solo golpeara a los aereos, lo mismo pasa con los terrestres) 
+
+- **Nivel 1:** 15% de probabilidad de que el enemigo golpeado ataque al aliado más cercano durante 1 segundo.
+- **Nivel 2:** 20% de probabilidad de que el enemigo golpeado ataque al aliado más cercano durante 2 segundos.
+- **Nivel 3:** 30% de probabilidad de que el enemigo golpeado ataque al aliado más cercano durante 3 segundos.
+- **Nivel 4:** 45% de probabilidad de que el enemigo golpeado ataque al aliado más cercano durante 4 segundos.
+
+---
+
+
+#### 4. **Roca de Niebla**
+
+El Pingüino de Fjordland lanza una piedra magica que cuando impactar en un objetivo crea una niebla en la posicion, esta niebla entorpece a los enemigos cercanos haciendo que fallen sus ataques o aturdiendolos
+
+- **Nivel 1:** 
+- **Nivel 2:** 
+- **Nivel 3:** 
+- **Nivel 4:** 
+
+---
