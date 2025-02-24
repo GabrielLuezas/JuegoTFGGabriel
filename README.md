@@ -8,6 +8,12 @@ El juego se inspira en el videojuego Plantas vs Zombies y recolecta varias mecan
 
 A continuacion se podra ver la informacion sobre el juego
 
+[Informacion sobre los Pinguinos](Documentacion/Pinguinos.md)
 
+[Informacion sobre los Enemigos](Documentacion/Enmigos.md)
 
+[Informacion sobre el sistema de pescados y la partida](Documentacion/SistemaPescados.md)
 
+[Informacion sobre el mapa y los niveles](Documentacion/MapaNiveles.md)
+
+[Informacion sobre la tienda](Documentacion/TiendaOffNiveles.md)
