@@ -1,4 +1,4 @@
-Foca Leopardo (Enemigo basico que equivale al zombie de pvz)
+Foca Leon (Enemigo basico que equivale al zombie de pvz)
 
 Vida: 100
 
