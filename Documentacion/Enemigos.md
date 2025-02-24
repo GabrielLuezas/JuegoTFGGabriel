@@ -30,7 +30,7 @@
 
 ---
 
-### Focas de circo
+### Foca Payaso
 **Descripción**: De vez en cuando, aparecen en grupos que atacan rápidamente, generando un gran número de enemigos en todas las lineas (Estas salen del agua despues de un sonido de payaso)
 
 - **Vida**: 50
@@ -47,7 +47,7 @@
 
 - **Vida**: 80
 - **Armadura**: 0
-- **Daño de ataque**: 30
+- **Daño de ataque**: 25
 - **Velocidad**: 2
 - **Vuela**: No
 - **Habilidades**: Se mueven rápidamente y al contacto con los pinguinos causan daño por fuego. Sin embargo, son vulnerables al hielo, que puede apagar su llama y ralentizarlas considerablemente.
@@ -62,7 +62,7 @@
 - **Daño de ataque**: 20
 - **Velocidad**: 1.8
 - **Vuela**: No
-- **Habilidades**: Se mueve a alta velocidad, dejando una estela de congelación que ralentiza a los enemigos cercanos. Es débil contra ataques de fuego.
+- **Habilidades**: Se mueve a alta velocidad, dejando una estela de congelación que aumenta la velocidad a los enemigos que la pisen. Es débil contra ataques de fuego.
 
 
 [Volver al inicio](../README.md)
