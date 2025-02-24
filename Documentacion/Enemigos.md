@@ -30,8 +30,8 @@
 
 ---
 
-### Foca Explosiva
-**Descripción**: De vez en cuando, aparecen en grupos que atacan rápidamente, generando un gran número de enemigos en poco tiempo.
+### Focas de circo
+**Descripción**: De vez en cuando, aparecen en grupos que atacan rápidamente, generando un gran número de enemigos en todas las lineas (Estas salen del agua despues de un sonido de payaso)
 
 - **Vida**: 50
 - **Armadura**: 0
