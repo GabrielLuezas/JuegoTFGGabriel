@@ -6,6 +6,7 @@
 - **Daño de ataque**: 25
 - **Velocidad**: 1
 - **Vuela**: No
+- **Elemento**: Ninguno
 
 #### Variantes:
 - **Foca León (Chaleco)**:
@@ -26,6 +27,7 @@
 - **Daño de ataque**: 40
 - **Velocidad**: 0.5
 - **Vuela**: No
+- **Elemento**: Ninguno
 - **Habilidades**: Esta foca avanza lentamente pero aguanta mucho daño debido a su armadura pesada, ademas si se acerca demasiado a los pinguinos de ataque puede meterles miedo por su retumbar (cancela el ataque de un pinguino).
 
 ---
@@ -38,6 +40,7 @@
 - **Daño de ataque**: 15
 - **Velocidad**: 1.5
 - **Vuela**: No
+- **Elemento**: Ninguno
 - **Habilidades**: Se genera en oleadas y puede aparecer en múltiples líneas de ataque. Se desplazan rápidamente y son muy numerosos. Si no se controla, pueden llenar el mapa con enemigos rápidamente.
 
 ---
@@ -50,6 +53,7 @@
 - **Daño de ataque**: 25
 - **Velocidad**: 2
 - **Vuela**: No
+- **Elemento**: Fuego
 - **Habilidades**: Se mueven rápidamente y al contacto con los pinguinos causan daño por fuego. Sin embargo, son vulnerables al hielo, que puede apagar su llama y ralentizarlas considerablemente.
   
 ---
@@ -62,6 +66,7 @@
 - **Daño de ataque**: 20
 - **Velocidad**: 1.8
 - **Vuela**: No
+- **Elemento**: Hielo
 - **Habilidades**: Se mueve a alta velocidad, dejando una estela de congelación que aumenta la velocidad a los enemigos que la pisen. Es débil contra ataques de fuego.
 
 
