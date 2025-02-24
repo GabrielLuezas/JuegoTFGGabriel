@@ -1,19 +1,18 @@
-Guerra en la antartida
+# 🐧 Guerra en la Antártida ❄️  
 
+**Guerra en la Antártida** es un juego de estrategia en 2D para PC donde el jugador controlará a los pingüinos y deberá defenderlos de sus principales depredadores:  
+🦭 Focas león | 🦈 Tiburones | 🐋 Orcas y ballenas | 🚶‍♂️ Humanos  
 
-Guerra en la antartida es un juego de estrategia para ordenadores 2D donde el jugador controlará a los pingüinos y tendrá que defenderlos de sus depredadores principales (Focas león, tiburones, orcas, ballenas, humanos).
+El juego se inspira en *Plantas vs Zombies*, combinando mecánicas de varios juegos en una experiencia única.  
 
+---
 
-El juego se inspira en el videojuego Plantas vs Zombies y recolecta varias mecanicas de varios juegos diferentes combinandolas en uno solo
+## 📖 Información del juego  
 
-A continuacion se podra ver la informacion sobre el juego
+🔹 **[Información sobre los Pingüinos](Documentacion/Pinguinos.md)**  
+🔹 **[Información sobre los Enemigos](Documentacion/Enemigos.md)**  
+🔹 **[Sistema de pescados y mecánicas de partida](Documentacion/SistemaPescados.md)**  
+🔹 **[Mapa y niveles](Documentacion/MapasNiveles.md)**  
+🔹 **[Tienda y mejoras fuera de los niveles](Documentacion/TiendaOffNiveles.md)**  
 
-[Informacion sobre los Pinguinos](Documentacion/Pinguinos.md)
-
-[Informacion sobre los Enemigos](Documentacion/Enemigos.md)
-
-[Informacion sobre el sistema de pescados y la partida](Documentacion/SistemaPescados.md)
-
-[Informacion sobre el mapa y los niveles](Documentacion/MapasNiveles.md)
-
-[Informacion sobre la tienda](Documentacion/TiendaOffNiveles.md)
+¡Prepárate para la batalla helada y defiende tu colonia de pingüinos! 🏔️🐧🔥  
