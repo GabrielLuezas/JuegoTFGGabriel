@@ -27,8 +27,8 @@ Este pingüino lanza bolas de nieve a sus objetivos. A continuación se detallan
 #### 1. Disparo Doble
 - **Nivel 1**: Lanza 2 bolas de nieve en la misma línea.
 - **Nivel 2**: Lanza 2 bolas de nieve en la misma línea, pero con mayor daño.
-- **Nivel 3**: Lanza 3 bolas de nieve en la misma línea, las cuales tienen más daño y debilitan la armadura del objetivo.
-- **Nivel 4**: Lanza 4 bolas de nieve en la misma línea, con más daño y mayor debilitamiento de armadura.
+- **Nivel 3**: Lanza 3 bolas de nieve en la misma línea, las cuales tienen más daño y ignoran la armadura del objetivo.
+- **Nivel 4**: Lanza 4 bolas de nieve en la misma línea, con más daño
 
 ---
 
@@ -46,7 +46,7 @@ Lanza una bola de nieve más grande, con más tiempo entre disparos, pero esta a
 Dispara bolas de nieve en las líneas adyacentes. Estas bolas son menos poderosas pero tienen una cadencia de disparo más rápida.
 
 - **Nivel 1**: Las bolas se dispersan a las líneas adyacentes. El daño base es un 50% menor (si el daño base es 10, será 5) y la velocidad de disparo aumenta de 1 a 1.25.
-- **Nivel 2**: Las bolas se dispersan a las líneas adyacentes, la velocidad de disparo aumenta de 1.25 a 1.50.
+- **Nivel 2**: Las bolas se dispersan a las líneas adyacentes, la velocidad de disparo aumenta de 1.25 a 1.50, ademas las bolas de nieve gana el elemento de fuego lo cual quema a enemigos durante 3 segundos.
 - **Nivel 3**: Las bolas se dispersan a las líneas adyacentes de las adyacentes, y la velocidad de disparo aumenta de 1.50 a 1.75.
 - **Nivel 4**: Las bolas se dispersan a las líneas adyacentes de las adyacentes, y el daño de las bolas aumenta un 25%.
 
