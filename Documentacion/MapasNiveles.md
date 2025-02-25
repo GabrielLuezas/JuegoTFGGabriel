@@ -46,4 +46,9 @@
 - El jugador se enfrentará al jefe del mapa.  
 - Durante esta pelea, la producción de peces será **el doble de lo habitual**.  
 
+---
+
+# MAPA 2
+
+
 [Volver al inicio](../README.md)
