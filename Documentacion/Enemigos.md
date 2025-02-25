@@ -46,7 +46,7 @@
 ---
 
 ### Foca Ígnea
-**Descripción**: Focas rápidas que son de fuego, por lo que su velocidad es extremadamente alta. Se apagan fácilmente con ataques de hielo.
+**Descripción**: Focas rápidas que son de fuego, por lo que su velocidad es extremadamente alta. Se apagan fácilmente con ataques de hielo., los ataques no elementales o de fuego hacen un 50% menos de daño
 
 - **Vida**: 80
 - **Armadura**: 0
@@ -59,7 +59,7 @@
 ---
 
 ### Foca de Hielo (Contraparte de Foca Ígnea)
-**Descripción**: Un enemigo similar a la Foca Ígnea pero con propiedades opuestas. Rápida y de hielo, se desplaza rápido pero se debilita al entrar en contacto con el fuego.
+**Descripción**: Un enemigo similar a la Foca Ígnea pero con propiedades opuestas. Rápida y de hielo, se desplaza rápido pero se debilita al entrar en contacto con el fuego, los ataques no elementales o de hielo hacen un 50% menos de daño
 
 - **Vida**: 90
 - **Armadura**: 0
@@ -70,7 +70,7 @@
 - **Habilidades**: Se mueve a alta velocidad, dejando una estela de congelación que aumenta la velocidad a los enemigos que la pisen. Es débil contra ataques de fuego.
 
 
-# 🐻‍❄️🔥 Foca Elemental (El Avatar del Frío y el Fuego)
+# 🐻‍❄️🔥 Foca Boss (Hielo y Fuego)
 
 ### 📜 **Descripción**
 Una foca con el poder de controlar **hielo y fuego**, alternando entre estos elementos en distintas fases. Si el jugador no la ataca con el **elemento opuesto** a tiempo, desata un **ataque devastador**. Al final de la pelea, entra en una **fase dual**, combinando ambos elementos y obligando al jugador a adaptarse rápidamente.
@@ -78,10 +78,10 @@ Una foca con el poder de controlar **hielo y fuego**, alternando entre estos ele
 ---
 
 ## 🔥❄️ **Estadísticas**
-- **Vida:** 4500  
+- **Vida:** 2500  
 - **Armadura:** 100  
 - **Daño de ataque:** 100  
-- **Velocidad:** 1.2  
+- **Velocidad:** No se mueve hasta que no es la fase final (Va invocando tropas)  
 - **Vuela:** No  
 
 ---
@@ -89,47 +89,40 @@ Una foca con el poder de controlar **hielo y fuego**, alternando entre estos ele
 ## 🌀 **Fases y Mecánicas**
 
 ### **Fase 1 - Normal**
-🔹 **Ataques básicos:** La foca avanza lentamente, atacando con golpes normales.  
-🔹 **Cambio de fase:** Tras recibir **1000 de daño**, da un **aviso** y se prepara para entrar en **Fase de Hielo**.  
+🔹 **Ataques básicos:** La foca invoca varias focas normales entre focas leon - focas tanque y foca payaso
+🔹 **Cambio de fase:** Tras recibir **500 de daño**, da un **aviso** y se prepara para entrar en **Fase de Hielo**.  
 
 ---
 
-### **Fase 2 - Hielo ❄️**
-🧊 **Si el jugador la ataca con suficiente fuego (300 de daño de fuego en 10 segundos):**  
-✔️ **La foca se debilita y vuelve a la Fase Normal.**  
+### **Fase 2 - Hielo ❄️** (En esta fase el boss como tal no recibe daño)
+🧊 **Si el jugador derrota a todas las focas de hielo invocadas por el boss:**  
+✔️ **La foca se debilita y vuelve a la Fase Normal. (Se queda con 1250 puntos de vida)**  
 
 🔥 **Si el jugador no lo hace a tiempo:**  
-💥 **Ola Glacial**: Congela todas las plantas y pinguinos en un **área de 3x5** por **5 segundos**.  
-🔄 Luego, regresa a la **Fase Normal**.  
+💥 **Ola Glacial**: Congela a todos los pinguinos durante 10 segundos y les daña 75 puntos de vida**.  
+🔄 Luego, regresa a la **Fase Normal (Se queda con 1500 puntos de vida)** .  
 
 ---
 
-### **Fase 3 - Fuego 🔥**
-🔥 **Si el jugador la ataca con suficiente hielo (300 de daño de hielo en 10 segundos):**  
-✔️ **La foca se debilita y vuelve a la Fase Normal.**  
+### **Fase 3 - Fuego 🔥**(En esta fase el boss como tal no recibe daño)
+🔥 **Si el jugador derrota a todas las focas de fuego invocadas por el boss:**  
+✔️ **La foca se debilita y vuelve a la Fase Normal. (Se queda con 500 puntos de vida)**  
 
 ❄️ **Si el jugador no lo hace a tiempo:**  
-💥 **Explosión Ígnea**: Causa **200 de daño** en un **área de 3x5** y quema las plantas afectadas, reduciendo su velocidad de ataque un **40% por 5 segundos**.  
-🔄 Luego, regresa a la **Fase Normal**.  
+💥 **Explosión Ígnea**: Causa **200 de daño** a todos los pinguinos y deja algunas casillas inutiles (No podras poner pinguinos ahi durante 15 segundos)**.  
+🔄 Luego, regresa a la **Fase Normal** (Se queda con 750 puntos de vida).  
 
 ---
 
 ### **Fase 4 - Dual (Mitad Fuego, Mitad Hielo) 🔥❄️**
 ⚡ **La Foca Elemental entra en su fase final, combinando ambos elementos.**  
 
-🔥 **Cada 8 segundos, lanza un rayo de fuego en una fila aleatoria.**  
+🔥 **Cada 8 segundos, lanza un rayo de fuego en una fila aleatoria. (50 de daño)**  
 ❄️ **Cada 10 segundos, congela una columna aleatoria.**  
 
-⚔️ **Debe recibir ataques de fuego e hielo alternadamente para derrotarla.**  
-⚠️ **Si el jugador no alterna correctamente:**  
-💥 **Megaexplosión Térmica:** Afecta **toda la pantalla**, causando **100 de daño a todas las plantas y pinguinos**.  
+⚔️ **Ademas ahora tambien genera focas de ambos elementos sumadas a la anterior y esta empieza a moverse con una velocidad de 0.5, aplasta a los pinguinos que se le pongan por delante (One Shoot)**  
 
 ---
-
-## 🧠 **Mecánicas Claves del Boss**
-✅ **Reubicación de Pinguinos:** El jugador debe recolocar constantemente sus unidades para atacar con los elementos correctos.  
-✅ **Ataques devastadores si el jugador no reacciona:** Si no se usa la estrategia correcta, la foca desata ataques **masivos**.  
-✅ **Fase final caótica:** En la **fase dual**, el jugador debe **alternar ataques de fuego e hielo** y reaccionar rápido.  
 
 
 
