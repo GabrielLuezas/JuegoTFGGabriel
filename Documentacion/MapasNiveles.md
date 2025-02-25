@@ -34,7 +34,7 @@
 - Aparecen focas normales, tanques y payasos.  
 
 ## Nivel 7 - Enemigos: **TODO FOCAS PAYASO**  
-- Se recomienda al jugador mejoras como la dispersión de bola de nieve para lidiar con múltiples enemigos al mismo tiempo.  
+- Se recomienda al jugador mejoras como la dispersión de bola de nieve para lidiar con múltiples enemigos al mismo tiempo. 
 
 ## Nivel 8 - Aparición de las focas elementales  
 - Se le enseña al jugador qué mejoras contienen efectos de **hielo** y cuáles de **fuego**.  
