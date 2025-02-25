@@ -26,9 +26,9 @@ Este pingüino lanza bolas de nieve a sus objetivos. A continuación se detallan
 
 #### 1. Disparo Doble
 - **Nivel 1**: Lanza 2 bolas de nieve en la misma línea.
-- **Nivel 2**: Lanza 2 bolas de nieve en la misma línea, pero con mayor daño.
-- **Nivel 3**: Lanza 3 bolas de nieve en la misma línea, las cuales tienen más daño y ignoran la armadura del objetivo.
-- **Nivel 4**: Lanza 4 bolas de nieve en la misma línea, con más daño
+- **Nivel 2**: Lanza 2 bolas de nieve en la misma línea, el daño por bola pasa a 15 y ignoran la armadura del objetivo.
+- **Nivel 3**: Lanza 3 bolas de nieve en la misma línea, el daño por bola pasa a 18.
+- **Nivel 4**: Lanza 4 bolas de nieve en la misma línea, el daño por bola pasa a 22.
 
 ---
 
