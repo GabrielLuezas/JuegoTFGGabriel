@@ -124,6 +124,9 @@ Una foca con el poder de controlar **hielo y fuego**, alternando entre estos ele
 
 ---
 
+**La fase de hielo se activa cuando el boss tiene 2000 de vida**
 
+**La fase de fuego se actica cuando el boss tiene 1000 de vida**
 
+---
 [Volver al inicio](../README.md)
