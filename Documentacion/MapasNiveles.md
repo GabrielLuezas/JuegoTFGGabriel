@@ -15,7 +15,7 @@
 *(Focas normales, varias con armadura)*  
 - Solo tiene el pingüino básico.  
 - Se le enseña la mecánica del pez dorado y las mejoras de los pingüinos.  
-- Solo tendrá disponible la primera mejora ("Disparo Doble") y solo podrá mejorarla hasta nivel 2.  
+- Solo tendrá disponible la primera mejora ("Disparo Doble") y solo podrá tenerla a nivel 1.  
 
 ## Nivel 4 - Tutorial de mejoras avanzadas  
 *(Focas normales, varias con armadura y focas tanques)*  
