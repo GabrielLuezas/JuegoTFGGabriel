@@ -1,4 +1,6 @@
-# MAPA 1
+# MAPA 1 (10 niveles)
+
+Sitio helado, habitat natural de los pinguinos y vienen focas a por ellos (1 Nuevo Pinguino)
 
 ## Nivel 1 - Tutorial  
 *(Solo focas normales)*  
@@ -48,7 +50,30 @@
 
 ---
 
-# MAPA 2
+# MAPA 2 (12 niveles 1 boss)
+
+ Que sea como un acantilado donde vienen los leones marinos / focas (1 Nuevo Pinguino)
+
+
+
+---
+
+# MAPA 3 (20 niveles, 2 boses)
+
+Que sea un iceberg flotante donde vienen orcas y tiburones  (2 Nuevos Pinguinos)
+
+
+
+---
+
+# MAPA 4 (12 niveles, 1 boss)
+
+(Aqui el pingunio de adelia pierde efectividad ya que tiene que irse a pescar a otro sitio)
+
+Algo de civilizacion humana donde estos vengan a por ellos (1 Nuevo Pinguino)
+
+
+
 
 
 [Volver al inicio](../README.md)
