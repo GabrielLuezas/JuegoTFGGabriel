@@ -22,7 +22,7 @@
 ### Foca Blindada
 **Descripción**: Una foca muy resistente, como una morsa blindada. Su alta armadura la hace difícil de derrotar.
 
-- **Vida**: 300
+- **Vida**: 200
 - **Armadura**: 50
 - **Daño de ataque**: 40
 - **Velocidad**: 0.5
