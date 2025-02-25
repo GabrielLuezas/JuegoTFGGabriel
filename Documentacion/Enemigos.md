@@ -7,6 +7,7 @@
 - **Velocidad**: 1
 - **Vuela**: No
 - **Elemento**: Ninguno
+- **Aparicion**: Mundo 1 y 2
 
 #### Variantes:
 - **Foca León (Chaleco)**:
@@ -28,6 +29,7 @@
 - **Velocidad**: 0.5
 - **Vuela**: No
 - **Elemento**: Ninguno
+- **Aparicion**: Mundo 1 y 2
 - **Habilidades**: Esta foca avanza lentamente pero aguanta mucho daño debido a su armadura pesada, ademas si se acerca demasiado a los pinguinos de ataque puede meterles miedo por su retumbar (cancela el ataque de un pinguino).
 
 ---
@@ -41,6 +43,7 @@
 - **Velocidad**: 1.5
 - **Vuela**: No
 - **Elemento**: Ninguno
+- **Aparicion**: Mundo 1 y 2
 - **Habilidades**: Se genera en oleadas y puede aparecer en múltiples líneas de ataque. Se desplazan rápidamente y son muy numerosos. Si no se controla, pueden llenar el mapa con enemigos rápidamente.
 
 ---
@@ -54,6 +57,7 @@
 - **Velocidad**: 2
 - **Vuela**: No
 - **Elemento**: Fuego
+- **Aparicion**: Mundo 1 y 2
 - **Habilidades**: Se mueven rápidamente y al contacto con los pinguinos causan daño por fuego. Sin embargo, son vulnerables al hielo, que puede apagar su llama y ralentizarlas considerablemente.
   
 ---
@@ -67,6 +71,7 @@
 - **Velocidad**: 1.8
 - **Vuela**: No
 - **Elemento**: Hielo
+- **Aparicion**: Mundo 1 y 2
 - **Habilidades**: Se mueve a alta velocidad, dejando una estela de congelación que aumenta la velocidad a los enemigos que la pisen. Es débil contra ataques de fuego.
 
 
@@ -82,7 +87,8 @@ Una foca con el poder de controlar **hielo y fuego**, alternando entre estos ele
 - **Armadura:** 100  
 - **Daño de ataque:** 100  
 - **Velocidad:** No se mueve hasta que no es la fase final (Va invocando tropas)  
-- **Vuela:** No  
+- **Vuela:** No
+- **Aparicion**: Mundo 1
 
 ---
 
