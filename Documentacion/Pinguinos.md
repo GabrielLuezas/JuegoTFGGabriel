@@ -19,6 +19,8 @@ Son las tropas que puede desplegar el jugador para defender los iglus y ganar lo
 
 **Afecta a enemigos voladores:** No
 
+**Tiempo entre pinguino y pinguino:** Normal
+
 
 Este pingüino lanza bolas de nieve a sus objetivos. A continuación se detallan las mejoras de este pingüino:
 
@@ -73,6 +75,8 @@ Dispara de una vez 6 bolas de nieve que congelan al enemigo. Para que el objetiv
 **Alcance:** (Protege 1 casilla)
 
 **Afecta a enemigos voladores:** No
+
+**Tiempo entre pinguino y pinguino:** Lento
 
 El Pingüino Emperador está diseñado para absorber daño y proteger a tus otras unidades. Su habilidad de hincharse le permite bloquear ataques enemigos de forma eficiente durante un tiempo limitado.
 
@@ -139,6 +143,8 @@ El Pingüino Emperador inspira a los aliados cercanos con su presencia imponente
 
 **Afecta a enemigos voladores:** No
 
+**Tiempo entre pinguino y pinguino:** Normal
+
 
 Este pingüino lanza los pescados que caza a sus enemigos aunque tambien puede ayudar a la recoleccion de peces para tener mas pinguinos, el pinguino caza peces con intervalos de 5 y 8 segundos
 
@@ -199,6 +205,8 @@ El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los
 **Alcance:** 1.2 Casillas
 
 **Afecta a enemigos voladores:** No
+
+**Tiempo entre pinguino y pinguino:** Lento
 
 El pinguino de pico largo o Kairuku grebneffi es el pinguino con el pico mas grande registrado y usa este para atacar a sus enemigos cercanos a el
 
@@ -261,6 +269,8 @@ El Pingüino Pico Largo afila su pico lo cual hace que tenga mas daño, sea mas 
 **Alcance:** 6 Casillas
 
 **Afecta a enemigos voladores:** Si
+
+**Tiempo entre pinguino y pinguino:** Rapido
 
 El Pingüino de Fjordland se especializa en lanzar proyectiles como rocas, estos proyectiles pueden dañar a enemigos voladores 
 
