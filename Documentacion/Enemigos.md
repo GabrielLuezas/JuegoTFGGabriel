@@ -70,4 +70,67 @@
 - **Habilidades**: Se mueve a alta velocidad, dejando una estela de congelación que aumenta la velocidad a los enemigos que la pisen. Es débil contra ataques de fuego.
 
 
+# 🐻‍❄️🔥 Foca Elemental (El Avatar del Frío y el Fuego)
+
+### 📜 **Descripción**
+Una foca con el poder de controlar **hielo y fuego**, alternando entre estos elementos en distintas fases. Si el jugador no la ataca con el **elemento opuesto** a tiempo, desata un **ataque devastador**. Al final de la pelea, entra en una **fase dual**, combinando ambos elementos y obligando al jugador a adaptarse rápidamente.
+
+---
+
+## 🔥❄️ **Estadísticas**
+- **Vida:** 4500  
+- **Armadura:** 100  
+- **Daño de ataque:** 100  
+- **Velocidad:** 1.2  
+- **Vuela:** No  
+
+---
+
+## 🌀 **Fases y Mecánicas**
+
+### **Fase 1 - Normal**
+🔹 **Ataques básicos:** La foca avanza lentamente, atacando con golpes normales.  
+🔹 **Cambio de fase:** Tras recibir **1000 de daño**, da un **aviso** y se prepara para entrar en **Fase de Hielo**.  
+
+---
+
+### **Fase 2 - Hielo ❄️**
+🧊 **Si el jugador la ataca con suficiente fuego (300 de daño de fuego en 10 segundos):**  
+✔️ **La foca se debilita y vuelve a la Fase Normal.**  
+
+🔥 **Si el jugador no lo hace a tiempo:**  
+💥 **Ola Glacial**: Congela todas las plantas y pinguinos en un **área de 3x5** por **5 segundos**.  
+🔄 Luego, regresa a la **Fase Normal**.  
+
+---
+
+### **Fase 3 - Fuego 🔥**
+🔥 **Si el jugador la ataca con suficiente hielo (300 de daño de hielo en 10 segundos):**  
+✔️ **La foca se debilita y vuelve a la Fase Normal.**  
+
+❄️ **Si el jugador no lo hace a tiempo:**  
+💥 **Explosión Ígnea**: Causa **200 de daño** en un **área de 3x5** y quema las plantas afectadas, reduciendo su velocidad de ataque un **40% por 5 segundos**.  
+🔄 Luego, regresa a la **Fase Normal**.  
+
+---
+
+### **Fase 4 - Dual (Mitad Fuego, Mitad Hielo) 🔥❄️**
+⚡ **La Foca Elemental entra en su fase final, combinando ambos elementos.**  
+
+🔥 **Cada 8 segundos, lanza un rayo de fuego en una fila aleatoria.**  
+❄️ **Cada 10 segundos, congela una columna aleatoria.**  
+
+⚔️ **Debe recibir ataques de fuego e hielo alternadamente para derrotarla.**  
+⚠️ **Si el jugador no alterna correctamente:**  
+💥 **Megaexplosión Térmica:** Afecta **toda la pantalla**, causando **100 de daño a todas las plantas y pinguinos**.  
+
+---
+
+## 🧠 **Mecánicas Claves del Boss**
+✅ **Reubicación de Pinguinos:** El jugador debe recolocar constantemente sus unidades para atacar con los elementos correctos.  
+✅ **Ataques devastadores si el jugador no reacciona:** Si no se usa la estrategia correcta, la foca desata ataques **masivos**.  
+✅ **Fase final caótica:** En la **fase dual**, el jugador debe **alternar ataques de fuego e hielo** y reaccionar rápido.  
+
+
+
 [Volver al inicio](../README.md)
