@@ -1,4 +1,4 @@
-# MAPA 1 (10 niveles)
+# MAPA 1 (12 niveles)
 
 Sitio helado, habitat natural de los pinguinos y vienen focas a por ellos (1 Nuevo Pinguino)
 
@@ -44,7 +44,13 @@ Sitio helado, habitat natural de los pinguinos y vienen focas a por ellos (1 Nue
 ## Nivel 9 - Ronda normal con todo tipo de focas  
 - Se mezclan todos los tipos de focas vistas hasta ahora.  
 
-## Nivel 10 - **BOSS DEL MAPA 1**  
+## Nivel 10 - Ronda normal con todo tipo de focas  
+- Se mezclan todos los tipos de focas vistas hasta ahora.  
+
+## Nivel 11 - Ronda dificil  
+- Ronda dificil donde la primera vez que llegue una foca a los iglus se le enseña al jugador que viene pingu a salvarle
+
+## Nivel 12 - **BOSS DEL MAPA 1**  
 - El jugador se enfrentará al jefe del mapa.  
 - Durante esta pelea, la producción de peces será **el doble de lo habitual**.  
 
