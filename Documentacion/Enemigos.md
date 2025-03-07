@@ -1,4 +1,4 @@
-### Foca León (Enemigo Básico)
+### Foca Leopardo (Enemigo Básico)
 **Descripción**: Un enemigo básico que avanza sobre los pinguinos, similar al zombie de PVZ. Tiene una vida media y no cuenta con habilidades especiales, pero su resistencia le permite ser un obstáculo constante.
 
 - **Vida**: 100
