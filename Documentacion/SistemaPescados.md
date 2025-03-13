@@ -1,11 +1,23 @@
-El sistema se basa en darle clic al esta nque cuando ves que el pinguino pescador tiene listo un pequeño indicador en su cabeza, esto ocurre con un intervalo de 5-9 segundos, ademas hay un 10% de que el pez de pesque sea dorado.
+# Sistema de Pesca del Pingüino  
 
+El sistema se basa en hacer clic en el estanque cuando el pingüino pescador tenga listo un pequeño indicador sobre su cabeza. Esto ocurre en un intervalo de **5 a 9 segundos**.  
 
-Por defecto al jugador se le da 1 estanque, esto puede aumentar hasta 2 - 3 estanques y en cada estanque puede haber 2 - 3 pescadores
+Además, hay un **10% de probabilidad** de que el pez pescado sea **dorado**.  
 
+## Estanques y Pescadores  
 
-Estas mejoras podran comprarse en la tienda y las monedas que se consigan se basaran en el tiempo que tardas en completar el nivel y si algun enemigo gasta una de las defensas finales del iglu
+Por defecto, el jugador comienza con **1 estanque**, pero puede aumentar hasta **2 o 3 estanques**.  
 
+En cada estanque, pueden haber entre **2 y 3 pescadores**.  
 
+## Mejoras y Monedas  
 
-[Volver al inicio](../README.md)
+Las mejoras pueden comprarse en la **tienda**.  
+
+Las monedas obtenidas dependen de:  
+- **Tiempo** que se tarda en completar el nivel.  
+- Si algún **enemigo** gasta una de las **defensas finales del iglú**.  
+
+---
+
+[⬅️ Volver al inicio](../README.md)
