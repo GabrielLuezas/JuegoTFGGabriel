@@ -57,7 +57,7 @@ Dispara bolas de nieve en las líneas adyacentes. Estas bolas son menos poderosa
 #### 4. Ráfaga de Nieve (E de Nunu)
 Dispara de una vez 6 bolas de nieve que congelan al enemigo. Para que el objetivo quede congelado, deben impactar al menos 3 bolas.
 
-- **Nivel 1**: Las bolas dejan inmovilizado al objetivo durante 2 segundos.
+- **Nivel 1**: Las bolas dejan inmovilizado al objetivo durante 2 segundos y dispara una rafaga cada 4 segundos.
 - **Nivel 2**: Las bolas dejan inmovilizado al objetivo durante 2.25 segundos.
 - **Nivel 3**: Las bolas dejan inmovilizado al objetivo durante 2.5 segundos.
 - **Nivel 4**: Se lanzan 9 bolas en lugar de 6.
