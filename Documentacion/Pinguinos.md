@@ -181,7 +181,7 @@ El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los
 ---
 
 #### 4. **Pesca Eficiente**
- El pinguino Cazador aumenta su eficiencia de caza permitiendo generar peces extra, ahora pesca un pez cada 4 segundos y en vez de lanzarlo este suma al contador de peces 
+ El pinguino Cazador aumenta su eficiencia de caza permitiendo generar peces extra, ahora pesca un pez cada 4 segundos y lanza 1 con menor daño y suma 1 pez al contador (Si el pez pescado es dorado quita mas)
 
 - **Nivel 1:** El Pingüino Cazador **tiene un 11% de probabilidad** de obtener un pez dorado cada vez que pesca un pescado.  
 - **Nivel 2:** La probabilidad aumenta al **12%**.  
