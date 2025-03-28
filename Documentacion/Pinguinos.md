@@ -186,7 +186,7 @@ El Pingüino Cazador lanza una **anguila eléctrica**, un pez que **atrapa a los
 - **Nivel 1:** El Pingüino Cazador **tiene un 11% de probabilidad** de obtener un pez dorado cada vez que pesca un pescado.  
 - **Nivel 2:** La probabilidad aumenta al **12%**.  
 - **Nivel 3:** La probabilidad aumenta al **13%**.  
-- **Nivel 4:** La probabilidad aumenta al **15%**, y **los peces dorados recolectados otorgan 15 de vida** al Pingüino Cazador.  
+- **Nivel 4:** La probabilidad aumenta al **15%**, y **los peces dorados recolectados otorgan 15 de vida** al Pingüino de Adelia.  
 
 ---
 
