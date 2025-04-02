@@ -26,11 +26,11 @@ Este pingüino lanza bolas de nieve a sus objetivos. A continuación se detallan
 
 ### Mejoras del Pingüino Real
 
-#### 1. Disparo Doble
+#### 1. Disparo Multiple
 - **Nivel 1**: Lanza 2 bolas de nieve en la misma línea.
 - **Nivel 2**: Lanza 2 bolas de nieve en la misma línea, el daño por bola pasa a 15 y ignoran la armadura del objetivo.
-- **Nivel 3**: Lanza 3 bolas de nieve en la misma línea, el daño por bola pasa a 18.
-- **Nivel 4**: Lanza 4 bolas de nieve en la misma línea, el daño por bola pasa a 22.
+- **Nivel 3**: Lanza 3 bolas de nieve en la misma línea, el daño por bola pasa a 20.
+- **Nivel 4**: Lanza 3 bolas de nieve en la misma línea, el daño por bola pasa a 25.
 
 ---
 
