@@ -30,7 +30,7 @@
 - **Vuela**: No
 - **Elemento**: Ninguno
 - **Aparicion**: Mundo 1 y 2
-- **Habilidades**: Esta foca avanza lentamente pero aguanta mucho daño debido a su armadura pesada, ademas si se acerca demasiado a los pinguinos de ataque puede meterles miedo por su retumbar (cancela el ataque de un pinguino).
+- **Habilidades**: Esta foca avanza lentamente pero aguanta mucho daño debido a su armadura pesada, ademas si se acerca demasiado a los pinguinos de ataque puede meterles miedo por su retumbar (15% de cancelar el ataque de un pinguino cuando esta a menos de 1 casilla de el).
 
 ---
 
