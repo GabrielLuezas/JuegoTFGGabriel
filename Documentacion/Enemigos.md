@@ -15,7 +15,7 @@
   - **Descripción**: Esta variante de la Foca León lleva un chaleco de protección, lo que le permite resistir más daño antes de caer.
 
 - **Foca León (Chaleco y Casco)**:
-  - **Armadura**: 30
+  - **Armadura**: 40
   - **Descripción**: La variante más fuerte, equipada con chaleco y casco, aumentando significativamente su resistencia al daño.
 
 ---
