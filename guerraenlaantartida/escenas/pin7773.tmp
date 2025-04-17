@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://blu55nodsqi47"]
+
+[ext_resource type="Texture2D" uid="uid://cdcaoy2mayr4m" path="res://img/PinguinoReal.png" id="1_snc7a"]
+[ext_resource type="Script" path="res://scripts/pinguino.gd" id="1_ujqth"]
+[ext_resource type="Texture2D" uid="uid://dhceilv2jp4wm" path="res://img/PinguinoRealAtaqueState1.png" id="3_a62s2"]
+[ext_resource type="Texture2D" uid="uid://c0tb5d1afq48i" path="res://img/PinguinoRealAtaqueState2.png" id="4_uibfp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ucgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_snc7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a62s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uibfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a62s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uibfp")
+}],
+"loop": false,
+"name": &"atacar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_snc7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_snc7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_snc7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_snc7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_snc7a")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jdxi"]
+size = Vector2(26, 78)
+
+[node name="Pinguino" type="Node2D"]
+script = ExtResource("1_ujqth")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -2)
+scale = Vector2(0.332031, 0.359375)
+sprite_frames = SubResource("SpriteFrames_4ucgc")
+
+[node name="Area2D" type="Area2D" parent="." groups=["ignorar_raycast", "pinguino"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(28, -3)
+shape = SubResource("RectangleShape2D_6jdxi")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(45, -3)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(42, 0)
+target_position = Vector2(1920, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

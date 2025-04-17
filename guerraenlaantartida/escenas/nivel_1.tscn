@@ -1,0 +1,596 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3hhlsessq83u"]
+
+[ext_resource type="Script" path="res://scripts/nivel_1.gd" id="1_rlsfn"]
+[ext_resource type="Texture2D" uid="uid://hq5ny4e0hn16" path="res://img/makuked.png" id="2_wlvx3"]
+[ext_resource type="Texture2D" uid="uid://bmdkvbsedkyyo" path="res://img/TarjetaPinguino.png" id="3_vbafj"]
+[ext_resource type="Script" path="res://scripts/panel_container.gd" id="4_8mnbd"]
+[ext_resource type="PackedScene" uid="uid://dmxxcirmtb4bt" path="res://escenas/foca.tscn" id="5_be3kh"]
+
+[sub_resource type="Curve2D" id="Curve2D_6hmbr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1128, 109, 0, 0, 0, 0, 307, 109)
+}
+point_count = 2
+
+[node name="Nivel1" type="Node2D" groups=["nivel"]]
+script = ExtResource("1_rlsfn")
+
+[node name="Mapa" type="Sprite2D" parent="."]
+position = Vector2(600, 259)
+scale = Vector2(1.63115, 1.24272)
+texture = ExtResource("2_wlvx3")
+
+[node name="PinguinoBoton" type="Sprite2D" parent="."]
+position = Vector2(135, 266)
+scale = Vector2(0.384766, 0.408203)
+texture = ExtResource("3_vbafj")
+
+[node name="Pinguinos" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 214.0
+offset_right = 184.0
+offset_bottom = 318.0
+flat = true
+
+[node name="Tablero" type="Control" parent="." groups=["ignorar_raycast"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tablero"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 335.0
+offset_top = 71.0
+offset_right = 1076.0
+offset_bottom = 422.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(85, 70)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer9" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_8mnbd")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="foca" parent="Path2D" instance=ExtResource("5_be3kh")]
+position = Vector2(1128, 109)
+rotation = -6.28319
+rotates = false
+loop = false
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(0, 78)
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="foca" parent="Path2D2" instance=ExtResource("5_be3kh")]
+position = Vector2(1128, 109)
+rotation = -6.28319
+rotates = false
+loop = false
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(0, 157)
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="foca" parent="Path2D3" instance=ExtResource("5_be3kh")]
+position = Vector2(1128, 109)
+rotation = -6.28319
+rotates = false
+loop = false
+
+[node name="Path2D4" type="Path2D" parent="."]
+position = Vector2(0, 236)
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="foca" parent="Path2D4" instance=ExtResource("5_be3kh")]
+position = Vector2(1128, 109)
+rotation = -6.28319
+rotates = false
+loop = false
+
+[node name="Path2D5" type="Path2D" parent="."]
+position = Vector2(0, 315)
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="foca" parent="Path2D5" instance=ExtResource("5_be3kh")]
+position = Vector2(1128, 109)
+rotation = -6.28319
+rotates = false
+loop = false
+
+[node name="ConteoPeces" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 33.0
+offset_right = 301.0
+offset_bottom = 102.0
+text = "1"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" method="_on_mouse_exited"]

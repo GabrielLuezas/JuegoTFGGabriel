@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv5jhv33pleui"]
+
+[ext_resource type="Texture2D" uid="uid://cdcaoy2mayr4m" path="res://img/PinguinoReal.png" id="2_fc78l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ucgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fc78l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fc78l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fc78l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fc78l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PinguinoPreview" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -2)
+scale = Vector2(0.332031, 0.359375)
+sprite_frames = SubResource("SpriteFrames_4ucgc")
