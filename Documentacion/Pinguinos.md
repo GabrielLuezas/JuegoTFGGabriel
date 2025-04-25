@@ -34,13 +34,13 @@ Este pingüino lanza bolas de nieve a sus objetivos. A continuación se detallan
 
 ---
 
-#### 2. Bola Gigante
-Lanza una bola de nieve más grande, con más tiempo entre disparos, pero esta atraviesa a los enemigos (si el enemigo delante tiene menos vida que la bola de nieve).
+#### 2. Flecha Helada
+Lanza una afilada flecha de hielo que puede atravesar a varios enemigos, infligiendo daño a todos ellos.
 
-- **Nivel 1**: Bola gigante con 75 de vida. La velocidad inicial de disparo pasa de 1 a 0.75 y el daño de la bola es de 15.
-- **Nivel 2**: Bola gigante con 100 de vida. La velocidad inicial de disparo pasa de 0.75 a 0.65 y el daño de la bola es de 20.
-- **Nivel 3**: Bola gigante con 150 de vida. La velocidad inicial de disparo pasa de 0.65 a 0.60 y el daño de la bola es de 25.
-- **Nivel 4**: Bola gigante con 300 de vida. La velocidad inicial de disparo pasa de 0.60 a 0.40. La bola afecta también a las líneas adyacentes y el daño de la bola es de 30.
+- **Nivel 1**: La velocidad de la flecha aumenta y puede atravesar hasta 2 enemigos dañando lo mismo a ambos
+- **Nivel 2**: El daño de la flecha aumenta a 15 
+- **Nivel 3**: La flecha puede atravesar hasta 3 enemigos y al ultimo le inflinje 20 puntos de daño
+- **Nivel 4**: La velocidad de la flecha aumenta y puede atravesar hasta 4 enemigos y al ultimo le inlinje 25 puntos de daño
 
 ---
 
