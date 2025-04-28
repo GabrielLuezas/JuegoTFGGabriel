@@ -39,8 +39,8 @@ Lanza una afilada flecha de hielo que puede atravesar a varios enemigos, infligi
 
 - **Nivel 1**: La velocidad de la flecha aumenta y puede atravesar hasta 2 enemigos dañando lo mismo a ambos
 - **Nivel 2**: El daño de la flecha aumenta a 15 
-- **Nivel 3**: La flecha puede atravesar hasta 3 enemigos y al ultimo le inflinje 20 puntos de daño
-- **Nivel 4**: La velocidad de la flecha aumenta y puede atravesar hasta 4 enemigos y al ultimo le inlinje 25 puntos de daño
+- **Nivel 3**: La flecha puede atravesar hasta 3 enemigos y 1 punto mas de daño por enemigo atravesado
+- **Nivel 4**: La velocidad de la flecha aumenta y 2 puntos mas de daño por enemigo atravesado
 
 ---
 
