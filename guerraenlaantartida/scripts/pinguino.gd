@@ -1,61 +1,81 @@
 extends Node2D
 
-var vida = 10
-var proyectil = preload("res://escenas/proyectil.tscn")
-var atacando = false 
+@export var cadencia_disparo: float = 1.0
+@export var vida: int = 100
+@export var proyectil = preload("res://escenas/proyectil.tscn")
+@export var nivelMejora: int = 0
+@export var mejora: String = ""
+
+
+var focas_en_rango: Array = []
 
 func _ready():
-	add_to_group("pinguino")  # Asegúrate de que solo los reales estén en este grupo
+	add_to_group("pinguino")
+	$BotonPinguino.modulate.a = 0.0
+	var timer = Timer.new()
+	timer.name = "DisparoTimer"
+	timer.wait_time = 1.0 / cadencia_disparo
+	timer.one_shot = false
+	timer.autostart = true
+	add_child(timer)
+	timer.connect("timeout", Callable(self, "_on_disparo_timer_timeout"))
 
-func _process(delta: float) -> void:
+	$AnimatedSprite2D.speed_scale = cadencia_disparo
+
+func set_cadencia_disparo(nueva: float) -> void:
+	cadencia_disparo = nueva
+
+	if has_node("DisparoTimer"):
+		$DisparoTimer.wait_time = 1.0 / cadencia_disparo
+
+	$AnimatedSprite2D.speed_scale = cadencia_disparo
+
+func _process(_delta: float) -> void:
 	if vida <= 0:
 		queue_free()
-	det_enemigo()
 
 func recibir_daño(cantidad: int):
 	vida -= cantidad
-	print("Me han hecho daño, vida restante: " + str(vida))
+	var panel
+	if nivelMejora >= 1:
+		panel = get_tree().root.get_node_or_null("Nivel1/SitioMejorasPinguinos/panel_mejoras_con_upgrade")
+	else:
+		panel = get_tree().root.get_node_or_null("Nivel1/SitioMejorasPinguinos/panel_mejoras")
+		
+	if panel and panel.pinguino_actual == self:
+		panel.set_datos(vida, get_daño()) 
+
 
 func ataque():
-	var ataque = proyectil.instantiate()
-	$Marker2D.add_child(ataque)
+	var nuevo_proyectil = proyectil.instantiate()
+	$Marker2D.add_child(nuevo_proyectil)
+	$AnimatedSprite2D.play("atacar")
+
+func _on_disparo_timer_timeout():
+	if focas_en_rango.size() > 0:
+		ataque()
+
+func _on_detecto_enemigos_area_entered(area: Area2D) -> void:
+	if area.is_in_group("focas"):
+		focas_en_rango.append(area)
+		print("Foca detectada (área): ", area.name)
+
+func _on_detecto_enemigos_area_exited(area: Area2D) -> void:
+	if area.is_in_group("focas"):
+		focas_en_rango.erase(area)
+		print("Foca fuera de rango (área): ", area.name)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "atacar":
-		ataque()
-		atacando = false  # Permitir nuevo ataque si sigue el enemigo
-
-func det_enemigo():
-	var espacio = get_world_2d().direct_space_state
-	var origen = $RayCast2D.global_position
-	var destino = origen + $RayCast2D.target_position.rotated($RayCast2D.global_rotation)
-
-	var excluir := [self]
-	var colision_valida = null
-
-	# Buscar hasta 5 objetos distintos a lo largo del rayo
-	for i in range(5):
-		var parametros = PhysicsRayQueryParameters2D.create(origen, destino)
-		parametros.exclude = excluir
-		parametros.collide_with_areas = true
-		parametros.collide_with_bodies = true
-
-		var resultado = espacio.intersect_ray(parametros)
-		if not resultado:
-			break
-
-		var colision = resultado.collider
-		excluir.append(colision)  # Evitar detectar lo mismo en el siguiente intento
-
-		# Si no es ignorado, lo consideramos válido
-		if not colision.is_in_group("proyectiles") and not colision.is_in_group("ignorar_raycast"):
-			colision_valida = colision
-			break
-
-	if colision_valida:
-		if not atacando:
-			atacando = true
-			$AnimatedSprite2D.play("atacar")
+		$AnimatedSprite2D.play("default")
+		
+func get_daño() -> int:
+	var instancia = proyectil.instantiate()
+	
+	if instancia.has_node("Proyectil1"):
+		var proyectil1 = instancia.get_node("Proyectil1")
+		return proyectil1.daño
 	else:
-		if not atacando:
-			$AnimatedSprite2D.play("default")
+		return instancia.daño
+	
+	

@@ -1,9 +1,12 @@
 extends PathFollow2D
 
-var velocidad = 0.05
+@export var velocidad = 0.03
 var atacando = false
 var objetivo = null
-var vida = 10
+@export var vida = 100
+@export var daño = 25
+@export var armadura = 0
+
  
 
 func _ready() -> void:
@@ -19,6 +22,7 @@ func _process(_delta):
 		$".".queue_free()
 	if progress_ratio == 1:
 		$".".queue_free()
+		get_tree().root.get_node("Nivel1").terminarjuego()
 
 	if not atacando and $AnimatedSprite2D.animation == "Moverse":
 		progress_ratio += velocidad * _delta
@@ -29,9 +33,16 @@ func _on_area_2d_area_entered(area):
 		atacando = true
 		$AnimatedSprite2D.play("Ataque")
 		$Timer.start()
-	if area.is_in_group("proyectil"):
-		vida -= 1
-		print (vida)
+	elif area.is_in_group("proyectil"):
+		var proyectil = area.get_parent()
+		if proyectil.has_method("get"): 
+			if "daño" in proyectil:
+				vida -= proyectil.daño
+				print("Daño recibido:", proyectil.daño)
+				print("Vida restante:", vida)
+			else:
+				print("El proyectil no tiene la variable 'daño'")
+
 
 func _on_area_2d_area_exited(area):
 	if area.get_parent() == objetivo:
@@ -41,7 +52,7 @@ func _on_area_2d_area_exited(area):
 
 func _on_timer_timeout():
 	if objetivo and is_instance_valid(objetivo):
-		objetivo.recibir_daño(1)
+		objetivo.recibir_daño(daño)
 		$Timer.start()
 	else:
 		atacando = false

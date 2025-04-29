@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://bicohxt6wv1pp"]
+
+[ext_resource type="Script" path="res://scripts/volver_al_nivel.gd" id="1_wixre"]
+[ext_resource type="Script" path="res://scripts/reiniciar_nivel.gd" id="2_j3rq4"]
+[ext_resource type="Script" path="res://scripts/opciones.gd" id="3_ds1hi"]
+[ext_resource type="Script" path="res://scripts/menu_principal.gd" id="4_jn4py"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16avo"]
+bg_color = Color(0.158636, 0.210229, 0.495789, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpheo"]
+bg_color = Color(0.156863, 0.211765, 0.494118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ofro"]
+bg_color = Color(0.156863, 0.211765, 0.494118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yo53"]
+bg_color = Color(0.156863, 0.211765, 0.494118, 1)
+
+[node name="Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -598.0
+offset_top = -259.0
+offset_right = 600.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.021, 0.026, 0.119, 0.7)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -136.5
+offset_right = 172.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 22
+
+[node name="VolverAlNivel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_16avo")
+text = "VOLVER AL NIVEL"
+script = ExtResource("1_wixre")
+
+[node name="ReiniciarNivel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gpheo")
+text = "REINICIAR NIVEL"
+script = ExtResource("2_j3rq4")
+
+[node name="Opciones" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7ofro")
+text = "OPCIONES"
+script = ExtResource("3_ds1hi")
+
+[node name="MenuPrincipal" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7yo53")
+text = "MENU PRINCIPAL"
+script = ExtResource("4_jn4py")
+
+[connection signal="pressed" from="VBoxContainer/VolverAlNivel" to="VBoxContainer/VolverAlNivel" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReiniciarNivel" to="VBoxContainer/ReiniciarNivel" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuPrincipal" to="VBoxContainer/MenuPrincipal" method="_on_pressed"]

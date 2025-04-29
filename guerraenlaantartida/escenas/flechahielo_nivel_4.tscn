@@ -1,40 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpd4qqfrjlqh3"]
+[gd_scene load_steps=5 format=3 uid="uid://3pmdk04ruihi"]
 
-[ext_resource type="Script" path="res://scripts/proyectil.gd" id="1_62k1m"]
-[ext_resource type="Texture2D" uid="uid://bvpk4xurboaiy" path="res://img/proyectil.png" id="1_k2dcq"]
+[ext_resource type="Script" path="res://scripts/flechahielo.gd" id="1_u7qi0"]
+[ext_resource type="Texture2D" uid="uid://bjsp6wfjdn8dr" path="res://img/FlechaHielo.png" id="2_rtqxu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_glkwy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_k2dcq")
+"texture": ExtResource("2_rtqxu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_k2dcq")
+"texture": ExtResource("2_rtqxu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_k2dcq")
+"texture": ExtResource("2_rtqxu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_k2dcq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_k2dcq")
+"texture": ExtResource("2_rtqxu")
 }],
 "loop": true,
 "name": &"bowling",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ioef"]
-radius = 8.83883
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0knpb"]
+size = Vector2(25, 11.25)
 
 [node name="Proyectil" type="Node2D"]
-script = ExtResource("1_62k1m")
-velocidad = 80
+script = ExtResource("1_u7qi0")
+velocidad = 110
+"daño" = 15
+maxEnemigosAtravesados = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.103125, 0.105469)
+scale = Vector2(0.153125, 0.146484)
 sprite_frames = SubResource("SpriteFrames_glkwy")
 animation = &"bowling"
 
@@ -42,12 +41,12 @@ animation = &"bowling"
 scale = Vector2(0.8, 0.8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-4.76837e-07, -4.76837e-07)
-shape = SubResource("CircleShape2D_8ioef")
+position = Vector2(1.49012e-06, 0.624999)
+shape = SubResource("RectangleShape2D_0knpb")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1.78814e-07, 2.38419e-07)
-scale = Vector2(0.7, 0.7)
+position = Vector2(-2.38419e-07, 0.5)
+scale = Vector2(1, 0.45)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

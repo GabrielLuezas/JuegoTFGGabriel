@@ -1,10 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3hhlsessq83u"]
+[gd_scene load_steps=19 format=3 uid="uid://b3hhlsessq83u"]
 
 [ext_resource type="Script" path="res://scripts/nivel_1.gd" id="1_rlsfn"]
 [ext_resource type="Texture2D" uid="uid://hq5ny4e0hn16" path="res://img/makuked.png" id="2_wlvx3"]
 [ext_resource type="Texture2D" uid="uid://bmdkvbsedkyyo" path="res://img/TarjetaPinguino.png" id="3_vbafj"]
 [ext_resource type="Script" path="res://scripts/panel_container.gd" id="4_8mnbd"]
-[ext_resource type="PackedScene" uid="uid://dmxxcirmtb4bt" path="res://escenas/foca.tscn" id="5_be3kh"]
+[ext_resource type="Texture2D" uid="uid://dgb5xgpqu7q" path="res://img/botonpausa.png" id="6_85iut"]
+[ext_resource type="Script" path="res://scripts/botonpausa.gd" id="7_hiy5c"]
+[ext_resource type="Texture2D" uid="uid://b23txvvel2iqs" path="res://img/velocidadnormal.png" id="8_dhi10"]
+[ext_resource type="Script" path="res://scripts/boton_velocidad_normal.gd" id="9_svcl1"]
+[ext_resource type="Texture2D" uid="uid://c3lg4kqoy5yi8" path="res://img/velocidadrapida.png" id="9_yqh6v"]
+[ext_resource type="Texture2D" uid="uid://baidwccfs8ye" path="res://img/velocidadmuyrapida.png" id="10_cqyvs"]
+[ext_resource type="Script" path="res://scripts/boton_velocidad_rapida.gd" id="11_kgfhi"]
+[ext_resource type="Script" path="res://scripts/boton_velocidad_muyrapida.gd" id="13_76gnt"]
+[ext_resource type="PackedScene" uid="uid://bicohxt6wv1pp" path="res://escenas/menu.tscn" id="14_77gma"]
+[ext_resource type="Texture2D" uid="uid://bvitnd6x3qwc" path="res://img/ContadorPecesNormales.png" id="15_7yvcm"]
+[ext_resource type="Texture2D" uid="uid://b304al6ctcq24" path="res://img/ConadoPecesDorados.png" id="16_dt3bc"]
+[ext_resource type="PackedScene" uid="uid://b8kcgdk0ww8lv" path="res://escenas/barra_progreso.tscn" id="17_s0dtk"]
+[ext_resource type="PackedScene" uid="uid://r4sd1rxvnv36" path="res://escenas/pesca.tscn" id="17_scaae"]
 
 [sub_resource type="Curve2D" id="Curve2D_6hmbr"]
 _data = {
@@ -16,12 +28,12 @@ point_count = 2
 script = ExtResource("1_rlsfn")
 
 [node name="Mapa" type="Sprite2D" parent="."]
-position = Vector2(600, 259)
-scale = Vector2(1.63115, 1.24272)
+position = Vector2(601, 259)
+scale = Vector2(1.63934, 1.24272)
 texture = ExtResource("2_wlvx3")
 
 [node name="PinguinoBoton" type="Sprite2D" parent="."]
-position = Vector2(135, 266)
+position = Vector2(61, 164)
 scale = Vector2(0.384766, 0.408203)
 texture = ExtResource("3_vbafj")
 
@@ -36,10 +48,10 @@ offset_bottom = 40.0
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 214.0
-offset_right = 184.0
-offset_bottom = 318.0
+offset_left = 12.0
+offset_top = 113.0
+offset_right = 110.0
+offset_bottom = 217.0
 flat = true
 
 [node name="Tablero" type="Control" parent="." groups=["ignorar_raycast"]]
@@ -447,61 +459,110 @@ script = ExtResource("4_8mnbd")
 [node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5"]
 position = Vector2(40, 36.5)
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_6hmbr")
 
-[node name="foca" parent="Path2D" instance=ExtResource("5_be3kh")]
-position = Vector2(1128, 109)
-rotation = -6.28319
-rotates = false
-loop = false
-
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="2" type="Path2D" parent="."]
 position = Vector2(0, 78)
 curve = SubResource("Curve2D_6hmbr")
 
-[node name="foca" parent="Path2D2" instance=ExtResource("5_be3kh")]
-position = Vector2(1128, 109)
-rotation = -6.28319
-rotates = false
-loop = false
-
-[node name="Path2D3" type="Path2D" parent="."]
+[node name="3" type="Path2D" parent="."]
 position = Vector2(0, 157)
 curve = SubResource("Curve2D_6hmbr")
 
-[node name="foca" parent="Path2D3" instance=ExtResource("5_be3kh")]
-position = Vector2(1128, 109)
-rotation = -6.28319
-rotates = false
-loop = false
-
-[node name="Path2D4" type="Path2D" parent="."]
+[node name="4" type="Path2D" parent="."]
 position = Vector2(0, 236)
 curve = SubResource("Curve2D_6hmbr")
 
-[node name="foca" parent="Path2D4" instance=ExtResource("5_be3kh")]
-position = Vector2(1128, 109)
-rotation = -6.28319
-rotates = false
-loop = false
-
-[node name="Path2D5" type="Path2D" parent="."]
+[node name="5" type="Path2D" parent="."]
 position = Vector2(0, 315)
 curve = SubResource("Curve2D_6hmbr")
 
-[node name="foca" parent="Path2D5" instance=ExtResource("5_be3kh")]
-position = Vector2(1128, 109)
-rotation = -6.28319
-rotates = false
-loop = false
+[node name="BotonPausa_Play" type="TextureButton" parent="."]
+offset_left = 851.0
+offset_top = 462.0
+offset_right = 1363.0
+offset_bottom = 974.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("6_85iut")
+script = ExtResource("7_hiy5c")
 
-[node name="ConteoPeces" type="Label" parent="."]
-offset_left = 112.0
-offset_top = 33.0
-offset_right = 301.0
-offset_bottom = 102.0
+[node name="Boton_velocidad_normal" type="TextureButton" parent="."]
+offset_left = 921.0
+offset_top = 466.0
+offset_right = 1049.0
+offset_bottom = 596.0
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("8_dhi10")
+script = ExtResource("9_svcl1")
+
+[node name="Boton_velocidad_rapida" type="TextureButton" parent="."]
+offset_left = 979.0
+offset_top = 466.0
+offset_right = 1235.0
+offset_bottom = 594.0
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("9_yqh6v")
+script = ExtResource("11_kgfhi")
+
+[node name="Boton_velocidad_muyrapida" type="TextureButton" parent="."]
+offset_left = 1065.0
+offset_top = 466.0
+offset_right = 1415.0
+offset_bottom = 594.0
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("10_cqyvs")
+script = ExtResource("13_76gnt")
+
+[node name="ContadorPecesNormales" type="Sprite2D" parent="."]
+position = Vector2(72, 32)
+scale = Vector2(0.391667, 0.457031)
+texture = ExtResource("15_7yvcm")
+
+[node name="ConteoPeces" type="Label" parent="ContadorPecesNormales"]
+offset_left = 32.5532
+offset_top = -38.8376
+offset_right = 361.553
+offset_bottom = 105.162
+theme_override_font_sizes/font_size = 53
 text = "1"
+
+[node name="ContadorPecesDorados" type="Sprite2D" parent="."]
+position = Vector2(194, 32)
+scale = Vector2(0.391667, 0.457031)
+texture = ExtResource("16_dt3bc")
+
+[node name="ConteoPecesDorados" type="Label" parent="ContadorPecesDorados"]
+offset_left = 32.5532
+offset_top = -38.8376
+offset_right = 361.553
+offset_bottom = 105.162
+theme_override_font_sizes/font_size = 53
+text = "1"
+
+[node name="BarraProgreso" parent="." instance=ExtResource("17_s0dtk")]
+position = Vector2(234, 10)
+
+[node name="Pesca" parent="." instance=ExtResource("17_scaae")]
+position = Vector2(43, 339)
+scale = Vector2(0.654933, 0.626872)
+
+[node name="Menu" parent="." instance=ExtResource("14_77gma")]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 598.0
+offset_top = 259.0
+offset_right = 598.0
+offset_bottom = 259.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SitioMejorasPinguinos" type="Marker2D" parent="."]
+position = Vector2(226, 285)
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer" method="_on_mouse_entered"]
@@ -594,3 +655,7 @@ text = "1"
 [connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="pressed" from="BotonPausa_Play" to="BotonPausa_Play" method="_on_pressed"]
+[connection signal="pressed" from="Boton_velocidad_normal" to="Boton_velocidad_normal" method="_on_pressed"]
+[connection signal="pressed" from="Boton_velocidad_rapida" to="Boton_velocidad_rapida" method="_on_pressed"]
+[connection signal="pressed" from="Boton_velocidad_muyrapida" to="Boton_velocidad_muyrapida" method="_on_pressed"]

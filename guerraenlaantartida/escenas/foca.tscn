@@ -67,12 +67,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkj1x"]
-size = Vector2(25, 70)
+size = Vector2(25, 61)
 
 [node name="foca" type="PathFollow2D"]
+loop = false
 script = ExtResource("1_76ih2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
 scale = Vector2(0.359, 0.359)
 sprite_frames = SubResource("SpriteFrames_ll5d3")
 animation = &"Ataque"
@@ -82,7 +84,7 @@ frame_progress = 0.915559
 [node name="Area2D" type="Area2D" parent="." groups=["focas"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-28.5, -3)
+position = Vector2(37, 4)
 shape = SubResource("RectangleShape2D_tkj1x")
 
 [node name="Timer" type="Timer" parent="."]

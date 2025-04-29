@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://r4sd1rxvnv36"]
+
+[ext_resource type="Texture2D" uid="uid://c83mne1prqd51" path="res://img/pinguinopescandofase1.png" id="1_2vmxc"]
+[ext_resource type="Texture2D" uid="uid://d15c3xrg2qcnr" path="res://img/pinguinopescandotienepez.png" id="1_7k1db"]
+[ext_resource type="Texture2D" uid="uid://b6pa483icridf" path="res://img/pinguinopescandofase2.png" id="2_0e7ye"]
+[ext_resource type="Texture2D" uid="uid://yd2gaowevv1y" path="res://img/pinguinopescandofase3.png" id="3_meim7"]
+[ext_resource type="Texture2D" uid="uid://dvx8mdnou57ti" path="res://img/pinguinopescandofase4.png" id="4_7hrrw"]
+[ext_resource type="Script" path="res://scripts/pescando_animacion.gd" id="5_8u71f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vfqvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7k1db")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7k1db")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7k1db")
+}],
+"loop": true,
+"name": &"hay_pesca",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("1_2vmxc")
+}, {
+"duration": 3.0,
+"texture": ExtResource("2_0e7ye")
+}, {
+"duration": 3.0,
+"texture": ExtResource("3_meim7")
+}, {
+"duration": 5.0,
+"texture": ExtResource("4_7hrrw")
+}],
+"loop": true,
+"name": &"pescando",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a4dl"]
+size = Vector2(92, 99)
+
+[node name="Pesca" type="Node2D"]
+
+[node name="PescandoAnimacion" type="AnimatedSprite2D" parent="."]
+position = Vector2(76, 58)
+scale = Vector2(0.25, 0.278)
+sprite_frames = SubResource("SpriteFrames_vfqvq")
+animation = &"pescando"
+frame_progress = 0.213398
+script = ExtResource("5_8u71f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(76, 76)
+shape = SubResource("RectangleShape2D_1a4dl")
+
+[connection signal="input_event" from="Area2D" to="PescandoAnimacion" method="_on_area_2d_input_event"]

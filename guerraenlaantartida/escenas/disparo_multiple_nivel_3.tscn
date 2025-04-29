@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxwe88nmfkmtf"]
+
+[ext_resource type="PackedScene" uid="uid://dpd4qqfrjlqh3" path="res://escenas/proyectil.tscn" id="1_3uh80"]
+
+[node name="DisparoMultipleNivel3" type="Node2D"]
+
+[node name="Proyectil1" parent="." instance=ExtResource("1_3uh80")]
+"daño" = 14
+
+[node name="Proyectil2" parent="." instance=ExtResource("1_3uh80")]
+position = Vector2(24, 0)
+"daño" = 14
+
+[node name="Proyectil3" parent="." instance=ExtResource("1_3uh80")]
+position = Vector2(48, 0)
+"daño" = 14

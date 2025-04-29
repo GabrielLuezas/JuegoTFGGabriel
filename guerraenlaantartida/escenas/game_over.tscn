@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b08wwwaovx2w5"]
+
+[ext_resource type="Texture2D" uid="uid://iqr0lm0yrwoj" path="res://img/gameover.jpg" id="1_6kfpa"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="2_sp1mv"]
+
+[node name="GameOver" type="Sprite2D"]
+position = Vector2(600, 259)
+scale = Vector2(1.55729, 1.18981)
+texture = ExtResource("1_6kfpa")
+script = ExtResource("2_sp1mv")
