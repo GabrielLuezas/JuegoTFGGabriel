@@ -11,6 +11,11 @@ var tiempo_ultimo_spawn := 0.0
 var intervalo_spawn := 5.0 
 var seguirGenerando := true
 
+var cooldown_duracion := 5.0
+var cooldown_tiempo := 0.0
+var en_cooldown := false
+
+
 func _ready():
 	randomize()
 	tiempo_total = $BarraProgreso/BarraProgreso.max_value +1
@@ -31,7 +36,6 @@ func _process(delta):
 	if pausa:
 		return
 
-	
 	if tiempo_actual <= tiempo_total:
 		tiempo_actual += delta
 
@@ -46,6 +50,15 @@ func _process(delta):
 		$Pinguinos.get_child(0).global_position = get_global_mouse_position()
 
 	conteo = $Pinguinos.get_child_count()
+	
+	if en_cooldown:
+		cooldown_tiempo += delta
+		var progreso = clamp((cooldown_tiempo / cooldown_duracion) * 100.0, 0, 100)
+		$Control/TextureProgressBar.value = progreso
+
+		if progreso >= 100.0:
+			en_cooldown = false
+			$Control/Button.disabled = false
 
 func generar_enemigos():
 	if seguirGenerando:
@@ -63,13 +76,21 @@ func generar_enemigos():
 		print("Se acabó la generación")
 
 func _on_button_pressed():
-	if conteo == 0 and Global.peces >= 5:
+	if conteo == 0 and Global.peces >= 5 and !en_cooldown:
 		Global.modo_compra = true
 		var preview = pinguino_preview.instantiate()
 		$Pinguinos.add_child(preview)
 		_actualizar_label_peces()
+		
+		en_cooldown = true
+		cooldown_tiempo = 0.0
+		$Control/TextureProgressBar.value = 0
+		$Control/TextureProgressBar.tint_under = Color(1,1,1,0.5)
+		$Control/Button.disabled = true
 	elif Global.peces < 5:
 		print("No tienes suficientes peces para comprar un pingüino.")
+
+
 
 func _reset():
 	if $Pinguinos.get_child_count() > 0:
@@ -93,3 +114,12 @@ func toggle_pause():
 func terminarjuego():
 	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file("res://escenas/game_over.tscn")
+
+func _on_timer_timeout():
+	# Sube 20% cada vez que se llama
+	$Control/TextureProgressBar.value += 20
+
+	# Cuando llega a 100, se detiene el cooldown
+	if $Control/TextureProgressBar.value >= 100:
+		$Control/Timer.stop()
+		$Control/Button.disabled = false

@@ -63,6 +63,10 @@ func _on_boton_mejora_4_input_event(viewport: Node, event: InputEvent, shape_idx
 		if pinguino_actual:
 			pinguino_actual.nivelMejora = 1
 			pinguino_actual.mejora = "Rafaga de Nieve"
+			
+			pinguino_actual.set_cadencia_disparo(0.1)
+			pinguino_actual.proyectil = preload("res://escenas/rafaga_de_nieve.tscn")
+			
 			Global.pecesDorados = Global.pecesDorados -1
 			var nivel = get_tree().get_nodes_in_group("nivel")[0]
 			nivel._reset()
@@ -82,6 +86,11 @@ func _on_boton_mejora_3_input_event(viewport: Node, event: InputEvent, shape_idx
 		if pinguino_actual:
 			pinguino_actual.nivelMejora = 1
 			pinguino_actual.mejora = "Dispersion de Nieve"
+			
+			pinguino_actual.set_cadencia_disparo(0.85)
+			
+			pinguino_actual.proyectil = preload("res://escenas/dispersion_de_nieve.tscn")
+			
 			Global.pecesDorados = Global.pecesDorados -1
 			var nivel = get_tree().get_nodes_in_group("nivel")[0]
 			nivel._reset()

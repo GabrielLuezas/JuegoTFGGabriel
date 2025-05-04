@@ -42,6 +42,16 @@ func _on_boton_vender_input_event(viewport: Node, event: InputEvent, shape_idx: 
 		if pinguino_actual:
 			pinguino_actual.queue_free()
 			Global.peces = Global.peces + 3
+			
+			if pinguino_actual.nivelMejora == 1:
+				Global.peces = Global.peces + 1
+			elif pinguino_actual.nivelMejora == 2:
+				Global.pecesDorados = Global.pecesDorados +1
+			elif pinguino_actual.nivelMejora == 3:
+				Global.pecesDorados = Global.pecesDorados +1
+			else:
+				Global.pecesDorados = Global.pecesDorados +2
+			
 			var nivel1 = get_tree().root.get_node("Nivel1")
 			nivel1._actualizar_label_peces()
 			nivel1._actualizar_label_peces_dorados()
@@ -67,21 +77,37 @@ func customizarPanel():
 		$PanelDeMejora2.hide()
 		$PanelDeMejora3.hide()
 		$PanelDeMejora4.hide()
-	elif pinguino_actual.mejora == "Bola Gigante":
+		$Mejora1.show()
+		$Mejora2.hide()
+		$Mejora3.hide()
+		$Mejora4.hide()
+	elif pinguino_actual.mejora == "Flecha Hielo":
 		$PanelDeMejora2.hide()
 		$PanelDeMejora2.show()
 		$PanelDeMejora3.hide()
 		$PanelDeMejora4.hide()
+		$Mejora2.show()
+		$Mejora1.hide()
+		$Mejora3.hide()
+		$Mejora4.hide()
 	elif pinguino_actual.mejora == "Dispersion de Nieve":
 		$PanelDeMejora2.hide()
 		$PanelDeMejora2.hide()
 		$PanelDeMejora3.show()
 		$PanelDeMejora4.hide()
+		$Mejora3.show()
+		$Mejora2.hide()
+		$Mejora1.hide()
+		$Mejora4.hide()
 	else:
 		$PanelDeMejora2.hide()
 		$PanelDeMejora2.hide()
 		$PanelDeMejora3.hide()
 		$PanelDeMejora4.show()
+		$Mejora4.show()
+		$Mejora2.hide()
+		$Mejora1.hide()
+		$Mejora3.hide()
 		
 func customizarEstrellas():
 	if pinguino_actual.nivelMejora == 1:
@@ -114,6 +140,10 @@ func _on_boton_mejorar_nivel_input_event(viewport: Node, event: InputEvent, shap
 				mejorarDisparoMultiple()
 			elif pinguino_actual.mejora == "Flecha Hielo":
 				mejorarFlechaHielo()
+			elif pinguino_actual.mejora == "Dispersion de Nieve":
+				mejorarDispersionDeNieve()
+			else:
+				mejoraRafaDeNieve()
 			
 			Global.pecesDorados = Global.pecesDorados - 1
 			var nivel1 = get_tree().root.get_node("Nivel1")
@@ -147,3 +177,20 @@ func mejorarFlechaHielo():
 		pinguino_actual.proyectil = preload("res://escenas/flechahielo_nivel_3.tscn")
 	elif pinguino_actual.nivelMejora == 4:
 		pinguino_actual.proyectil = preload("res://escenas/flechahielo_nivel_4.tscn")
+
+func mejorarDispersionDeNieve():
+	if pinguino_actual.nivelMejora == 2:
+		pinguino_actual.proyectil = preload("res://escenas/dispersion_de_nieve_nivel_2.tscn")
+		pinguino_actual.set_cadencia_disparo(0.80)
+	elif pinguino_actual.nivelMejora == 3:
+		pinguino_actual.set_cadencia_disparo(1)
+	elif pinguino_actual.nivelMejora == 4:
+		pinguino_actual.proyectil = preload("res://escenas/dispersion_de_nieve_nivel_4.tscn")
+
+func mejoraRafaDeNieve():
+	if pinguino_actual.nivelMejora == 2:
+		pinguino_actual.set_cadencia_disparo(0.15)
+	if pinguino_actual.nivelMejora == 3:
+		pinguino_actual.set_cadencia_disparo(0.2)
+	if pinguino_actual.nivelMejora == 4:
+		pinguino_actual.proyectil = preload("res://escenas/rafaga_de_nieve_mejorada.tscn")

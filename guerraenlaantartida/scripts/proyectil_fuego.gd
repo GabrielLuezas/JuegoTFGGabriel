@@ -2,7 +2,7 @@ extends Node2D
 
 @export var velocidad = 75
 @export var daño = 10
-@export var es_de_fuego := false
+@export var es_de_fuego := true
 
 func _ready():
 	z_index = 1

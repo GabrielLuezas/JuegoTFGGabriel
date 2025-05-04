@@ -6,27 +6,30 @@ extends Node2D
 @export var nivelMejora: int = 0
 @export var mejora: String = ""
 
-
 var focas_en_rango: Array = []
+var disparo_timer: Timer  # Referencia al timer
 
 func _ready():
 	add_to_group("pinguino")
 	$BotonPinguino.modulate.a = 0.0
-	var timer = Timer.new()
-	timer.name = "DisparoTimer"
-	timer.wait_time = 1.0 / cadencia_disparo
-	timer.one_shot = false
-	timer.autostart = true
-	add_child(timer)
-	timer.connect("timeout", Callable(self, "_on_disparo_timer_timeout"))
 
+	# Crear y configurar el timer
+	disparo_timer = Timer.new()
+	disparo_timer.name = "DisparoTimer"
+	disparo_timer.wait_time = 1.0 / cadencia_disparo
+	disparo_timer.one_shot = false
+	disparo_timer.autostart = true
+	add_child(disparo_timer)
+	disparo_timer.connect("timeout", Callable(self, "_on_disparo_timer_timeout"))
+
+	# Ajustar la velocidad de animación al ritmo de disparo
 	$AnimatedSprite2D.speed_scale = cadencia_disparo
 
 func set_cadencia_disparo(nueva: float) -> void:
 	cadencia_disparo = nueva
 
-	if has_node("DisparoTimer"):
-		$DisparoTimer.wait_time = 1.0 / cadencia_disparo
+	if disparo_timer:
+		disparo_timer.wait_time = 1.0 / cadencia_disparo
 
 	$AnimatedSprite2D.speed_scale = cadencia_disparo
 
@@ -41,10 +44,9 @@ func recibir_daño(cantidad: int):
 		panel = get_tree().root.get_node_or_null("Nivel1/SitioMejorasPinguinos/panel_mejoras_con_upgrade")
 	else:
 		panel = get_tree().root.get_node_or_null("Nivel1/SitioMejorasPinguinos/panel_mejoras")
-		
+
 	if panel and panel.pinguino_actual == self:
 		panel.set_datos(vida, get_daño()) 
-
 
 func ataque():
 	var nuevo_proyectil = proyectil.instantiate()
@@ -68,14 +70,12 @@ func _on_detecto_enemigos_area_exited(area: Area2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "atacar":
 		$AnimatedSprite2D.play("default")
-		
+
 func get_daño() -> int:
 	var instancia = proyectil.instantiate()
-	
+
 	if instancia.has_node("Proyectil1"):
 		var proyectil1 = instancia.get_node("Proyectil1")
 		return proyectil1.daño
 	else:
 		return instancia.daño
-	
-	

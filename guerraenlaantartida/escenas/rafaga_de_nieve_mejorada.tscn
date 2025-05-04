@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkx13um6o76c"]
+
+[ext_resource type="PackedScene" uid="uid://djr1lutaem54m" path="res://escenas/proyectil_hielo_mejorado.tscn" id="1_ufkmu"]
+
+[node name="RafagaDeNieve" type="Node2D"]
+
+[node name="Proyectil1" parent="." instance=ExtResource("1_ufkmu")]
+
+[node name="Proyectil2" parent="." instance=ExtResource("1_ufkmu")]
+position = Vector2(15, 0)
+
+[node name="Proyectil3" parent="." instance=ExtResource("1_ufkmu")]
+position = Vector2(75, 0)
+
+[node name="Proyectil4" parent="." instance=ExtResource("1_ufkmu")]
+position = Vector2(60, 0)
+
+[node name="Proyectil5" parent="." instance=ExtResource("1_ufkmu")]
+position = Vector2(45, 0)
+
+[node name="Proyectil6" parent="." instance=ExtResource("1_ufkmu")]
+position = Vector2(30, 0)

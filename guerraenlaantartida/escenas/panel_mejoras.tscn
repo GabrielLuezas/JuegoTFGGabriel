@@ -4305,7 +4305,7 @@ sources/1 = SubResource("TileSetAtlasSource_3w7h0")
 sources/2 = SubResource("TileSetAtlasSource_au2la")
 sources/3 = SubResource("TileSetAtlasSource_qw4er")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wman6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_diofn"]
 texture = ExtResource("3_e7wly")
 34:0/0 = 0
 35:0/0 = 0
@@ -5221,7 +5221,7 @@ texture = ExtResource("3_e7wly")
 23:28/0 = 0
 24:28/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_prm5m"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6s7h"]
 texture = ExtResource("6_t560p")
 0:0/0 = 0
 1:0/0 = 0
@@ -7416,7 +7416,7 @@ texture = ExtResource("6_t560p")
 14:136/0 = 0
 15:136/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ii8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcqhe"]
 texture = ExtResource("7_xqpyi")
 0:0/0 = 0
 1:0/0 = 0
@@ -16148,7 +16148,7 @@ texture = ExtResource("7_xqpyi")
 30:273/0 = 0
 31:273/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kndxe"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8wjil"]
 texture = ExtResource("8_kjk5t")
 0:0/0 = 0
 1:0/0 = 0
@@ -16408,10 +16408,10 @@ texture = ExtResource("8_kjk5t")
 15:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_fvgyf"]
-sources/0 = SubResource("TileSetAtlasSource_wman6")
-sources/1 = SubResource("TileSetAtlasSource_prm5m")
-sources/2 = SubResource("TileSetAtlasSource_s3ii8")
-sources/3 = SubResource("TileSetAtlasSource_kndxe")
+sources/0 = SubResource("TileSetAtlasSource_diofn")
+sources/1 = SubResource("TileSetAtlasSource_v6s7h")
+sources/2 = SubResource("TileSetAtlasSource_rcqhe")
+sources/3 = SubResource("TileSetAtlasSource_8wjil")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4km3b"]
 size = Vector2(16, 16)
@@ -16472,6 +16472,11 @@ position = Vector2(8, 0)
 tile_map_data = PackedByteArray("AAACAAkAAAAxAA4AAAACAAUAAAAxAA4AAAACAAEAAAAxAA4AAAACAP3/AAAxAA4AAAA=")
 tile_set = SubResource("TileSet_fvgyf")
 
+[node name="SuperiorIconoVenta" type="TileMapLayer" parent="."]
+position = Vector2(-7, 0)
+tile_map_data = PackedByteArray("AAADAAwAAQAPAAkAAAAEAAwAAQAPAAkAAAACAAwAAQAPAAkAAAA=")
+tile_set = SubResource("TileSet_fvgyf")
+
 [node name="BotonCerrar" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BotonCerrar"]
@@ -16487,11 +16492,14 @@ shape = SubResource("RectangleShape2D_3kkgb")
 [node name="NombrePinguino" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = -75.0
-offset_top = -107.0
+offset_top = -113.0
 offset_right = 76.0
-offset_bottom = -82.0
+offset_bottom = -88.0
+theme_override_fonts/normal_font = ExtResource("10_v4oml")
 theme_override_font_sizes/bold_italics_font_size = 2
+theme_override_font_sizes/normal_font_size = 22
 text = "Pingüino Real"
+scroll_active = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
@@ -16508,17 +16516,21 @@ texture = ExtResource("6_wayin")
 [node name="CantidadVidaPinguino" type="Label" parent="."]
 layout_mode = 0
 offset_left = -64.0
-offset_top = -155.0
+offset_top = -152.0
 offset_right = -33.0
-offset_bottom = -132.0
+offset_bottom = -129.0
+theme_override_fonts/font = ExtResource("10_v4oml")
+theme_override_font_sizes/font_size = 20
 text = "1"
 
 [node name="CantidadDañoPinguino" type="Label" parent="."]
 layout_mode = 0
-offset_left = 31.0
-offset_top = -155.0
-offset_right = 62.0
-offset_bottom = -132.0
+offset_left = 32.0
+offset_top = -152.0
+offset_right = 63.0
+offset_bottom = -129.0
+theme_override_fonts/font = ExtResource("10_v4oml")
+theme_override_font_sizes/font_size = 20
 text = "1"
 
 [node name="BotonVender" type="Area2D" parent="."]

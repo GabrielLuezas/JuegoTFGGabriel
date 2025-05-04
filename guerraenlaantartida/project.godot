@@ -35,6 +35,9 @@ pinguino=""
 focas=""
 proyectil=""
 ignorar_raycast=""
+proyectil_fuego=""
+proyectil_hielo=""
+proyectil_hielo_mejorado=""
 
 [input]
 

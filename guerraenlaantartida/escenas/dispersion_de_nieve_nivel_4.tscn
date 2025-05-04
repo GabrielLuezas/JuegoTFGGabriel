@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c24jdi6rj6cdi"]
+
+[ext_resource type="PackedScene" uid="uid://clcisv65woiq8" path="res://escenas/proyectil_fuego.tscn" id="1_pxbb2"]
+[ext_resource type="Script" path="res://scripts/proyectilDispersionPlus.gd" id="2_pngah"]
+
+[node name="DispersionDeNieveNivel4" type="Node2D"]
+
+[node name="Proyectil1" parent="." instance=ExtResource("1_pxbb2")]
+script = ExtResource("2_pngah")
+"daño" = 7
+tiempo_division = 1.0
+escala_reducida = 0.5
