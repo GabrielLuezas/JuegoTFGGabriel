@@ -41,9 +41,9 @@ func recibir_daño(cantidad: int):
 	vida -= cantidad
 	var panel
 	if nivelMejora >= 1:
-		panel = get_tree().root.get_node_or_null("Nivel1/SitioMejorasPinguinos/panel_mejoras_con_upgrade")
+		panel = get_tree().root.get_node_or_null("Nivel/SitioMejorasPinguinos/panel_mejoras_con_upgrade")
 	else:
-		panel = get_tree().root.get_node_or_null("Nivel1/SitioMejorasPinguinos/panel_mejoras")
+		panel = get_tree().root.get_node_or_null("Nivel/SitioMejorasPinguinos/panel_mejoras")
 
 	if panel and panel.pinguino_actual == self:
 		panel.set_datos(vida, get_daño()) 

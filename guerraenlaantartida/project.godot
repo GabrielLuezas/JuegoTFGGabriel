@@ -18,11 +18,12 @@ config/icon="res://img/icon.svg"
 [autoload]
 
 Global="*res://scripts/global.gd"
+Guardado="*res://scripts/guardado.gd"
 
 [display]
 
 window/size/viewport_width=1200
-window/size/viewport_height=514
+window/size/viewport_height=512
 window/size/mode=2
 window/size/window_width_override=1920
 window/size/window_height_override=1080

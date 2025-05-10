@@ -6,9 +6,6 @@ var pinguino_actual = null
 
 
 func _ready() -> void:
-	$NombrePinguino.bbcode_enabled = true
-	$NombrePinguino.bbcode_text = "[center]Pingüino Real[/center]"
-	
 	$CantidadVidaPinguino.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	$"CantidadDañoPinguino".horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
@@ -28,18 +25,38 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_boton_cerrar_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		$".".queue_free()
+func _on_boton_mejorar_nivel_pressed() -> void:
+	if pinguino_actual:
+			pinguino_actual.nivelMejora = pinguino_actual.nivelMejora + 1
+			if pinguino_actual.mejora == "Disparo Multiple":
+				mejorarDisparoMultiple()
+			elif pinguino_actual.mejora == "Flecha Hielo":
+				mejorarFlechaHielo()
+			elif pinguino_actual.mejora == "Dispersion de Nieve":
+				mejorarDispersionDeNieve()
+			else:
+				mejoraRafaDeNieve()
+			
+			Global.pecesDorados = Global.pecesDorados - 1
+			var nivel1 = get_tree().root.get_node("Nivel")
+			nivel1._actualizar_label_peces_dorados()
+			var boton = pinguino_actual.get_node("BotonPinguino")
+			if boton:
+				boton._on_pressed()
+			if pinguino_actual.nivelMejora < 4 :
+				$CapaBotonMejoraPuede.show()
+				$CapaBotonMejoraPuedeIcono.show()
+				$CapaBotonMejoraNoPuede.hide()
+				$CapaBotonMejoraNoPuedeIcono.hide()
+			else:
+				$CapaBotonMejoraPuede.hide()
+				$CapaBotonMejoraPuedeIcono.hide()
+				$CapaBotonMejoraNoPuede.show()
+				$CapaBotonMejoraNoPuedeIcono.show()
 
 
-func _on_boton_libro_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_boton_vender_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if pinguino_actual:
+func _on_boton_vender_pressed() -> void:
+	if pinguino_actual:
 			pinguino_actual.queue_free()
 			Global.peces = Global.peces + 3
 			
@@ -52,10 +69,21 @@ func _on_boton_vender_input_event(viewport: Node, event: InputEvent, shape_idx: 
 			else:
 				Global.pecesDorados = Global.pecesDorados +2
 			
-			var nivel1 = get_tree().root.get_node("Nivel1")
+			var nivel1 = get_tree().root.get_node("Nivel")
 			nivel1._actualizar_label_peces()
 			nivel1._actualizar_label_peces_dorados()
 			$".".queue_free()
+
+
+func _on_boton_libro_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_boton_cerrar_pressed() -> void:
+	$".".queue_free()
+	pinguino_actual.get_node("AuraAmarilla").hide()
+
+
 
 func set_datos(p_vida: int, p_daño: int, pinguino: Node = null) -> void:
 	if p_vida == 0:
@@ -131,36 +159,6 @@ func customizarEstrellas():
 		$Estrella3.show()
 		$Estrella4.show()
 
-
-func _on_boton_mejorar_nivel_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and Global.pecesDorados >= 1 and pinguino_actual.nivelMejora < 4:
-		if pinguino_actual:
-			pinguino_actual.nivelMejora = pinguino_actual.nivelMejora + 1
-			if pinguino_actual.mejora == "Disparo Multiple":
-				mejorarDisparoMultiple()
-			elif pinguino_actual.mejora == "Flecha Hielo":
-				mejorarFlechaHielo()
-			elif pinguino_actual.mejora == "Dispersion de Nieve":
-				mejorarDispersionDeNieve()
-			else:
-				mejoraRafaDeNieve()
-			
-			Global.pecesDorados = Global.pecesDorados - 1
-			var nivel1 = get_tree().root.get_node("Nivel1")
-			nivel1._actualizar_label_peces_dorados()
-			var boton = pinguino_actual.get_node("BotonPinguino")
-			if boton:
-				boton._on_pressed()
-			if pinguino_actual.nivelMejora < 4 :
-				$CapaBotonMejoraPuede.show()
-				$CapaBotonMejoraPuedeIcono.show()
-				$CapaBotonMejoraNoPuede.hide()
-				$CapaBotonMejoraNoPuedeIcono.hide()
-			else:
-				$CapaBotonMejoraPuede.hide()
-				$CapaBotonMejoraPuedeIcono.hide()
-				$CapaBotonMejoraNoPuede.show()
-				$CapaBotonMejoraNoPuedeIcono.show()
 
 func mejorarDisparoMultiple():
 	if pinguino_actual.nivelMejora == 2:

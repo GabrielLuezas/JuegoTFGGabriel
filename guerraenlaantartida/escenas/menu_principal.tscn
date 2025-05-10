@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsrn64csutfk7"]
+[gd_scene load_steps=7 format=3 uid="uid://bsrn64csutfk7"]
 
 [ext_resource type="Script" path="res://scripts/menu_principalEscena.gd" id="1_fxwae"]
 [ext_resource type="Texture2D" uid="uid://cfkhm71edxmfa" path="res://img/MenuPrincipalBackground.png" id="1_kfmw4"]
-[ext_resource type="Script" path="res://scripts/jugar.gd" id="2_k77s3"]
-[ext_resource type="Script" path="res://scripts/opcionesMenuPrincipal.gd" id="3_gpa7q"]
-[ext_resource type="Script" path="res://scripts/salir.gd" id="4_uva0e"]
+[ext_resource type="FontFile" uid="uid://bph7b5e80n2ph" path="res://fonts/CompassPro.otf" id="3_wld45"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0cev"]
 bg_color = Color(0.156863, 0.211765, 0.494118, 1)
@@ -49,32 +47,32 @@ anchor_bottom = 0.5
 offset_left = -123.0
 offset_top = -46.0
 offset_right = 198.0
-offset_bottom = 166.0
+offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 22
 
 [node name="Jugar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_wld45")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_l0cev")
 text = "JUGAR"
-script = ExtResource("2_k77s3")
 
 [node name="Opciones" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_wld45")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_2vnjx")
 text = "OPCIONES"
-script = ExtResource("3_gpa7q")
 
 [node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_wld45")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_gwrcc")
 text = "SALIR"
-script = ExtResource("4_uva0e")
 
-[connection signal="pressed" from="VBoxContainer/Jugar" to="VBoxContainer/Jugar" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/Opciones" to="VBoxContainer/Opciones" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/Salir" to="VBoxContainer/Salir" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

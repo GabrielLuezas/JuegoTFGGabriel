@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqu4ef5a0qq5w"]
+
+[ext_resource type="Script" path="res://scripts/interior_casa_jefe.gd" id="1_0hl5u"]
+[ext_resource type="Texture2D" uid="uid://d1k6m6rdhp8we" path="res://img/InteriorCasasImportantes.png" id="2_kyr7w"]
+[ext_resource type="TileSet" uid="uid://cep2lotas44ko" path="res://tiles/interiores.tres" id="2_sr23r"]
+
+[node name="InteriorCasaJefe" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0hl5u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -600.0
+offset_top = -256.0
+offset_right = 600.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kyr7w")
+
+[node name="Flechas" type="TileMapLayer" parent="."]
+position = Vector2(1, -7)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 11, 0, 3, 0, 17, 0, 3, 0, 0, 0, 247, 255, 11, 0, 3, 0, 14, 0, 3, 0, 0, 0, 255, 255, 6, 0, 3, 0, 15, 0, 3, 0, 0, 80, 248, 255, 6, 0, 3, 0, 15, 0, 3, 0, 0, 0)
+tile_set = ExtResource("2_sr23r")
+
+[node name="Flechas2" type="TileMapLayer" parent="."]
+position = Vector2(1, -7)
+tile_map_data = PackedByteArray(0, 0, 247, 255, 5, 0, 3, 0, 15, 0, 3, 0, 0, 0, 246, 255, 12, 0, 3, 0, 14, 0, 3, 0, 0, 0, 0, 0, 5, 0, 3, 0, 16, 0, 3, 0, 0, 0, 1, 0, 12, 0, 3, 0, 17, 0, 3, 0, 0, 0)
+tile_set = ExtResource("2_sr23r")
+
+[node name="Mapa" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -132.0
+offset_top = 91.0
+offset_right = 2.0
+offset_bottom = 175.0
+mouse_default_cursor_shape = 2
+
+[node name="BotonPuerta" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -275.0
+offset_top = -17.0
+offset_right = -218.0
+offset_bottom = 89.0
+mouse_default_cursor_shape = 2
+
+[connection signal="pressed" from="Mapa" to="." method="_on_mapa_pressed"]
+[connection signal="pressed" from="BotonPuerta" to="." method="_on_boton_puerta_pressed"]

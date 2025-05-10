@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://blu55nodsqi47"]
+[gd_scene load_steps=10 format=3 uid="uid://blu55nodsqi47"]
 
 [ext_resource type="Texture2D" uid="uid://cdcaoy2mayr4m" path="res://img/PinguinoReal.png" id="1_snc7a"]
 [ext_resource type="Script" path="res://scripts/pinguino.gd" id="1_ujqth"]
 [ext_resource type="Texture2D" uid="uid://dhceilv2jp4wm" path="res://img/PinguinoRealAtaqueState1.png" id="3_a62s2"]
 [ext_resource type="Texture2D" uid="uid://c0tb5d1afq48i" path="res://img/PinguinoRealAtaqueState2.png" id="4_uibfp"]
 [ext_resource type="Script" path="res://scripts/boton_pinguino.gd" id="5_c3mp6"]
+[ext_resource type="Texture2D" uid="uid://cn041bvsmdcak" path="res://img/AuraAmarilla.png" id="6_0hmwf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ucgc"]
 animations = [{
@@ -58,11 +59,11 @@ b = Vector2(1739, 0)
 
 [node name="Pinguino" type="Node2D"]
 script = ExtResource("1_ujqth")
-cadencia_disparo = 0.5
+cadencia_disparo = 0.4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, -2)
-scale = Vector2(0.332031, 0.359375)
+scale = Vector2(0.359, 0.359)
 sprite_frames = SubResource("SpriteFrames_4ucgc")
 
 [node name="Area2D" type="Area2D" parent="." groups=["ignorar_raycast", "pinguino"]]
@@ -81,13 +82,18 @@ scale = Vector2(7, 7)
 shape = SubResource("SegmentShape2D_onc44")
 
 [node name="BotonPinguino" type="TextureButton" parent="."]
-offset_left = -40.0
+offset_left = -41.0
 offset_top = -48.0
-offset_right = 216.0
+offset_right = 215.0
 offset_bottom = 208.0
 scale = Vector2(0.359, 0.359)
 texture_normal = ExtResource("1_snc7a")
 script = ExtResource("5_c3mp6")
+
+[node name="AuraAmarilla" type="Sprite2D" parent="."]
+position = Vector2(4, -2)
+scale = Vector2(0.359, 0.359)
+texture = ExtResource("6_0hmwf")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

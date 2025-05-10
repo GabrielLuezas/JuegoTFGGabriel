@@ -63,7 +63,7 @@ func _process(_delta):
 
 	if progress_ratio == 1:
 		queue_free()
-		get_tree().root.get_node("Nivel1").terminarjuego()
+		get_tree().root.get_node("Nivel").terminarjuego()
 
 	if not atacando and not congelado and $AnimatedSprite2D.animation != "Congelado":
 		progress_ratio += velocidad * _delta

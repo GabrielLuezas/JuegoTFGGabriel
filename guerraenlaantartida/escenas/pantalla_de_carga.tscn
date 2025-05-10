@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://dckr5xc02pdxc"]
+
+[ext_resource type="Script" path="res://scripts/pantalla_de_carga.gd" id="1_i2drn"]
+[ext_resource type="Texture2D" uid="uid://cdcaoy2mayr4m" path="res://img/PinguinoReal.png" id="2_1h7bw"]
+[ext_resource type="FontFile" uid="uid://ba61w4ocvfhxb" path="res://fonts/ExpressionPro.otf" id="2_5gjo7"]
+[ext_resource type="Texture2D" uid="uid://d1k6m6rdhp8we" path="res://img/InteriorCasasImportantes.png" id="2_wkwk5"]
+[ext_resource type="Texture2D" uid="uid://bqymqnr1owthf" path="res://img/FotoLibroTransicion.png" id="3_iex0s"]
+
+[sub_resource type="Animation" id="Animation_reei3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_orjgn"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e8bek"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iiljn"]
+_data = {
+"RESET": SubResource("Animation_reei3"),
+"fade_in": SubResource("Animation_orjgn"),
+"fade_out": SubResource("Animation_e8bek")
+}
+
+[node name="PantallaDeCarga" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2drn")
+
+[node name="MapaFondo" type="Sprite2D" parent="."]
+position = Vector2(600, 256)
+texture = ExtResource("2_wkwk5")
+
+[node name="EleccionNivelFondo" type="Sprite2D" parent="."]
+position = Vector2(600.5, 256)
+scale = Vector2(0.624805, 0.630542)
+texture = ExtResource("3_iex0s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(595, 192)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_1h7bw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = 25.5
+offset_right = 140.0
+offset_bottom = 88.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_5gjo7")
+theme_override_font_sizes/font_size = 70
+text = "Cargando."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iiljn")
+}
