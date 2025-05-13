@@ -7,6 +7,7 @@ var objetivo = null
 @export var vida = 100
 @export var daño = 25
 @export var armadura = 0
+@export var vuela = false
 
 # 🔥 Quemadura
 var quemado = false

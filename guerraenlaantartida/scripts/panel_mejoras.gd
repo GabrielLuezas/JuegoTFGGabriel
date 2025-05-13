@@ -5,19 +5,25 @@ var daño: int = 1
 var pinguino_actual = null
 
 func _ready():
-	
-	
-	
+		
 	if Global.pecesDorados >= 1:
 		$SuperiorASuperiorASuperior.show()
 		$SuperiorASuperiorSinMover.show()
 		$SuperiorASuperiorASuperiorNoPeces.hide()
 		$SuperiorASuperiorSinMoverNoPeces.hide()
+		$Mejora1/BotonMejora1.show()
+		$Mejora2/BotonMejora2.show()
+		$Mejora3/BotonMejora3.show()
+		$Mejora4/BotonMejora4.show()
 	else:
 		$SuperiorASuperiorASuperior.hide()
 		$SuperiorASuperiorSinMover.hide()
 		$SuperiorASuperiorASuperiorNoPeces.show()
 		$SuperiorASuperiorSinMoverNoPeces.show()
+		$Mejora1/BotonMejora1.hide()
+		$Mejora2/BotonMejora2.hide()
+		$Mejora3/BotonMejora3.hide()
+		$Mejora4/BotonMejora4.hide()
 
 	$CantidadVidaPinguino.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	$"CantidadDañoPinguino".horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -53,6 +59,7 @@ func _on_boton_libro_pressed() -> void:
 
 func _on_boton_vender_pressed() -> void:
 	if pinguino_actual:
+			Global.pinguino_seleccionado_aura_amarilla = null
 			pinguino_actual.queue_free()
 			Global.peces = Global.peces + 3
 			var nivel1 = get_tree().root.get_node("Nivel")

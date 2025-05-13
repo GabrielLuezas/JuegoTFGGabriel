@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	pesca_timer = Timer.new()
 	pesca_timer.one_shot = true
-	pesca_timer.wait_time = randf_range(4.0, 6.0)
+	pesca_timer.wait_time = randf_range(6.0, 8.0)
 	pesca_timer.connect("timeout", Callable(self, "_on_pesca_timeout"))
 	add_child(pesca_timer)
 	pesca_timer.start()

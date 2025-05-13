@@ -10,6 +10,15 @@ var nivelActual = 0
 var dineroAcumulado = 0.00
 var nombreUsuario = ""
 var nivelMaximoConseguido = 0
+var mejoraCañaVieja = false
+var mejoraCañaBuena = false
+var mejoraSuperCaña = false
+var mejoraPinguinoPescadorExtra1 = false
+var mejoraPinguinoPescadorExtra2 = false
+var mejoraPescadosNormalesInicio = false
+var mejoraPescadosDoradosInicio = false
+var mejoraAnzueloDorado = false
+var mejoraSenseiPinguino = false
 
 var ruta_escena_siguiente: String = ""
 var escena_precargada: PackedScene = null

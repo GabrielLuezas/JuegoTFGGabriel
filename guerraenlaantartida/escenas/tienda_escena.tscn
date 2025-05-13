@@ -1,0 +1,314 @@
+[gd_scene load_steps=14 format=3 uid="uid://6hmud6b2q2ma"]
+
+[ext_resource type="Script" path="res://scripts/tienda_escena.gd" id="1_pia4g"]
+[ext_resource type="Texture2D" uid="uid://cuupaw0m0sd4j" path="res://img/Tienda/TiendaVacia.png" id="1_vuryw"]
+[ext_resource type="Texture2D" uid="uid://3p2tkv5mpvdy" path="res://img/Tienda/MejoraAnzueloDorado.png" id="2_r46ak"]
+[ext_resource type="Texture2D" uid="uid://b8s774whutlxa" path="res://img/Tienda/MejoraCañaBuena.png" id="3_m53u3"]
+[ext_resource type="Texture2D" uid="uid://b64qpq6o6o2cn" path="res://img/Tienda/MejoraCañaVieja.png" id="4_updi1"]
+[ext_resource type="Texture2D" uid="uid://bqwrdkywiibiy" path="res://img/Tienda/MejoraSuperCaña.png" id="5_j8a8f"]
+[ext_resource type="Texture2D" uid="uid://bvl21te0ky8a8" path="res://img/Tienda/MejoraPescaoDorado.png" id="6_ak0p3"]
+[ext_resource type="Texture2D" uid="uid://csxw1ks6uoigh" path="res://img/Tienda/MejoraPescaoNormal.png" id="7_xgvy4"]
+[ext_resource type="Texture2D" uid="uid://de0sl44koaigp" path="res://img/Tienda/MejoraPinguPescador1.png" id="8_1ruwb"]
+[ext_resource type="Texture2D" uid="uid://bksa7ihmj24mc" path="res://img/Tienda/MejoraPinguPescador2.png" id="9_3prp5"]
+[ext_resource type="Texture2D" uid="uid://cqkegiklolgds" path="res://img/Tienda/MejoraViejo.png" id="10_pjvwf"]
+[ext_resource type="FontFile" uid="uid://bfdlmvbyp8yqh" path="res://fonts/EquipmentPro.otf" id="11_iqy8v"]
+[ext_resource type="Texture2D" uid="uid://bm12ds5cqr24s" path="res://img/bocadillo.png" id="13_rot0e"]
+
+[node name="TiendaEscena" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pia4g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -256.0
+offset_right = 600.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FondoTienda" type="Sprite2D" parent="."]
+position = Vector2(600, 256)
+texture = ExtResource("1_vuryw")
+
+[node name="MejoraAnzueloDorado" type="Sprite2D" parent="."]
+position = Vector2(470, 290)
+texture = ExtResource("2_r46ak")
+
+[node name="MejoraCañaBuena" type="Sprite2D" parent="."]
+position = Vector2(470, 55)
+texture = ExtResource("3_m53u3")
+
+[node name="MejoraCañaVeja" type="Sprite2D" parent="."]
+position = Vector2(340, 55)
+texture = ExtResource("4_updi1")
+
+[node name="MejoraSuperCaña" type="Sprite2D" parent="."]
+position = Vector2(600, 55)
+texture = ExtResource("5_j8a8f")
+
+[node name="MejoraPescaoDorado" type="Sprite2D" parent="."]
+position = Vector2(340, 290)
+texture = ExtResource("6_ak0p3")
+
+[node name="MejoraPescaoNormal" type="Sprite2D" parent="."]
+position = Vector2(600, 170)
+texture = ExtResource("7_xgvy4")
+
+[node name="MejoraPinguPescador1" type="Sprite2D" parent="."]
+position = Vector2(340, 170)
+texture = ExtResource("8_1ruwb")
+
+[node name="MejoraPinguPescador2" type="Sprite2D" parent="."]
+position = Vector2(470, 170)
+texture = ExtResource("9_3prp5")
+
+[node name="MejoraViejo" type="Sprite2D" parent="."]
+position = Vector2(600, 290)
+texture = ExtResource("10_pjvwf")
+
+[node name="DineroCañaVieja" type="Label" parent="."]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 88.0
+offset_right = 349.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DineroCañaBuena" type="Label" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 91.0
+offset_right = 481.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DineroSuperCaña" type="Label" parent="."]
+layout_mode = 0
+offset_left = 591.0
+offset_top = 89.0
+offset_right = 612.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DineroMejoraPinguinoExtra" type="Label" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 206.0
+offset_right = 351.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DineroMejoraPinguinoExtra2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 206.0
+offset_right = 481.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DineroMejoraPecesNormalesExtra" type="Label" parent="."]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 206.0
+offset_right = 611.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DineroMejoraPecesDoradosExtra" type="Label" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 326.0
+offset_right = 351.0
+offset_bottom = 342.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DineroMejoraAnzuelo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 326.0
+offset_right = 481.0
+offset_bottom = 342.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DineroMejoraSensei" type="Label" parent="."]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 326.0
+offset_right = 611.0
+offset_bottom = 342.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 16
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonCañaVieja" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 4.0
+offset_right = 376.0
+offset_bottom = 107.0
+
+[node name="BotonCañaBuena" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 434.0
+offset_top = 4.0
+offset_right = 506.0
+offset_bottom = 107.0
+
+[node name="BotonSuperCaña" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 565.0
+offset_top = 2.0
+offset_right = 637.0
+offset_bottom = 105.0
+
+[node name="BotonPinguinoExtra" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 119.0
+offset_right = 376.0
+offset_bottom = 222.0
+
+[node name="BotonPinguinoExtra2" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 434.0
+offset_top = 119.0
+offset_right = 506.0
+offset_bottom = 222.0
+
+[node name="BotonPecesNormales" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 564.0
+offset_top = 119.0
+offset_right = 636.0
+offset_bottom = 222.0
+
+[node name="BotonPecesDorados" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 239.0
+offset_right = 376.0
+offset_bottom = 342.0
+
+[node name="BotonAnzueloDorados" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 434.0
+offset_top = 239.0
+offset_right = 506.0
+offset_bottom = 342.0
+
+[node name="BotonMejoraSensei" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 564.0
+offset_top = 239.0
+offset_right = 636.0
+offset_bottom = 342.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1001, 98.5)
+scale = Vector2(0.75, 0.306641)
+texture = ExtResource("13_rot0e")
+
+[node name="TextoPinguino" type="Label" parent="."]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 31.0
+offset_right = 1168.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 32
+text = "Esta es mi mercancia"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="DineroActualLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 17.0
+offset_right = 258.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 32
+text = "Dinero actual"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TuDinero2" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 53.0
+offset_right = 256.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0.200463, 0.631559, 0.351976, 1)
+theme_override_fonts/font = ExtResource("11_iqy8v")
+theme_override_font_sizes/font_size = 32
+text = "400"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="BotonCañaVieja" to="." method="_on_boton_caña_vieja_pressed"]
+[connection signal="pressed" from="BotonCañaBuena" to="." method="_on_boton_caña_buena_pressed"]
+[connection signal="pressed" from="BotonSuperCaña" to="." method="_on_boton_super_caña_pressed"]
+[connection signal="pressed" from="BotonPinguinoExtra" to="." method="_on_boton_pinguino_extra_pressed"]
+[connection signal="pressed" from="BotonPinguinoExtra2" to="." method="_on_boton_pinguino_extra_2_pressed"]
+[connection signal="pressed" from="BotonPecesNormales" to="." method="_on_boton_peces_normales_pressed"]
+[connection signal="pressed" from="BotonPecesDorados" to="." method="_on_boton_peces_dorados_pressed"]
+[connection signal="pressed" from="BotonAnzueloDorados" to="." method="_on_boton_anzuelo_dorados_pressed"]
+[connection signal="pressed" from="BotonMejoraSensei" to="." method="_on_boton_mejora_sensei_pressed"]

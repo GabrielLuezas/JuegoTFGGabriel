@@ -5,11 +5,13 @@ extends Node2D
 @export var proyectil = preload("res://escenas/proyectil.tscn")
 @export var nivelMejora: int = 0
 @export var mejora: String = ""
+@export var afecta_voladores: bool
 
 var focas_en_rango: Array = []
 var disparo_timer: Timer  # Referencia al timer
 
 func _ready():
+	
 	add_to_group("pinguino")
 	$BotonPinguino.modulate.a = 0.0
 

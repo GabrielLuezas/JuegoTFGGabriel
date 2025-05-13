@@ -22,6 +22,8 @@ var en_cooldown := false
 var nivelActual
 var datos_nivel: Dictionary
 
+var check_timer: Timer
+
 func _ready():
 	nivelActual = Global.nivelActual
 	$TextoSeAcercaWave.hide()
@@ -99,6 +101,7 @@ func generar_oleada_final():
 	$AnimationPlayer.play("oleada final")
 	if nivelActual == 1:
 		oleada_final_nivel_uno()
+	iniciar_comprobacion_path_vacios()
 
 func oleada_final_nivel_uno():
 	for i in range(1, 6):
@@ -167,8 +170,8 @@ func toggle_pause():
 	$Menu.visible = pausa
 
 func terminarjuego():
-	Engine.time_scale = 1.0
-	get_tree().change_scene_to_file("res://escenas/game_over.tscn")
+	Engine.time_scale = 0.0
+	$MenuDerrota.show()
 
 func _on_timer_timeout():
 	$Control/TextureProgressBar.value += 20
@@ -223,3 +226,34 @@ func configurar_nivel():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "iniciar_nivel":
 		iniciar_nivel()
+
+func iniciar_comprobacion_path_vacios():
+	# Crear un Timer si no existe aún
+	if not check_timer:
+		check_timer = Timer.new()
+		check_timer.wait_time = 2.0
+		check_timer.autostart = true
+		check_timer.one_shot = false
+		check_timer.timeout.connect(_comprobar_paths_vacios)
+		add_child(check_timer)
+
+func _comprobar_paths_vacios():
+	var todos_vacios = true
+
+	for child in get_children():
+		if child is Path2D:
+			if child.get_child_count() > 0:
+				todos_vacios = false
+				break 
+	if todos_vacios:
+		ganar()
+		
+func ganar():
+	if Global.nivelActual > Global.nivelMaximoConseguido:
+		Global.nivelMaximoConseguido = Global.nivelActual
+		Global.nivelActual = Global.nivelActual + 1
+	for area in get_tree().get_nodes_in_group("proyectil"):
+		if area is Area2D and area.get_parent():
+			area.get_parent().queue_free()
+	$MenuVictoria.show()
+	$MenuVictoria.animar_dinero()

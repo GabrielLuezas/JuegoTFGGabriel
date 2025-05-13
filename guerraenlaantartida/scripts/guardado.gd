@@ -17,7 +17,7 @@ func _ready():
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		save_game(current_slot)  # Guarda automáticamente en el slot actual al cerrar.
+		save_game(current_slot)  # Guarda automáticamente al cerrar
 
 # Guardar en un archivo específico
 func save_game(slot):
@@ -29,7 +29,18 @@ func save_game(slot):
 		"nivel_actual": Global.nivelActual,
 		"dinero_acumulado": Global.dineroAcumulado,
 		"nivel_maximo": Global.nivelMaximoConseguido,
-		"nombre_usuario": Global.nombreUsuario
+		"nombre_usuario": Global.nombreUsuario,
+
+		# Nuevas mejoras
+		"mejora_caña_vieja": Global.mejoraCañaVieja,
+		"mejora_caña_buena": Global.mejoraCañaBuena,
+		"mejora_super_caña": Global.mejoraSuperCaña,
+		"mejora_pinguino_pescador_extra1": Global.mejoraPinguinoPescadorExtra1,
+		"mejora_pinguino_pescador_extra2": Global.mejoraPinguinoPescadorExtra2,
+		"mejora_pescados_normales_inicio": Global.mejoraPescadosNormalesInicio,
+		"mejora_pescados_dorados_inicio": Global.mejoraPescadosDoradosInicio,
+		"mejora_anzuelo_dorado": Global.mejoraAnzueloDorado,
+		"mejora_sensei_pinguino": Global.mejoraSenseiPinguino
 	}
 
 	var file = FileAccess.open(SAVE_PATHS[slot], FileAccess.WRITE)
@@ -56,15 +67,24 @@ func load_game(slot):
 				Global.dineroAcumulado = save_data.get("dinero_acumulado", 0)
 				Global.nivelMaximoConseguido = save_data.get("nivel_maximo", 1)
 				Global.nombreUsuario = save_data.get("nombre_usuario", "Jugador")
-				print("✅ Juego cargado desde slot ", slot, ": Nivel =", Global.nivelActual, "Monedas =", Global.dineroAcumulado, "Nivel Máximo =", Global.nivelMaximoConseguido, "Usuario =", Global.nombreUsuario)
-				current_slot = slot  # Actualiza el slot actual
+
+				# Cargar mejoras
+				Global.mejoraCañaVieja = save_data.get("mejora_caña_vieja", false)
+				Global.mejoraCañaBuena = save_data.get("mejora_caña_buena", false)
+				Global.mejoraSuperCaña = save_data.get("mejora_super_caña", false)
+				Global.mejoraPinguinoPescadorExtra1 = save_data.get("mejora_pinguino_pescador_extra1", false)
+				Global.mejoraPinguinoPescadorExtra2 = save_data.get("mejora_pinguino_pescador_extra2", false)
+				Global.mejoraPescadosNormalesInicio = save_data.get("mejora_pescados_normales_inicio", false)
+				Global.mejoraPescadosDoradosInicio = save_data.get("mejora_pescados_dorados_inicio", false)
+				Global.mejoraAnzueloDorado = save_data.get("mejora_anzuelo_dorado", false)
+				Global.mejoraSenseiPinguino = save_data.get("mejora_sensei_pinguino", false)
+
+				print("✅ Juego cargado desde slot ", slot)
+				current_slot = slot
 			file.close()
 	else:
 		print("ℹ️ No se encontró archivo de guardado en slot ", slot, ". Creando uno nuevo...")
-		Global.nivelActual = 1
-		Global.dineroAcumulado = 0
-		Global.nivelMaximoConseguido = 1
-		Global.nombreUsuario = "Jugador"
+		reset_global_data()
 		save_game(slot)
 
 # Eliminar un archivo de guardado
@@ -81,6 +101,23 @@ func delete_save(slot):
 			print("❌ Error al eliminar el archivo en slot ", slot, ": ", error)
 	else:
 		print("ℹ️ No se encontró archivo para eliminar en slot ", slot)
+
+# Restaurar datos por defecto si no hay guardado
+func reset_global_data():
+	Global.nivelActual = 1
+	Global.dineroAcumulado = 0
+	Global.nivelMaximoConseguido = 1
+	Global.nombreUsuario = "Jugador"
+
+	Global.mejoraCañaVieja = false
+	Global.mejoraCañaBuena = false
+	Global.mejoraSuperCaña = false
+	Global.mejoraPinguinoPescadorExtra1 = false
+	Global.mejoraPinguinoPescadorExtra2 = false
+	Global.mejoraPescadosNormalesInicio = false
+	Global.mejoraPescadosDoradosInicio = false
+	Global.mejoraAnzueloDorado = false
+	Global.mejoraSenseiPinguino = false
 
 # Señales para botones
 func on_button_cargar_pressed(slot):

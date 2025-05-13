@@ -14,18 +14,17 @@ func _ready() -> void:
 		$CapaBotonMejoraPuedeIcono.show()
 		$CapaBotonMejoraNoPuede.hide()
 		$CapaBotonMejoraNoPuedeIcono.hide()
+		$BotonMejorarNivel.show()
 	else:
 		$CapaBotonMejoraPuede.hide()
 		$CapaBotonMejoraPuedeIcono.hide()
 		$CapaBotonMejoraNoPuede.show()
 		$CapaBotonMejoraNoPuedeIcono.show()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+		$BotonMejorarNivel.hide()
+	
 
 func _on_boton_mejorar_nivel_pressed() -> void:
+	print(pinguino_actual)
 	if pinguino_actual:
 			pinguino_actual.nivelMejora = pinguino_actual.nivelMejora + 1
 			if pinguino_actual.mejora == "Disparo Multiple":
@@ -43,20 +42,24 @@ func _on_boton_mejorar_nivel_pressed() -> void:
 			var boton = pinguino_actual.get_node("BotonPinguino")
 			if boton:
 				boton._on_pressed()
+			print(pinguino_actual.nivelMejora)
 			if pinguino_actual.nivelMejora < 4 :
 				$CapaBotonMejoraPuede.show()
 				$CapaBotonMejoraPuedeIcono.show()
 				$CapaBotonMejoraNoPuede.hide()
 				$CapaBotonMejoraNoPuedeIcono.hide()
+				$BotonMejorarNivel.show()
 			else:
 				$CapaBotonMejoraPuede.hide()
 				$CapaBotonMejoraPuedeIcono.hide()
 				$CapaBotonMejoraNoPuede.show()
 				$CapaBotonMejoraNoPuedeIcono.show()
+				$BotonMejorarNivel.hide()
 
 
 func _on_boton_vender_pressed() -> void:
 	if pinguino_actual:
+			Global.pinguino_seleccionado_aura_amarilla = null
 			pinguino_actual.queue_free()
 			Global.peces = Global.peces + 3
 			
@@ -97,6 +100,18 @@ func set_datos(p_vida: int, p_daño: int, pinguino: Node = null) -> void:
 			pinguino_actual = pinguino
 		customizarPanel()
 		customizarEstrellas()
+	if pinguino_actual.nivelMejora < 4 and Global.pecesDorados >= 1:
+		$CapaBotonMejoraPuede.show()
+		$CapaBotonMejoraPuedeIcono.show()
+		$CapaBotonMejoraNoPuede.hide()
+		$CapaBotonMejoraNoPuedeIcono.hide()
+		$BotonMejorarNivel.show()
+	else:
+		$CapaBotonMejoraPuede.hide()
+		$CapaBotonMejoraPuedeIcono.hide()
+		$CapaBotonMejoraNoPuede.show()
+		$CapaBotonMejoraNoPuedeIcono.show()
+		$BotonMejorarNivel.hide()
 
 
 func customizarPanel():

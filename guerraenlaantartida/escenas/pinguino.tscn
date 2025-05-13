@@ -91,6 +91,7 @@ texture_normal = ExtResource("1_snc7a")
 script = ExtResource("5_c3mp6")
 
 [node name="AuraAmarilla" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(4, -2)
 scale = Vector2(0.359, 0.359)
 texture = ExtResource("6_0hmwf")

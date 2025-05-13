@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b3hhlsessq83u"]
+[gd_scene load_steps=33 format=3 uid="uid://b3hhlsessq83u"]
 
 [ext_resource type="Script" path="res://scripts/nivel.gd" id="1_oww0c"]
 [ext_resource type="Texture2D" uid="uid://hq5ny4e0hn16" path="res://img/makuked.png" id="2_jlcun"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://csi0lfgtgtef3" path="res://img/1.png" id="20_ttp1p"]
 [ext_resource type="Texture2D" uid="uid://bill5j2rpjhvx" path="res://img/defiende.png" id="21_tq35s"]
 [ext_resource type="Texture2D" uid="uid://cog4cew7p1l2q" path="res://img/OleadaFinal.png" id="23_nq06r"]
+[ext_resource type="PackedScene" uid="uid://d0o1y2tnm7s8b" path="res://escenas/menu_victoria.tscn" id="24_i33q4"]
+[ext_resource type="PackedScene" uid="uid://yr8g3lavkvk7" path="res://escenas/menu_derrota.tscn" id="25_pkt53"]
 
 [sub_resource type="Curve2D" id="Curve2D_6hmbr"]
 _data = {
@@ -780,6 +782,20 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(643, 374)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("23_nq06r")
+
+[node name="MenuVictoria" parent="." instance=ExtResource("24_i33q4")]
+visible = false
+offset_left = 594.0
+offset_top = 254.0
+offset_right = 594.0
+offset_bottom = 254.0
+
+[node name="MenuDerrota" parent="." instance=ExtResource("25_pkt53")]
+visible = false
+offset_left = 595.0
+offset_top = 254.0
+offset_right = 595.0
+offset_bottom = 254.0
 
 [node name="Menu" parent="." instance=ExtResource("17_vsm5p")]
 visible = false
