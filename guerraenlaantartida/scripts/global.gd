@@ -20,12 +20,52 @@ var mejoraPescadosDoradosInicio = false
 var mejoraAnzueloDorado = false
 var mejoraSenseiPinguino = false
 
+var tutorialNivel1 = false
+var tutorialNivel2 = false
+var tutorialNivel3 = false
+var tutorialNivel4 = false
+
+var explicarCampamento = false
+
+
+
 var ruta_escena_siguiente: String = ""
 var escena_precargada: PackedScene = null
 var _hilo_carga: Thread = null
 var _carga_completa: bool = false
 
 var pinguino_seleccionado_aura_amarilla : Node = null
+
+
+var musica_player: AudioStreamPlayer = null
+
+var escenas_con_musica := [
+	"res://escenas/campamento_principal.tscn",
+	"res://escenas/interior_casa_jefe.tscn",
+	"res://escenas/interior_casa_normal.tscn"
+]
+
+func reproducir_musica(ruta: String):
+	if musica_player == null:
+		musica_player = AudioStreamPlayer.new()
+		musica_player.stream = load(ruta)
+		musica_player.bus = "Music"  # Opcional, si usas buses
+		musica_player.volume_db = -6
+		get_tree().root.add_child(musica_player)
+		musica_player.play()
+	elif not musica_player.playing:
+		musica_player.play()
+
+
+func manejar_musica_por_escena(ruta_escena: String):
+	if musica_player == null:
+		return
+
+	if ruta_escena in escenas_con_musica:
+		if not musica_player.playing:
+			musica_player.play()
+	else:
+		musica_player.stop()
 
 func gastar_peces(cantidad: int) -> bool:
 	if peces >= cantidad:

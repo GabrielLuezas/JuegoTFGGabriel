@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dckr5xc02pdxc"]
+[gd_scene load_steps=11 format=3 uid="uid://dckr5xc02pdxc"]
 
 [ext_resource type="Script" path="res://scripts/pantalla_de_carga.gd" id="1_i2drn"]
 [ext_resource type="Texture2D" uid="uid://cdcaoy2mayr4m" path="res://img/PinguinoReal.png" id="2_1h7bw"]
 [ext_resource type="FontFile" uid="uid://ba61w4ocvfhxb" path="res://fonts/ExpressionPro.otf" id="2_5gjo7"]
 [ext_resource type="Texture2D" uid="uid://d1k6m6rdhp8we" path="res://img/InteriorCasasImportantes.png" id="2_wkwk5"]
 [ext_resource type="Texture2D" uid="uid://bqymqnr1owthf" path="res://img/FotoLibroTransicion.png" id="3_iex0s"]
+[ext_resource type="AudioStream" uid="uid://ct0m1o42y5ggh" path="res://sonidos/musicas/MusicaPantallaDeCarga.ogg" id="6_odm1x"]
 
 [sub_resource type="Animation" id="Animation_reei3"]
 length = 0.001
@@ -111,3 +112,6 @@ text = "Cargando."
 libraries = {
 "": SubResource("AnimationLibrary_iiljn")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_odm1x")

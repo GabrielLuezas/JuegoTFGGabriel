@@ -28,6 +28,7 @@ var timer_velocidad_reducida: Timer
 func _ready() -> void:
 	rotation = 0
 	$AnimatedSprite2D.play("Moverse")
+	
 
 	# Timer quemadura
 	timer_quemadura = Timer.new()
@@ -60,6 +61,9 @@ func _process(_delta):
 			$AnimatedSprite2D.play("Moverse")
 
 	if vida <= 0:
+		$Area2D.hide()
+		$AnimatedSprite2D.play("Morir")
+		await get_tree().create_timer(0.5).timeout
 		queue_free()
 
 	if progress_ratio == 1:
@@ -79,9 +83,16 @@ func _on_area_2d_area_entered(area):
 		var proyectil = area.get_parent()
 		if proyectil.has_method("get"):
 			if "daño" in proyectil:
-				vida -= proyectil.daño
-				print("Daño recibido:", proyectil.daño, " Vida restante:", vida)
-
+				daño = proyectil.daño
+				if armadura > 0:
+					if daño <= armadura:
+						armadura -= daño
+						daño = 0
+					else:
+						daño -= armadura
+						armadura = 0
+				vida -= daño
+				print("Daño recibido:", proyectil.daño, " Armadura restante:", armadura, " Vida restante:", vida)
 		# 🔥 Disparo de fuego
 		if area.is_in_group("proyectil_fuego"):
 			if congelado:

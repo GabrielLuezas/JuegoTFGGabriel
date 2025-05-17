@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://6hmud6b2q2ma"]
+[gd_scene load_steps=15 format=4 uid="uid://6hmud6b2q2ma"]
 
 [ext_resource type="Script" path="res://scripts/tienda_escena.gd" id="1_pia4g"]
 [ext_resource type="Texture2D" uid="uid://cuupaw0m0sd4j" path="res://img/Tienda/TiendaVacia.png" id="1_vuryw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cqkegiklolgds" path="res://img/Tienda/MejoraViejo.png" id="10_pjvwf"]
 [ext_resource type="FontFile" uid="uid://bfdlmvbyp8yqh" path="res://fonts/EquipmentPro.otf" id="11_iqy8v"]
 [ext_resource type="Texture2D" uid="uid://bm12ds5cqr24s" path="res://img/bocadillo.png" id="13_rot0e"]
+[ext_resource type="TileSet" uid="uid://tr1qsvw38yju" path="res://tiles/tileset_paneles_mejoras.tres" id="14_cebro"]
 
 [node name="TiendaEscena" type="Control"]
 layout_mode = 3
@@ -292,6 +293,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TuDinero2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 53.0
 offset_right = 256.0
@@ -303,6 +305,23 @@ text = "400"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAIAAYAAgAGAAMAAAAHAAYAAgAGAAMAAAAJAAYAAgAHAAMAAAAGAAYAAgAFAAMAAAAGAAkAAgAFAAUAAAAJAAkAAgAHAAUAAAAJAAcAAgAHAAQAAAAJAAgAAgAHAAQAAAAGAAcAAgAFAAQAAAAGAAgAAgAFAAQAAAAIAAkAAgAGAAUAAAAHAAkAAgAGAAUAAAAHAAgAAgAGAAQAAAAIAAgAAgAGAAQAAAAIAAcAAgAGAAQAAAAHAAcAAgAGAAQAAAA=")
+tile_set = ExtResource("14_cebro")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+position = Vector2(2, -2)
+tile_map_data = PackedByteArray("AAAIAAcABAAEAAAAABAHAAcABAAFAAAAABAIAAgABAAEAAEAABAHAAgABAAFAAEAABA=")
+tile_set = ExtResource("14_cebro")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 97.0
+offset_top = 98.0
+offset_right = 159.0
+offset_bottom = 158.0
+
 [connection signal="pressed" from="BotonCañaVieja" to="." method="_on_boton_caña_vieja_pressed"]
 [connection signal="pressed" from="BotonCañaBuena" to="." method="_on_boton_caña_buena_pressed"]
 [connection signal="pressed" from="BotonSuperCaña" to="." method="_on_boton_super_caña_pressed"]
@@ -312,3 +331,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="BotonPecesDorados" to="." method="_on_boton_peces_dorados_pressed"]
 [connection signal="pressed" from="BotonAnzueloDorados" to="." method="_on_boton_anzuelo_dorados_pressed"]
 [connection signal="pressed" from="BotonMejoraSensei" to="." method="_on_boton_mejora_sensei_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -7,63 +7,63 @@
   },
   {
 	"nivel": 2,
-	"enemigos": ["foca_leopardo"],
-	"duracion": 90,
-	"intervalo_spawn": null
+	"enemigos": ["foca_leopardo","foca_leopardo","foca_leopardo","foca_leopardo","foca_leopardo_chaleco"],
+	"duracion": 160,
+	"intervalo_spawn": [18, 20]
   },
   {
 	"nivel": 3,
-	"enemigos": ["foca_leopardo"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"enemigos": ["foca_leopardo","foca_leopardo","foca_leopardo","foca_leopardo","foca_leopardo_chaleco","foca_leopardo_chaleco_casco"],
+	"duracion": 160,
+	"intervalo_spawn": [16, 18]
   },
   {
 	"nivel": 4,
-	"enemigos": ["foca_leopardo", "foca_tanque"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"enemigos": ["foca_leopardo", "foca_leopardo","foca_leopardo","foca_leopardo_chaleco","foca_leopardo_chaleco","foca_leopardo_chaleco_casco","foca_blindada"],
+	"duracion": 180,
+	"intervalo_spawn": [16, 18]
   },
   {
 	"nivel": 5,
-	"enemigos": ["foca_leopardo", "foca_tanque"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"enemigos": ["foca_leopardo", "foca_leopardo_chaleco","foca_leopardo_chaleco","foca_leopardo_chaleco_casco","foca_leopardo_chaleco_casco","foca_blindada","foca_blindada"],
+	"duracion": 180,
+	"intervalo_spawn": [16, 18]
   },
   {
 	"nivel": 6,
 	"enemigos": ["foca_leopardo", "foca_tanque","foca_payaso"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"duracion": 200,
+	"intervalo_spawn": [14, 16]
   },
   {
 	"nivel": 7,
 	"enemigos": ["foca_payaso"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"duracion": 200,
+	"intervalo_spawn": [14, 16]
   },
   {
 	"nivel": 8,
 	"enemigos": ["foca_hielo","foca_fuego"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"duracion": 200,
+	"intervalo_spawn": [14, 16]
   },
   {
 	"nivel": 9,
 	"enemigos": ["foca_leopardo", "foca_tanque","foca_payaso","foca_hielo","foca_fuego"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"duracion": 220,
+	"intervalo_spawn": [12, 14]
   },
   {
 	"nivel": 10,
 	"enemigos": ["foca_leopardo", "foca_tanque","foca_payaso","foca_hielo","foca_fuego"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"duracion": 220,
+	"intervalo_spawn": [12, 14]
   },
   {
 	"nivel": 11,
 	"enemigos": ["foca_leopardo", "foca_tanque","foca_payaso","foca_hielo","foca_fuego"],
-	"duracion": 120,
-	"intervalo_spawn": null
+	"duracion": 240,
+	"intervalo_spawn": [10, 12]
   },
   {
 	"nivel": 12,

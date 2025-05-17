@@ -1,10 +1,15 @@
 extends TextureButton
-
+signal pinguino_clickeado(pinguino)
 const ESCENA_MEJORAS_NORMAL = preload("res://escenas/panel_mejoras.tscn")
 const ESCENA_MEJORAS_UPGRADE = preload("res://escenas/panel_mejoras_con_upgrade.tscn")
 
 func _on_pressed():
-	if Global.nivelActual >= 1:
+	if Global.nivelActual >= 3:
+		
+		if Global.nivelActual == 3:
+			emit_signal("pinguino_clickeado", get_parent())
+		
+		
 		var pinguino = get_parent()
 		var marker = get_tree().root.get_node("Nivel/SitioMejorasPinguinos")
 		

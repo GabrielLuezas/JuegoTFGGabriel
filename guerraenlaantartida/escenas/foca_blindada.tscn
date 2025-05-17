@@ -1,0 +1,175 @@
+[gd_scene load_steps=18 format=3 uid="uid://xtyh72a6krg6"]
+
+[ext_resource type="Script" path="res://scripts/foca_blindada.gd" id="1_t067u"]
+[ext_resource type="Texture2D" uid="uid://6dlk8i8faqn8" path="res://img/FocaAtacandoSinFondo.png" id="2_mmu4p"]
+[ext_resource type="Texture2D" uid="uid://dbsy1bppypvdt" path="res://img/FocaEstaticaSinFodno.png" id="3_mokdy"]
+[ext_resource type="Texture2D" uid="uid://b615evk7t5s0d" path="res://img/FocaEstaticaCongelada.png" id="4_lsfwb"]
+[ext_resource type="Texture2D" uid="uid://c2nan2yh5l2bk" path="res://img/FocaEstaticaCongeladaFase2.png" id="5_w86lg"]
+[ext_resource type="Texture2D" uid="uid://d0ttqn5kcqpqi" path="res://img/FocaEstaticaCongeladaFase3.png" id="6_4u4fo"]
+[ext_resource type="Texture2D" uid="uid://d3ljsmcgrwn04" path="res://img/FocaEstaticaCongeladaFase4.png" id="7_qbxro"]
+[ext_resource type="Texture2D" uid="uid://3mom1sc8ci3a" path="res://img/FocaMovimientoSinFondo.png" id="8_f4ji7"]
+[ext_resource type="Texture2D" uid="uid://235f1kwc7hd5" path="res://img/Focas/FocaTanque/T1.png" id="9_5nkwc"]
+[ext_resource type="Texture2D" uid="uid://cd4tv7tavg8jo" path="res://img/Focas/FocaTanque/T3.png" id="10_yue25"]
+[ext_resource type="Texture2D" uid="uid://764c0law16rp" path="res://img/Focas/FocaTanque/T4.png" id="11_83udx"]
+[ext_resource type="Texture2D" uid="uid://d4j6nbd25sr3i" path="res://img/Focas/FocaTanque/T5.png" id="12_mh8my"]
+[ext_resource type="Texture2D" uid="uid://ddjgwyjs0x2jg" path="res://img/Focas/FocaTanque/T6.png" id="13_r2rai"]
+[ext_resource type="Texture2D" uid="uid://cqdggjv2u4hrf" path="res://img/Focas/FocaTanque/T2.png" id="14_831v2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ll5d3"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_mmu4p")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_mokdy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_mmu4p")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_mokdy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_mmu4p")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_mokdy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_mmu4p")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_mokdy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_mmu4p")
+}],
+"loop": true,
+"name": &"Ataque",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("4_lsfwb")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_w86lg")
+}, {
+"duration": 3.0,
+"texture": ExtResource("6_4u4fo")
+}, {
+"duration": 3.0,
+"texture": ExtResource("7_qbxro")
+}],
+"loop": false,
+"name": &"Congelado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("3_mokdy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("8_f4ji7")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_mokdy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("8_f4ji7")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_mokdy")
+}, {
+"duration": 2.0,
+"texture": ExtResource("8_f4ji7")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_mokdy")
+}],
+"loop": true,
+"name": &"Moverse",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkj1x"]
+size = Vector2(25, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h404i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5nkwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yue25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_83udx")
+}],
+"loop": true,
+"name": &"Ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5nkwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mh8my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_r2rai")
+}],
+"loop": true,
+"name": &"Morir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_yue25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5nkwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_831v2")
+}],
+"loop": true,
+"name": &"Moverse",
+"speed": 5.0
+}]
+
+[node name="foca_blindada" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_t067u")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+visible = false
+rotation = 3.14159
+scale = Vector2(0.359, 0.359)
+sprite_frames = SubResource("SpriteFrames_ll5d3")
+animation = &"Moverse"
+
+[node name="Area2D" type="Area2D" parent="." groups=["focas"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(37, 4)
+shape = SubResource("RectangleShape2D_tkj1x")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.293618, 0.573729)
+rotation = -3.14052
+scale = Vector2(0.2, 0.204)
+sprite_frames = SubResource("SpriteFrames_h404i")
+animation = &"Moverse"
+frame = 2
+frame_progress = 0.276892
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmxxcirmtb4bt"]
+[gd_scene load_steps=18 format=3 uid="uid://dmxxcirmtb4bt"]
 
 [ext_resource type="Script" path="res://scripts/foca.gd" id="1_uelxu"]
 [ext_resource type="Texture2D" uid="uid://6dlk8i8faqn8" path="res://img/FocaAtacandoSinFondo.png" id="2_m7rja"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://d0ttqn5kcqpqi" path="res://img/FocaEstaticaCongeladaFase3.png" id="6_04hte"]
 [ext_resource type="Texture2D" uid="uid://d3ljsmcgrwn04" path="res://img/FocaEstaticaCongeladaFase4.png" id="7_704xw"]
 [ext_resource type="Texture2D" uid="uid://3mom1sc8ci3a" path="res://img/FocaMovimientoSinFondo.png" id="8_igiyg"]
+[ext_resource type="Texture2D" uid="uid://drxvyrlndb5ym" path="res://img/Focas/FocaNormal/102.png" id="9_wovnu"]
+[ext_resource type="Texture2D" uid="uid://dc5murv75myit" path="res://img/Focas/FocaNormal/101.png" id="10_avteb"]
+[ext_resource type="Texture2D" uid="uid://cesl85uiis3ql" path="res://img/Focas/FocaNormal/202.png" id="11_weab3"]
+[ext_resource type="Texture2D" uid="uid://dkyfyop05pw1h" path="res://img/Focas/FocaNormal/103.png" id="12_cbam1"]
+[ext_resource type="Texture2D" uid="uid://1dl485c854jl" path="res://img/Focas/FocaNormal/Muerte41.png" id="13_cfen1"]
+[ext_resource type="Texture2D" uid="uid://ddbwbngjjabbq" path="res://img/Focas/FocaNormal/Muerte42.png" id="14_o3smi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ll5d3"]
 animations = [{
@@ -90,17 +96,62 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkj1x"]
 size = Vector2(25, 61)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_h404i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_wovnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_avteb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_weab3")
+}],
+"loop": true,
+"name": &"Ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_cbam1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cfen1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_o3smi")
+}],
+"loop": true,
+"name": &"Morir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_avteb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wovnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cbam1")
+}],
+"loop": true,
+"name": &"Moverse",
+"speed": 5.0
+}]
+
 [node name="foca" type="PathFollow2D"]
 loop = false
 script = ExtResource("1_uelxu")
 velocidad = 0.01
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+visible = false
 rotation = 3.14159
 scale = Vector2(0.359, 0.359)
 sprite_frames = SubResource("SpriteFrames_ll5d3")
-animation = &"Congelado"
-frame_progress = 0.873633
+animation = &"Moverse"
 
 [node name="Area2D" type="Area2D" parent="." groups=["focas"]]
 
@@ -109,6 +160,13 @@ position = Vector2(37, 4)
 shape = SubResource("RectangleShape2D_tkj1x")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.293618, 0.573729)
+rotation = -3.14052
+scale = Vector2(0.368251, 0.375383)
+sprite_frames = SubResource("SpriteFrames_h404i")
+animation = &"Morir"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

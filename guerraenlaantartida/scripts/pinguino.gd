@@ -1,3 +1,4 @@
+class_name Pinguino
 extends Node2D
 
 @export var cadencia_disparo: float = 1.0
@@ -62,12 +63,10 @@ func _on_disparo_timer_timeout():
 func _on_detecto_enemigos_area_entered(area: Area2D) -> void:
 	if area.is_in_group("focas"):
 		focas_en_rango.append(area)
-		print("Foca detectada (área): ", area.name)
 
 func _on_detecto_enemigos_area_exited(area: Area2D) -> void:
 	if area.is_in_group("focas"):
 		focas_en_rango.erase(area)
-		print("Foca fuera de rango (área): ", area.name)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "atacar":

@@ -86,7 +86,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_1bn4x")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_7yo53")
-text = "MENU PRINCIPAL"
+text = "VOLVER AL CAMPAMENTO "
 script = ExtResource("4_jn4py")
 
 [connection signal="pressed" from="VBoxContainer/VolverAlNivel" to="VBoxContainer/VolverAlNivel" method="_on_pressed"]

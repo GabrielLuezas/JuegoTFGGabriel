@@ -9,18 +9,33 @@ func _ready():
 	if Global.nivelMaximoConseguido == 0:
 		_on_boton_campamento_pressed()
 	else:
-		seleccionar_nivel(Global.nivelMaximoConseguido)
+		call("_on_boton_nivel_%d_pressed" % Global.nivelMaximoConseguido)
 	
 func _process(delta: float):
 	pass
 
 func _on_boton_nivel_1_pressed():
+	$Imagenes/ImagenFoca1.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca2.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca3.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca4.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca5.texture = load("res://img/Focas/FocaNormal/102.png")
 	seleccionar_nivel(1)
 
 func _on_boton_nivel_2_pressed():
+	$Imagenes/ImagenFoca1.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca2.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca3.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca4.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca5.texture = load("res://img/Focas/FocaNormalChaleco/113.png")
 	seleccionar_nivel(2)
 
 func _on_boton_nivel_3_pressed():
+	$Imagenes/ImagenFoca1.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca2.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca3.texture = load("res://img/Focas/FocaNormal/102.png")
+	$Imagenes/ImagenFoca4.texture = load("res://img/Focas/FocaNormalChaleco/113.png")
+	$Imagenes/ImagenFoca5.texture = load("res://img/Focas/FocaNormalChalecoCasco/123.png")
 	seleccionar_nivel(3)
 
 func _on_boton_nivel_4_pressed():

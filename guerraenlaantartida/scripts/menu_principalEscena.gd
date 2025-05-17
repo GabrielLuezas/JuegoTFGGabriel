@@ -3,9 +3,14 @@ extends Control
 var escena_precargada: PackedScene = null
 var _hilo_precarga: Thread = null
 
+@onready var label_nombre = $AnimacionInicio/LabelNombre
+@onready var audio_maquina = $AnimacionInicio/AudioStreamPlayer2D
+
 func _ready() -> void:
 	get_tree().paused = false
+	escribir_texto_maquina("Gabriel Luezas\npresenta . . .", 0.2)
 	precargar_escena("res://escenas/archivos_de_guardado.tscn")
+	
 	
 func _process(delta: float) -> void:
 	pass
@@ -34,3 +39,17 @@ func _on_opciones_pressed() -> void:
 
 func _on_salir_pressed() -> void:
 	get_tree().quit()
+	
+func escribir_texto_maquina(texto: String, velocidad: float = 0.2) -> void:
+	label_nombre.text = "" 
+	audio_maquina.play()  # 🔊 Inicia sonido de máquina
+	await mostrar_letra_por_letra(texto, velocidad)
+	audio_maquina.stop()  # 🔇 Detiene sonido
+	$AnimationPlayer.play("animacionprevia")
+
+func mostrar_letra_por_letra(texto: String, velocidad: float) -> void:
+	var texto_actual := ""
+	for letra in texto:
+		texto_actual += letra
+		label_nombre.text = texto_actual
+		await get_tree().create_timer(velocidad).timeout

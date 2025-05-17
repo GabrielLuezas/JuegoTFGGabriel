@@ -16,17 +16,16 @@ func animar_dinero():
 	tween = create_tween()
 	tween.tween_property(self, "current_amount", final_amount, duration)
 	tween.play()
+	Global.dineroAcumulado = Global.dineroAcumulado + final_amount
 
 func _process(delta):
 	label.text = str(round(current_amount))
 
 func _on_siguiente_nivel_pressed() -> void:
-	Global.dineroAcumulado = Global.dineroAcumulado + final_amount
 	Engine.time_scale = 1.0
 	Global.comenzar_carga(ruta)
 	get_tree().change_scene_to_file("res://escenas/pantalla_de_carga.tscn")
 
 func _on_campamento_principal_pressed() -> void:
-	Global.dineroAcumulado = Global.dineroAcumulado + final_amount
 	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file("res://escenas/campamento_principal.tscn")

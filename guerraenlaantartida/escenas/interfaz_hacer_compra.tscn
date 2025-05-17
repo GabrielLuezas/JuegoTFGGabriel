@@ -70,6 +70,7 @@ tile_map_data = PackedByteArray("AAAcAB0ABAAeAGwAAAAcAB4ABAAeAG0AAAAdAB0ABAAfAGw
 tile_set = ExtResource("2_5udt6")
 
 [node name="Confirmacion compra item" type="Label" parent="."]
+layout_mode = 0
 offset_left = 388.0
 offset_top = 361.0
 offset_right = 780.0
@@ -82,6 +83,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Aceptar" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 433.0
 offset_top = 442.0
@@ -89,6 +91,8 @@ offset_right = 495.0
 offset_bottom = 502.0
 
 [node name="Rechazar" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 673.0
 offset_top = 442.0
 offset_right = 735.0
@@ -119,6 +123,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TuDinero2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 484.0
 offset_top = 324.0
 offset_right = 685.0

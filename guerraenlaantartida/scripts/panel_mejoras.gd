@@ -28,10 +28,6 @@ func _ready():
 	$CantidadVidaPinguino.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	$"CantidadDañoPinguino".horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
-	if Global.nivelActual == 3:
-		$Mejora2.hide()
-		$Mejora3.hide()
-		$Mejora4.hide()
 
 
 func _process(delta: float) -> void:

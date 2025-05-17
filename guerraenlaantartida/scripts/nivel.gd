@@ -2,6 +2,9 @@ extends Node2D
 
 var pinguino_preview = preload("res://escenas/pinguino_preview.tscn")
 @onready var foca_escena = preload("res://escenas/foca_leopardo.tscn")
+@onready var foca_escena_chaleco = preload("res://escenas/foca_leopardo_chaleco.tscn")
+@onready var foca_escena_chaleco_casco = preload("res://escenas/foca_leopardo_chaleco_casco.tscn")
+@onready var foca_escena_blindada = preload("res://escenas/foca_blindada.tscn")
 
 var conteo = 0
 var pausa = false
@@ -14,6 +17,7 @@ var intervalo_spawn_max := 5.0
 var seguirGenerando := false
 var nivel_iniciado := false
 var generacion_terminada := false
+var ganado := false
 
 var cooldown_duracion := 5.0
 var cooldown_tiempo := 0.0
@@ -24,8 +28,86 @@ var datos_nivel: Dictionary
 
 var check_timer: Timer
 
+var full_text := "Oh, así que tú eres nuestro nuevo estratega.\nBienvenido al frente de batalla, %s. Aquí no hay tiempo para descansar, tu misión será defender nuestro territorio de los enemigos que no dejan de avanzar." % Global.nombreUsuario
+var type_speed := 0.05
+var siguiente_paso_tutorial = false
+var paso_enseñar_pinguino = false
+var paso_enseñar_peces = false
+var paso_enseñar_menus_abajo = false
+var paso_enseñar_menus_abajo2 = false
+var paso_enseñar_tablero = false
+var paso_final_tutorial = false
+
+var temporizador_flechas = Timer.new()
+var mostrar_a = true
+var flechas_a = null
+var flechas_b = null
+
+var paso_tutorial_victoria = 0
+var paso_tutorial_derrota = 0
+
+var tutorial2_pasos = 1
+var tutorial3_pasos = 1
+var tutorial4_pasos = 1
+
 func _ready():
 	nivelActual = Global.nivelActual
+	Global.peces = 0
+	Global.pecesDorados = 0
+	_actualizar_label_peces()
+	_actualizar_label_peces_dorados()
+	
+	$Pez.hide()
+	$PezDorado.hide()
+	if nivelActual == 1:
+		$ContadorPecesDorados.hide()
+		$Pesca.hide()
+		if Global.tutorialNivel1:
+			Global.peces= 30
+			_actualizar_label_peces()
+			$AudioStreamPlayer2D.play()
+			$AnimationPlayer.play("iniciar_nivel")
+		else:
+			$TutorialNivel1.show()
+			$AnimationPlayer.play("moversensei")
+	if nivelActual == 2:
+		$ContadorPecesDorados.hide()
+		$Pesca.hide()
+		$TutorialNivel2/PinguPescadorIcono.show()
+		if Global.tutorialNivel2:
+			$Pesca.show()
+			$AudioStreamPlayer2D.play() 
+			$AnimationPlayer.play("iniciar_nivel")
+		else: 
+			full_text = "Parece que has tenido éxito encontrando a un pescador. Proxing es uno de los mejores de la aldea, ¡seguro que te será muy útil en el campo de batalla!"
+			$TutorialNivel2.show()
+			$AnimationPlayer.play("moversensei_2")
+	if nivelActual == 3:
+		$ContadorPecesDorados.hide()
+		$Pesca.hide()
+		if Global.tutorialNivel3:
+			$Pesca.show()
+			$ContadorPecesDorados.show()
+			$AudioStreamPlayer2D.play()
+			Global.pecesDorados = 3
+			_actualizar_label_peces_dorados()
+			$AnimationPlayer.play("iniciar_nivel")
+		else: 
+			full_text = "Los pingüinos reales aún pueden volverse más fuertes. Estos tienen mejoras que cuestan 1 pez de oro cada una."
+			$TutorialNivel3.show()
+			show_text_slowly_tuto3(full_text)
+			flechas_a = $TutorialNivel3/FlechasPeces
+			flechas_b = $TutorialNivel3/FlechasPeces2
+			$ContadorPecesDorados.show()
+			iniciar_animacion_flechas()
+	if nivelActual >= 4:
+		$Pesca.show()
+		$AudioStreamPlayer2D.play()
+		$AnimationPlayer.play("iniciar_nivel")
+	
+	if nivelActual >= 3:
+		comprobar_mejoras()
+	
 	$TextoSeAcercaWave.hide()
 	$IniciarNivel.hide()
 	$OleadaFinal.hide()
@@ -33,12 +115,9 @@ func _ready():
 	randomize()
 	cargar_datos_nivel(nivelActual)
 	$BarraProgreso._actualizar_tiempo(tiempo_total)
-	$AnimationPlayer.play("iniciar_nivel")
 	
 	Engine.time_scale = 1.0
 	get_tree().paused = false
-	Global.peces = 10
-	Global.pecesDorados = 5
 	_actualizar_label_peces()
 	_actualizar_label_peces_dorados()
 	set_process_unhandled_input(true)
@@ -86,21 +165,45 @@ func iniciar_nivel():
 	tiempo_actual = 0.0
 	tiempo_ultimo_spawn = 0.0
 	intervalo_spawn = randf_range(intervalo_spawn_min, intervalo_spawn_max)
+	$BarraProgreso.show()
 	$Control/TextureProgressBar.value = 0
 	$BarraProgreso._actualizar_tiempo(tiempo_total)
 	$BarraProgreso.iniciar_nivel()
 	
+	await get_tree().create_timer(5.0).timeout
 	generar_enemigos()
 
 func fin_generacion():
 	$AnimationPlayer.play("se acerca una oleada")
 	await get_tree().create_timer(4.0).timeout 
+	$TextoSeAcercaWave.hide()
 	generar_oleada_final() 
 
 func generar_oleada_final():
 	$AnimationPlayer.play("oleada final")
 	if nivelActual == 1:
 		oleada_final_nivel_uno()
+	if nivelActual == 2:
+		oleada_final_nivel_dos()
+	if nivelActual == 3:
+		oleada_final_nivel_tres()
+	if nivelActual == 4:
+		oleada_final_nivel_cuatro()
+	if nivelActual == 5:
+		oleada_final_nivel_cinco()
+	if nivelActual == 6:
+		oleada_final_nivel_seis()
+	if nivelActual == 7:
+		oleada_final_nivel_siete()
+	if nivelActual == 8:
+		oleada_final_nivel_ocho()
+	if nivelActual == 9:
+		oleada_final_nivel_nueve()
+	if nivelActual == 10:
+		oleada_final_nivel_diez()
+	if nivelActual == 11:
+		oleada_final_nivel_once()
+	$OleadaFinal.hide()
 	iniciar_comprobacion_path_vacios()
 
 func oleada_final_nivel_uno():
@@ -111,6 +214,111 @@ func oleada_final_nivel_uno():
 			path.add_child(foca)
 			foca.rotation_degrees = 90
 			foca.progress_ratio = 0
+func oleada_final_nivel_dos():
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca
+			foca = foca_escena_chaleco.instantiate()  # Foca con chaleco
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+
+	await get_tree().create_timer(3.0).timeout
+
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena.instantiate()  # Foca normal
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+			
+func oleada_final_nivel_tres():
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco_casco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+
+	await get_tree().create_timer(4.0).timeout
+
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca
+			if i == 3: 
+				foca = foca_escena.instantiate()
+			else:
+				foca = foca_escena_chaleco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+func oleada_final_nivel_cuatro():
+	# Primera parte: todas focas blindadas
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+
+	await get_tree().create_timer(3.0).timeout
+
+	# Segunda parte: todas focas con chaleco (sin casco)
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+
+func oleada_final_nivel_cinco():
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+
+	await get_tree().create_timer(3.0).timeout
+
+	# Segunda parte: todas focas con chaleco (sin casco)
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco_casco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(5.0).timeout
+
+	# Segunda parte: todas focas con chaleco (sin casco)
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco_casco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+func oleada_final_nivel_seis():
+	pass
+func oleada_final_nivel_siete():
+	pass
+func oleada_final_nivel_ocho():
+	pass
+func oleada_final_nivel_nueve():
+	pass
+func oleada_final_nivel_diez():
+	pass
+func oleada_final_nivel_once():
+	pass
+
 
 func generar_enemigos():
 	if seguirGenerando:
@@ -170,8 +378,13 @@ func toggle_pause():
 	$Menu.visible = pausa
 
 func terminarjuego():
-	Engine.time_scale = 0.0
+	$AudioStreamPlayer2D.stop()
+	for area in get_tree().get_nodes_in_group("proyectil"):
+			if area is Area2D and area.get_parent():
+				area.get_parent().queue_free()
 	$MenuDerrota.show()
+	$Perder.play()
+	Engine.time_scale = 0.0
 
 func _on_timer_timeout():
 	$Control/TextureProgressBar.value += 20
@@ -226,7 +439,38 @@ func configurar_nivel():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "iniciar_nivel":
 		iniciar_nivel()
-
+	if anim_name == "moversensei":
+		show_text_slowly(full_text)
+	if anim_name == "moversensei_2":
+		show_text_slowly_tuto2(full_text)
+	if anim_name == "explicarUnidades":
+		var full_text := "Estas son nuestras tropas: los Pingüinos Reales.\nEntrenados como verdaderos soldados para proteger el pueblo de cualquier amenaza.\n\nPero cuidado... ¡desplegar soldados no es gratis!\nNecesitas al menos 5 peces para enviar uno al campo de batalla."
+		flechas_a = $TutorialNivel1/FlechasPingu1
+		flechas_b = $TutorialNivel1/FlechasPingu2
+		iniciar_animacion_flechas()
+		show_text_slowly(full_text)
+	if anim_name == "explicar_menus_parte_inferior":
+		var full_text := "Puedes pausar la partida con este botón de aquí abajo.\nSi necesitas un respiro y planificar la siguiente jugada, puedes pausar en cualquier momento."
+		flechas_a = $TutorialNivel1/FlechasBotonPausa
+		flechas_b = $TutorialNivel1/FlechasBotonPausa2
+		$TutorialNivel1/FlechasPeces.hide()
+		$TutorialNivel1/FlechasPeces2.hide()
+		$TutorialNivel1/IconoPausaTutorial.show()
+		show_text_slowly(full_text)
+	if anim_name == "explicar_terreno_juego":
+		var full_text := "Este es el campo de batalla.\nAquí deberás colocar a tus soldados para defender la aldea."
+		$TutorialNivel1/ImagenCampoBatalla.show()
+		show_text_slowly(full_text)
+	if anim_name == "final_tutorial":
+		var full_text := "Y eso es todo. Te voy a dar unos cuantos peces para que comiences a defender"
+		show_text_slowly(full_text)
+	if anim_name == "dar_peces":
+		Global.peces = 30
+		_actualizar_label_peces()
+		$TutorialNivel1.hide()
+		$AudioStreamPlayer2D.play()
+		$AnimationPlayer.play("iniciar_nivel")
+		
 func iniciar_comprobacion_path_vacios():
 	# Crear un Timer si no existe aún
 	if not check_timer:
@@ -245,15 +489,342 @@ func _comprobar_paths_vacios():
 			if child.get_child_count() > 0:
 				todos_vacios = false
 				break 
-	if todos_vacios:
+	if todos_vacios and !ganado:
+		ganado = true
+		$AudioStreamPlayer2D.stop()
 		ganar()
 		
+		
 func ganar():
-	if Global.nivelActual > Global.nivelMaximoConseguido:
-		Global.nivelMaximoConseguido = Global.nivelActual
-		Global.nivelActual = Global.nivelActual + 1
-	for area in get_tree().get_nodes_in_group("proyectil"):
-		if area is Area2D and area.get_parent():
-			area.get_parent().queue_free()
-	$MenuVictoria.show()
-	$MenuVictoria.animar_dinero()
+	if nivelActual == 1 and !Global.tutorialNivel1:
+		Global.tutorialNivel1 = true
+		if Global.nivelActual > Global.nivelMaximoConseguido:
+			Global.nivelMaximoConseguido = Global.nivelActual
+			Global.nivelActual = Global.nivelActual + 1
+		for area in get_tree().get_nodes_in_group("proyectil"):
+			if area is Area2D and area.get_parent():
+				area.get_parent().queue_free()
+		Engine.time_scale = 1.0
+		$MenuVictoria.show()
+		$TutorialPrimeraVictoria.show()
+		$MenuVictoria/VBoxContainer/SiguienteNivel.disabled = true
+		$MenuVictoria/VBoxContainer/CampamentoPrincipal.disabled = true
+		full_text = "¡Impresionante! Has logrado defender la aldea con éxito."
+		show_text_slowly_victoria(full_text)
+	elif nivelActual == 2:
+		Global.tutorialNivel2 = true
+		for area in get_tree().get_nodes_in_group("proyectil"):
+			if area is Area2D and area.get_parent():
+				area.get_parent().queue_free()
+		Engine.time_scale = 1.0
+		$MenuVictoria.show()
+		$Ganar.play()
+		$TutorialPrimeraVictoria.show()
+		paso_tutorial_victoria= 10
+		full_text = "Gunter ha vuelto a la aldea. Te recomiendo visitarlo."
+		show_text_slowly_victoria(full_text)
+		
+		if Global.nivelActual > Global.nivelMaximoConseguido:
+			Global.nivelMaximoConseguido = Global.nivelActual
+			Global.nivelActual = Global.nivelActual + 1
+			$MenuVictoria.animar_dinero()
+	else:
+		for area in get_tree().get_nodes_in_group("proyectil"):
+			if area is Area2D and area.get_parent():
+				area.get_parent().queue_free()
+		Engine.time_scale = 1.0
+		$MenuVictoria.show()
+		$Ganar.play()
+		if Global.nivelActual > Global.nivelMaximoConseguido:
+			Global.nivelMaximoConseguido = Global.nivelActual
+			Global.nivelActual = Global.nivelActual + 1
+			$MenuVictoria.animar_dinero()
+
+func show_text_slowly(text: String) -> void:
+	await _reveal_text(text)
+
+func _reveal_text(text: String) -> void:
+	text = text.strip_edges()
+	var current := ""
+	for i in text.length():
+		current += text[i]
+		$TutorialNivel1/Texto1.text = current
+		await get_tree().create_timer(type_speed).timeout
+	$TutorialNivel1/ClicParaContinuar.show()
+	$TutorialNivel1/Continuar.show()
+
+
+func _on_continuar_pressed() -> void:
+	$TutorialNivel1/ClicParaContinuar.hide()
+	$TutorialNivel1/Continuar.hide()
+	if siguiente_paso_tutorial :
+		if paso_enseñar_pinguino :
+			temporizador_flechas.stop()
+			$TutorialNivel1/TarjetaPinguino.hide()
+			$TutorialNivel1/FlechasPingu1.hide()
+			$TutorialNivel1/FlechasPingu2.hide()
+			if paso_enseñar_peces :
+				if paso_enseñar_menus_abajo:
+					temporizador_flechas.stop()
+					if paso_enseñar_menus_abajo2:
+						temporizador_flechas.stop()
+						if paso_enseñar_tablero:
+							if paso_final_tutorial:
+								$AnimationPlayer.play("dar_peces")
+							else:
+								$TutorialNivel1/ImagenCampoBatalla.hide()
+								$TutorialNivel1/PecesContadorTutorial.show()
+								paso_final_tutorial  = true
+								$AnimationPlayer.play("final_tutorial")
+						else:
+							$TutorialNivel1/IconosVelocidad.hide()
+							$TutorialNivel1/FlechasBotonVelocidad.hide()
+							$TutorialNivel1/FlechasBotonVelocidad2.hide()
+							$TutorialNivel1/Texto1.text = ""
+							$AnimationPlayer.play("explicar_terreno_juego")
+							paso_enseñar_tablero = true
+					else:
+						$TutorialNivel1/FlechasBotonPausa2.hide()
+						$TutorialNivel1/FlechasBotonPausa.hide()
+						$TutorialNivel1/IconoPausaTutorial.hide()
+						paso_enseñar_menus_abajo2 = true
+						flechas_a = $TutorialNivel1/FlechasBotonVelocidad
+						flechas_b = $TutorialNivel1/FlechasBotonVelocidad2
+						$TutorialNivel1/IconosVelocidad.show()
+						temporizador_flechas.start()
+						full_text = "También puedes aumentar la velocidad del juego pulsando los botones x1, x2 o x3,\nen caso de que quieras ir más rápido porque ya tienes una buena línea de defensa."
+						show_text_slowly(full_text)
+						
+				else:
+					$TutorialNivel1/FlechasPeces.hide()
+					$TutorialNivel1/FlechasPeces2.hide()
+					$TutorialNivel1/PecesContadorTutorial.hide()
+					$TutorialNivel1/Texto1.text = ""
+					$AnimationPlayer.play("explicar_menus_parte_inferior")
+					paso_enseñar_menus_abajo = true
+					temporizador_flechas.start()
+			else:
+				paso_enseñar_peces = true
+				$TutorialNivel1/PecesContadorTutorial.show()
+				flechas_a = $TutorialNivel1/FlechasPeces
+				flechas_b = $TutorialNivel1/FlechasPeces2
+				temporizador_flechas.start()
+				
+				full_text = "Los peces son el recurso básico del que disponemos. Con ellos podemos desplegar más Pingüinos Reales que nos ayudan en la defensa.\nCuantas más tropas coloques, más fácil será repeler a todos los enemigos."
+				show_text_slowly(full_text)
+		else:
+			$AnimationPlayer.play("explicarUnidades")
+			paso_enseñar_pinguino= true
+	else:
+		full_text = "Pero tranquilo, no estás solo.\nVoy a explicarte un poco los elementos disponibles, para que no te pillen desprevenido..."
+		show_text_slowly(full_text)
+		siguiente_paso_tutorial = true
+
+
+func iniciar_animacion_flechas():
+	temporizador_flechas.wait_time = 0.5  # Cambiar cada medio segundo
+	temporizador_flechas.one_shot = false
+	temporizador_flechas.autostart = true
+	add_child(temporizador_flechas)
+	temporizador_flechas.timeout.connect(_al_cambiar_tiempo)
+
+# Alternar visibilidad entre A y B
+func _al_cambiar_tiempo():
+	mostrar_a = !mostrar_a
+	if mostrar_a:
+		flechas_a.show()
+		flechas_b.hide()
+	else:
+		flechas_a.hide()
+		flechas_b.show()
+
+func comprobar_mejoras():
+	if Global.mejoraCañaVieja:
+		$Pesca.min_tiempo_espera = 6.0
+		$Pesca.max_tiempo_espera = 7.0
+	if Global.mejoraCañaBuena:
+		$Pesca.min_tiempo_espera = 5.0
+		$Pesca.max_tiempo_espera = 6.0
+	if Global.mejoraSuperCaña:
+		$Pesca.min_tiempo_espera = 4.0
+		$Pesca.max_tiempo_espera = 5.0
+	if Global.mejoraPinguinoPescadorExtra1:
+		$Pesca2.show()
+	if Global.mejoraPinguinoPescadorExtra2:
+		$Pesca3.show()
+	if Global.mejoraAnzueloDorado:
+		$Pesca.probabilidad_pez_dorado = 0.15
+		$Pesca2.probabilidad_pez_dorado = 0.15
+		$Pesca3.probabilidad_pez_dorado = 0.15
+	if Global.mejoraPescadosDoradosInicio:
+		Global.pecesDorados = 1
+	if Global.mejoraPescadosNormalesInicio:
+		Global.peces = 5
+
+func _on_continuar_tuto_victoria_pressed() -> void:
+	if paso_tutorial_victoria == 1:
+		$TutorialPrimeraVictoria/ClicParaContinuar.hide()
+		$TutorialPrimeraVictoria/ContinuarTutoVictoria.hide()
+		full_text = "Volvamos al campamento principal antes del siguiente nivel."
+		await show_text_slowly_victoria(full_text)
+		$TutorialPrimeraVictoria/ClicParaContinuar.hide()
+		$TutorialPrimeraVictoria/ContinuarTutoVictoria.hide()
+		Global.explicarCampamento = true
+		$MenuVictoria/VBoxContainer/SiguienteNivel.disabled = true
+		$MenuVictoria/VBoxContainer/CampamentoPrincipal.disabled = false
+	elif paso_tutorial_victoria == 10:
+		$TutorialPrimeraVictoria.hide()
+	else:
+		$TutorialPrimeraVictoria/ClicParaContinuar.hide()
+		$TutorialPrimeraVictoria/ContinuarTutoVictoria.hide()
+		paso_tutorial_victoria = 1
+		full_text = "Después de ganar cada nivel, consigues dinero que puedes usar en la tienda."
+		await show_text_slowly_victoria(full_text)
+		$MenuVictoria.animar_dinero()
+
+func show_text_slowly_victoria(text: String) -> void:
+	await _reveal_text_victoria(text)  # ✅ Corrección aquí
+
+func _reveal_text_victoria(text: String) -> void:
+	text = text.strip_edges()
+	var current := ""
+	for i in text.length():
+		current += text[i]
+		$TutorialPrimeraVictoria/TextoTutorialVictoria.text = current
+		await get_tree().create_timer(type_speed).timeout
+	$TutorialPrimeraVictoria/ClicParaContinuar.show()
+	$TutorialPrimeraVictoria/ContinuarTutoVictoria.show()
+	
+	
+func show_text_slowly_tuto2(text: String) -> void:
+	await _reveal_text_tuto2(text)
+
+func _reveal_text_tuto2(text: String) -> void:
+	text = text.strip_edges()
+	var current := ""
+	for i in text.length():
+		current += text[i]
+		$TutorialNivel2/Texto1.text = current
+		await get_tree().create_timer(type_speed).timeout
+	$TutorialNivel2/ClicParaContinuar.show()
+	$TutorialNivel2/ContinuarTuto2.show()
+
+
+func _on_continuar_tuto_2_pressed() -> void:
+	if tutorial2_pasos == 1:
+		$TutorialNivel2/PinguPescadorIcono.hide()
+		$TutorialNivel2/PinguPescadoIconoHaPescado.show()
+		$TutorialNivel2/ClicParaContinuar.hide()
+		$TutorialNivel2/ContinuarTuto2.hide()
+		full_text = "La pesca es un proceso lento, pero los pingüinos pescadores te avisarán cuando tengan un pescado. Cuando eso ocurra, haz clic para recogerlo, y luego volverán a empezar a pescar."
+		tutorial2_pasos = 2
+		await show_text_slowly_tuto2(full_text)  # <- AWAIT AQUÍ
+
+	elif tutorial2_pasos == 2:
+		$TutorialNivel2/ClicParaContinuar.hide()
+		$TutorialNivel2/ContinuarTuto2.hide()
+		full_text = "Y eso es lo básico. Tienes un poco de tiempo para entrenar antes de que aparezcan los enemigos de este nivel. ¡Buena suerte!"
+		tutorial2_pasos = 3
+		await show_text_slowly_tuto2(full_text)  # <- AWAIT AQUÍ
+
+	elif tutorial2_pasos == 3:
+		$Pesca.show()
+		$TutorialNivel2.hide()
+		Global.tutorialNivel2 = true
+		$AudioStreamPlayer2D.play()
+		$AnimationPlayer.play("iniciar_nivel")
+
+func reproducir_animacion_para(nombre_nodo: String):
+	var anim_player = $AnimationPlayerPinguinos
+	match nombre_nodo:
+		"Pesca":
+			anim_player.play("anim_pesca1")
+		"Pesca2":
+			anim_player.play("anim_pesca2")
+		"Pesca3":
+			anim_player.play("anim_pesca3")
+
+func reproducir_animacion_para_dorado(nombre_nodo: String):
+	var anim_player = $AnimationPlayerPinguinos
+	match nombre_nodo:
+		"Pesca":
+			anim_player.play("anim_pesca1_dorado")
+		"Pesca2":
+			anim_player.play("anim_pesca2_dorado")
+		"Pesca3":
+			anim_player.play("anim_pesca3_dorado")
+
+
+func _on_continuar_tuto_nivel_3_pressed() -> void:
+	if tutorial3_pasos == 1:
+		$TutorialNivel3/FlechasPeces.hide()
+		$TutorialNivel3/FlechasPeces2.hide()
+		$TutorialNivel3/ClicParaContinuar.hide()
+		$TutorialNivel3/ContinuarTutoNivel3.hide()
+		full_text = "Puedes conseguir estos peces con un 10% de probabilidad por cada pesca que realice un pingüino pescador."
+		tutorial3_pasos = 2
+		await show_text_slowly_tuto3(full_text)
+
+	elif tutorial3_pasos == 2:
+		$TutorialNivel3/ClicParaContinuar.hide()
+		$TutorialNivel3/ContinuarTutoNivel3.hide()
+		$TutorialNivel3/ColorRect.hide()
+		temporizador_flechas.stop()
+		$TutorialNivel3/FlechasPeces.hide()
+		$TutorialNivel3/FlechasPeces2.hide()
+		full_text = "Para aplicar una mejora, debes hacer clic sobre un pingüino y seleccionar la mejora que deseas. Haz clic sobre el pingüino que está en el tablero."
+		await show_text_slowly_tuto3(full_text)
+		var destino = $Tablero/HBoxContainer/VBoxContainer/PanelContainer3/Marker2D
+		var pinguino_scene = preload("res://escenas/pinguino.tscn")
+		var pinguino_instance = pinguino_scene.instantiate()
+		destino.add_child(pinguino_instance)
+		$TutorialNivel3/ClicParaContinuar.hide()
+		$TutorialNivel3/ContinuarTutoNivel3.hide()
+		var boton = pinguino_instance.get_node("BotonPinguino")  
+		await boton.pinguino_clickeado
+		tutorial3_pasos = 3
+		full_text = "Cada pingüino tiene 4 mejoras diferentes con efectos distintos, pero cuidado: un mismo pingüino solo puede tener un tipo de mejora activa a la vez."
+		await show_text_slowly_tuto3(full_text)
+
+	elif tutorial3_pasos == 3:
+		$TutorialNivel3/ContinuarTutoNivel3.hide()
+		$TutorialNivel3/ClicParaContinuar.hide()
+		$TutorialNivel3/ColorRect.hide()
+		tutorial3_pasos = 4
+		full_text = "Cada mejora puede ser mejorada hasta un máximo de 4 niveles, costando siempre 1 pez de oro por cada nivel que suba."
+		await show_text_slowly_tuto3(full_text)
+	
+	elif tutorial3_pasos == 4:
+		$TutorialNivel3/ContinuarTutoNivel3.hide()
+		$TutorialNivel3/ClicParaContinuar.hide()
+		$TutorialNivel3/ColorRect.hide()
+		var panel = $SitioMejorasPinguinos.get_node("panel_mejoras")
+		panel._on_boton_cerrar_pressed()
+		tutorial3_pasos = 5
+		full_text = "Te voy a dar 3 peces dorados para que pruebes a mejorar a los pingüinos. ¡Prepárate, que ya vienen los enemigos!"
+		await show_text_slowly_tuto3(full_text)
+		$AnimationPlayerPinguinos.play("dar_peces_dorados_tutorial")
+		await get_tree().create_timer(1.0).timeout
+		Global.pecesDorados = 3
+		_actualizar_label_peces_dorados()
+		
+	elif tutorial3_pasos == 5:
+		$Pesca.show()
+		$TutorialNivel3.hide()
+		Global.tutorialNivel3 = true
+		$AudioStreamPlayer2D.play()
+		$AnimationPlayer.play("iniciar_nivel")
+
+
+func show_text_slowly_tuto3(text: String) -> void:
+	await _reveal_text_tuto3(text)
+
+func _reveal_text_tuto3(text: String) -> void:
+	text = text.strip_edges()
+	var current := ""
+	for i in text.length():
+		current += text[i]
+		$TutorialNivel3/TextoTutorial3.text = current
+		await get_tree().create_timer(type_speed).timeout
+	$TutorialNivel3/ClicParaContinuar.show()
+	$TutorialNivel3/ContinuarTutoNivel3.show()

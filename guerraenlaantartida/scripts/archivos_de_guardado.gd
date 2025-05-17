@@ -128,6 +128,7 @@ func mostrar_escena_nombre():
 	instancia.global_position = $Marker2D.global_position
 	
 func pedir_confirmacion(texto: String) -> bool:
+	$Marker2D.show()
 	var confirmacion = preload("res://escenas/confirmar_accion.tscn").instantiate()
 	confirmacion.global_position = $Marker2D.global_position
 	add_child(confirmacion)
@@ -137,3 +138,4 @@ func pedir_confirmacion(texto: String) -> bool:
 		return true
 	else:
 		return false
+	$Marker2D.hide()

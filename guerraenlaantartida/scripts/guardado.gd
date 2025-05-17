@@ -31,7 +31,7 @@ func save_game(slot):
 		"nivel_maximo": Global.nivelMaximoConseguido,
 		"nombre_usuario": Global.nombreUsuario,
 
-		# Nuevas mejoras
+		# Mejoras
 		"mejora_caña_vieja": Global.mejoraCañaVieja,
 		"mejora_caña_buena": Global.mejoraCañaBuena,
 		"mejora_super_caña": Global.mejoraSuperCaña,
@@ -40,7 +40,13 @@ func save_game(slot):
 		"mejora_pescados_normales_inicio": Global.mejoraPescadosNormalesInicio,
 		"mejora_pescados_dorados_inicio": Global.mejoraPescadosDoradosInicio,
 		"mejora_anzuelo_dorado": Global.mejoraAnzueloDorado,
-		"mejora_sensei_pinguino": Global.mejoraSenseiPinguino
+		"mejora_sensei_pinguino": Global.mejoraSenseiPinguino,
+
+		# Tutoriales
+		"tutorial_nivel_1": Global.tutorialNivel1,
+		"tutorial_nivel_2": Global.tutorialNivel2,
+		"tutorial_nivel_3": Global.tutorialNivel3,
+		"tutorial_nivel_4": Global.tutorialNivel4
 	}
 
 	var file = FileAccess.open(SAVE_PATHS[slot], FileAccess.WRITE)
@@ -65,10 +71,10 @@ func load_game(slot):
 			if typeof(save_data) == TYPE_DICTIONARY:
 				Global.nivelActual = save_data.get("nivel_actual", 1)
 				Global.dineroAcumulado = save_data.get("dinero_acumulado", 0)
-				Global.nivelMaximoConseguido = save_data.get("nivel_maximo", 1)
+				Global.nivelMaximoConseguido = save_data.get("nivel_maximo", 0)
 				Global.nombreUsuario = save_data.get("nombre_usuario", "Jugador")
 
-				# Cargar mejoras
+				# Mejoras
 				Global.mejoraCañaVieja = save_data.get("mejora_caña_vieja", false)
 				Global.mejoraCañaBuena = save_data.get("mejora_caña_buena", false)
 				Global.mejoraSuperCaña = save_data.get("mejora_super_caña", false)
@@ -78,6 +84,12 @@ func load_game(slot):
 				Global.mejoraPescadosDoradosInicio = save_data.get("mejora_pescados_dorados_inicio", false)
 				Global.mejoraAnzueloDorado = save_data.get("mejora_anzuelo_dorado", false)
 				Global.mejoraSenseiPinguino = save_data.get("mejora_sensei_pinguino", false)
+
+				# Tutoriales
+				Global.tutorialNivel1 = save_data.get("tutorial_nivel_1", false)
+				Global.tutorialNivel2 = save_data.get("tutorial_nivel_2", false)
+				Global.tutorialNivel3 = save_data.get("tutorial_nivel_3", false)
+				Global.tutorialNivel4 = save_data.get("tutorial_nivel_4", false)
 
 				print("✅ Juego cargado desde slot ", slot)
 				current_slot = slot
@@ -118,6 +130,11 @@ func reset_global_data():
 	Global.mejoraPescadosDoradosInicio = false
 	Global.mejoraAnzueloDorado = false
 	Global.mejoraSenseiPinguino = false
+
+	Global.tutorialNivel1 = false
+	Global.tutorialNivel2 = false
+	Global.tutorialNivel3 = false
+	Global.tutoriNivel4 = false
 
 # Señales para botones
 func on_button_cargar_pressed(slot):

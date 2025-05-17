@@ -71,25 +71,25 @@ mouse_default_cursor_shape = 2
 [node name="BotonCrearNuevaPartida1" type="Button" parent="Botones"]
 layout_mode = 0
 offset_left = 225.0
-offset_top = 316.0
+offset_top = 290.0
 offset_right = 351.0
-offset_bottom = 391.0
+offset_bottom = 365.0
 mouse_default_cursor_shape = 2
 
 [node name="BotonCrearNuevaPartida2" type="Button" parent="Botones"]
 layout_mode = 0
 offset_left = 545.0
-offset_top = 315.0
+offset_top = 289.0
 offset_right = 671.0
-offset_bottom = 392.0
+offset_bottom = 366.0
 mouse_default_cursor_shape = 2
 
 [node name="BotonCrearNuevaPartida3" type="Button" parent="Botones"]
 layout_mode = 0
 offset_left = 865.0
-offset_top = 316.0
+offset_top = 290.0
 offset_right = 991.0
-offset_bottom = 392.0
+offset_bottom = 366.0
 mouse_default_cursor_shape = 2
 
 [node name="Layers" type="Control" parent="."]
@@ -300,9 +300,9 @@ vertical_alignment = 1
 
 [node name="IndicadorNivel1" type="Label" parent="Textos"]
 layout_mode = 0
-offset_left = 209.0
+offset_left = 200.0
 offset_top = 301.0
-offset_right = 293.0
+offset_right = 314.0
 offset_bottom = 333.0
 theme_override_colors/font_color = Color(0.054902, 0.352941, 0.509804, 1)
 theme_override_fonts/font = ExtResource("4_3fq42")
@@ -333,9 +333,9 @@ text = "Nivel:     "
 
 [node name="IndicadorMonedas1" type="Label" parent="Textos"]
 layout_mode = 0
-offset_left = 209.0
+offset_left = 200.0
 offset_top = 341.0
-offset_right = 323.0
+offset_right = 314.0
 offset_bottom = 373.0
 theme_override_colors/font_color = Color(0.054902, 0.352941, 0.509804, 1)
 theme_override_fonts/font = ExtResource("4_3fq42")

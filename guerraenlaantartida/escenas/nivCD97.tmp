@@ -1,0 +1,2263 @@
+[gd_scene load_steps=58 format=4 uid="uid://b3hhlsessq83u"]
+
+[ext_resource type="Script" path="res://scripts/nivel.gd" id="1_oww0c"]
+[ext_resource type="Texture2D" uid="uid://hq5ny4e0hn16" path="res://img/makuked.png" id="2_jlcun"]
+[ext_resource type="Texture2D" uid="uid://bmdkvbsedkyyo" path="res://img/TarjetaPinguino.png" id="3_qnup3"]
+[ext_resource type="Script" path="res://scripts/panel_container.gd" id="4_nk23x"]
+[ext_resource type="Texture2D" uid="uid://dgb5xgpqu7q" path="res://img/botonpausa.png" id="5_ar0io"]
+[ext_resource type="Script" path="res://scripts/botonpausa.gd" id="6_liga6"]
+[ext_resource type="Texture2D" uid="uid://b23txvvel2iqs" path="res://img/velocidadnormal.png" id="7_3qgta"]
+[ext_resource type="Script" path="res://scripts/boton_velocidad_normal.gd" id="8_khu6u"]
+[ext_resource type="Texture2D" uid="uid://c3lg4kqoy5yi8" path="res://img/velocidadrapida.png" id="9_u025q"]
+[ext_resource type="Script" path="res://scripts/boton_velocidad_rapida.gd" id="10_m2jfe"]
+[ext_resource type="Texture2D" uid="uid://baidwccfs8ye" path="res://img/velocidadmuyrapida.png" id="11_ws6ys"]
+[ext_resource type="Script" path="res://scripts/boton_velocidad_muyrapida.gd" id="12_rhjdw"]
+[ext_resource type="Texture2D" uid="uid://bvitnd6x3qwc" path="res://img/ContadorPecesNormales.png" id="13_ppps0"]
+[ext_resource type="FontFile" uid="uid://bfdlmvbyp8yqh" path="res://fonts/EquipmentPro.otf" id="14_0lcfp"]
+[ext_resource type="Texture2D" uid="uid://b304al6ctcq24" path="res://img/ConadoPecesDorados.png" id="14_xhows"]
+[ext_resource type="PackedScene" uid="uid://b8kcgdk0ww8lv" path="res://escenas/barra_progreso.tscn" id="15_l30x2"]
+[ext_resource type="PackedScene" uid="uid://r4sd1rxvnv36" path="res://escenas/pesca.tscn" id="16_pmxsc"]
+[ext_resource type="PackedScene" uid="uid://bicohxt6wv1pp" path="res://escenas/menu.tscn" id="17_vsm5p"]
+[ext_resource type="Texture2D" uid="uid://b8qxhlosi865s" path="res://img/3.png" id="18_8ucj0"]
+[ext_resource type="Texture2D" uid="uid://dtwutfosjh78i" path="res://img/TextoWave.png" id="18_ywjup"]
+[ext_resource type="Texture2D" uid="uid://ct4aruybja0fp" path="res://img/2.png" id="19_g0g4j"]
+[ext_resource type="Texture2D" uid="uid://csi0lfgtgtef3" path="res://img/1.png" id="20_ttp1p"]
+[ext_resource type="Texture2D" uid="uid://bill5j2rpjhvx" path="res://img/defiende.png" id="21_tq35s"]
+[ext_resource type="Texture2D" uid="uid://cog4cew7p1l2q" path="res://img/OleadaFinal.png" id="23_nq06r"]
+[ext_resource type="PackedScene" uid="uid://d0o1y2tnm7s8b" path="res://escenas/menu_victoria.tscn" id="24_i33q4"]
+[ext_resource type="PackedScene" uid="uid://yr8g3lavkvk7" path="res://escenas/menu_derrota.tscn" id="25_pkt53"]
+[ext_resource type="Texture2D" uid="uid://vx7omu1e25bn" path="res://img/PinguSensei.png" id="26_hbo8k"]
+[ext_resource type="Texture2D" uid="uid://bm12ds5cqr24s" path="res://img/bocadillo.png" id="27_dyxpn"]
+[ext_resource type="TileSet" uid="uid://cep2lotas44ko" path="res://tiles/interiores.tres" id="28_pdpre"]
+[ext_resource type="Texture2D" uid="uid://bqwcukdqyuihr" path="res://img/IconitoSensei.png" id="29_h4sqh"]
+[ext_resource type="Texture2D" uid="uid://b2hvd66t8t65s" path="res://img/ImagenCampoDeBatalla.png" id="30_jsldh"]
+[ext_resource type="Texture2D" uid="uid://03knxie0c273" path="res://img/Pez.png" id="31_0n01c"]
+[ext_resource type="Texture2D" uid="uid://c83mne1prqd51" path="res://img/pinguinopescandofase1.png" id="32_j8dbf"]
+[ext_resource type="Texture2D" uid="uid://d15c3xrg2qcnr" path="res://img/pinguinopescandotienepez.png" id="33_224nm"]
+[ext_resource type="Texture2D" uid="uid://c011g5i0flcrc" path="res://img/PezDorado.png" id="34_kx420"]
+[ext_resource type="AudioStream" uid="uid://c7rg4k7tcpax0" path="res://sonidos/musicas/MusicaNiveles.ogg" id="35_3e1k7"]
+[ext_resource type="AudioStream" uid="uid://fverh0aox00p" path="res://sonidos/musicas/MusicaGanar.ogg" id="36_m70co"]
+[ext_resource type="AudioStream" uid="uid://bi3dqf1qwuyj6" path="res://sonidos/musicas/game-over-classic-206486.mp3" id="37_166ux"]
+
+[sub_resource type="Curve2D" id="Curve2D_6hmbr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1128, 109, 0, 0, 0, 0, 307, 109)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_4kiad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextoSeAcercaWave:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.85, 0.85)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextoSeAcercaWave:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IniciarNivel:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IniciarNivel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IniciarNivel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OleadaFinal:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OleadaFinal:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TutorialNivel1/PinguinoMaster:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1063, 255)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TutorialNivel1/PinguinoMaster:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TutorialNivel1/BocadilloTexto:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TutorialNivel1/BocadilloTexto:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 1.2973)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TutorialNivel1/Texto1:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TutorialNivel1/FlechasPingu1:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TutorialNivel1/TarjetaPinguino:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TutorialNivel1/BocadilloTexto:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.57357]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TutorialNivel1/BocadilloTexto:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(830, 273)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TutorialNivel1/Texto1:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(697, 72)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TutorialNivel1/BocadilloTexto:flip_h")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("TutorialNivel1/Texto1:size")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(367, 312)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = false
+tracks/19/path = NodePath("TutorialNivel1/ClicParaContinuar:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("TutorialNivel1/IconoSensei:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("TutorialNivel1/PinguinoMaster:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("TutorialNivel1/IconoSensei:flip_h")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("TutorialNivel1/Pez:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(237, 129)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("TutorialNivel1/Pez:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("TutorialNivel2/BocadilloTexto:flip_h")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("TutorialNivel2/Texto1:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Pez:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(109, 344)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Pez:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("PezDorado:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_13l3b"]
+resource_name = "dar_peces"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialNivel1/BocadilloTexto:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialNivel1/Pez:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(237, 129), Vector2(51, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialNivel1/Pez:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ur26p"]
+resource_name = "explicarUnidades"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialNivel1/PinguinoMaster:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialNivel1/FlechasPingu1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialNivel1/TarjetaPinguino:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s81jw"]
+resource_name = "explicar_menus_parte_inferior"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialNivel1/PinguinoMaster:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(400, 255), Vector2(700, 255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialNivel1/PinguinoMaster:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialNivel1/BocadilloTexto:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialNivel1/BocadilloTexto:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(830, 273), Vector2(300, 273)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialNivel1/BocadilloTexto:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.913, 1.297), Vector2(0.8, 1.136)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TutorialNivel1/Texto1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(697, 72), Vector2(45, 94)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TutorialNivel1/Texto1:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(367, 312)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TutorialNivel1/ClicParaContinuar:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.933333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28, 421)]
+}
+
+[sub_resource type="Animation" id="Animation_527sg"]
+resource_name = "explicar_terreno_juego"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialNivel1/IconoSensei:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialNivel1/BocadilloTexto:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(165, 310)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialNivel1/BocadilloTexto:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.591, 0.72)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialNivel1/BocadilloTexto:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialNivel1/BocadilloTexto:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TutorialNivel1/PinguinoMaster:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TutorialNivel1/Texto1:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(268, 234)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TutorialNivel1/Texto1:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 204)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TutorialNivel1/ClicParaContinuar:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-35, 424)]
+}
+
+[sub_resource type="Animation" id="Animation_y6fug"]
+resource_name = "final_tutorial"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialNivel1/IconoSensei:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ecalu"]
+resource_name = "ataque_final"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IniciarNivel:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("18_8ucj0"), ExtResource("19_g0g4j"), ExtResource("20_ttp1p"), ExtResource("21_tq35s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IniciarNivel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 2, 2.5, 3, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(0.3, 0.3), Vector2(0.2, 0.2), Vector2(0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IniciarNivel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mk8m2"]
+resource_name = "moversensei"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialNivel1/PinguinoMaster:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1200, 255), Vector2(400, 255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialNivel1/PinguinoMaster:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialNivel1/BocadilloTexto:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialNivel1/BocadilloTexto:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.181, 0.293), Vector2(0.913, 1.297)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialNivel1/Texto1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TutorialNivel1/BocadilloTexto:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TutorialNivel1/BocadilloTexto:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TutorialNivel1/Texto1:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(422, 357)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TutorialNivel1/ClicParaContinuar:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(720, 424)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TutorialNivel1/Texto1:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(697, 70)]
+}
+
+[sub_resource type="Animation" id="Animation_k3vpe"]
+resource_name = "moversensei_2"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialNivel1/ClicParaContinuar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(720, 424)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialNivel2/PinguinoMaster:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1200, 255), Vector2(400, 255)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialNivel2/BocadilloTexto:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialNivel2/BocadilloTexto:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.181, 0.293), Vector2(0.913, 1.297)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialNivel2/BocadilloTexto:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TutorialNivel2/BocadilloTexto:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TutorialNivel2/Texto1:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TutorialNivel2/Texto1:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(422, 357)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TutorialNivel2/Texto1:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(697, 70)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TutorialNivel2/ClicParaContinuar:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(720, 424)]
+}
+
+[sub_resource type="Animation" id="Animation_ygg6k"]
+resource_name = "oleada final"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OleadaFinal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.65, 0.65), Vector2(0.7, 0.7), Vector2(0.75, 0.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OleadaFinal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7exur"]
+resource_name = "se acerca una oleada"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextoSeAcercaWave:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.833333, 1.2, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(0.85, 0.85), Vector2(0.8, 0.8), Vector2(0.75, 0.75), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextoSeAcercaWave:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_hy2n7"]
+resource_name = "anim_pesca1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pez:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(109, 344), Vector2(51, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pez:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_g2uxs"]
+resource_name = "anim_pesca_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pez:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(190, 389), Vector2(51, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pez:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_o7o5t"]
+resource_name = "anim_pesca3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pez:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(262, 447), Vector2(51, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pez:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mkry0"]
+resource_name = "anim_pesca3_dorado"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PezDorado:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(262, 447), Vector2(167, 33)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PezDorado:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_r4qm6"]
+resource_name = "anim_pesca2_dorado"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PezDorado:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(190, 389), Vector2(167, 33)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PezDorado:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_et8sq"]
+resource_name = "anim_pesca1_dorado"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PezDorado:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(109, 344), Vector2(167, 33)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PezDorado:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_46k62"]
+_data = {
+"RESET": SubResource("Animation_4kiad"),
+"anim_pesca1": SubResource("Animation_hy2n7"),
+"anim_pesca1_dorado": SubResource("Animation_et8sq"),
+"anim_pesca2": SubResource("Animation_g2uxs"),
+"anim_pesca2_dorado": SubResource("Animation_r4qm6"),
+"anim_pesca3": SubResource("Animation_o7o5t"),
+"anim_pesca3_dorado": SubResource("Animation_mkry0"),
+"dar_peces": SubResource("Animation_13l3b"),
+"explicarUnidades": SubResource("Animation_ur26p"),
+"explicar_menus_parte_inferior": SubResource("Animation_s81jw"),
+"explicar_terreno_juego": SubResource("Animation_527sg"),
+"final_tutorial": SubResource("Animation_y6fug"),
+"iniciar_nivel": SubResource("Animation_ecalu"),
+"moversensei": SubResource("Animation_mk8m2"),
+"moversensei_2": SubResource("Animation_k3vpe"),
+"oleada final": SubResource("Animation_ygg6k"),
+"se acerca una oleada": SubResource("Animation_7exur")
+}
+
+[node name="Nivel" type="Node2D" groups=["nivel"]]
+script = ExtResource("1_oww0c")
+
+[node name="Mapa" type="Sprite2D" parent="."]
+position = Vector2(600, 256)
+scale = Vector2(1.63934, 1.24272)
+texture = ExtResource("2_jlcun")
+
+[node name="Pinguinos" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 113.0
+offset_right = 116.0
+offset_bottom = 215.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 256.0
+offset_bottom = 259.0
+scale = Vector2(0.385, 0.385)
+fill_mode = 3
+texture_under = ExtResource("3_qnup3")
+texture_progress = ExtResource("3_qnup3")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 98.0
+offset_bottom = 103.0
+flat = true
+
+[node name="Tablero" type="Control" parent="." groups=["ignorar_raycast"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tablero"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 335.0
+offset_top = 71.0
+offset_right = 1076.0
+offset_bottom = 422.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(85, 70)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer8"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="VBoxContainer9" type="VBoxContainer" parent="Tablero/HBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer3" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer4" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4"]
+position = Vector2(40, 36.5)
+
+[node name="PanelContainer5" type="PanelContainer" parent="Tablero/HBoxContainer/VBoxContainer9"]
+custom_minimum_size = Vector2(80, 75)
+layout_mode = 2
+script = ExtResource("4_nk23x")
+
+[node name="Marker2D" type="Marker2D" parent="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5"]
+position = Vector2(40, 36.5)
+
+[node name="1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="2" type="Path2D" parent="."]
+position = Vector2(0, 78)
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="3" type="Path2D" parent="."]
+position = Vector2(0, 157)
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="4" type="Path2D" parent="."]
+position = Vector2(0, 236)
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="5" type="Path2D" parent="."]
+position = Vector2(0, 315)
+curve = SubResource("Curve2D_6hmbr")
+
+[node name="BotonPausa_Play" type="TextureButton" parent="."]
+offset_left = 851.0
+offset_top = 462.0
+offset_right = 1363.0
+offset_bottom = 974.0
+scale = Vector2(0.1, 0.1)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_ar0io")
+script = ExtResource("6_liga6")
+
+[node name="Boton_velocidad_normal" type="TextureButton" parent="."]
+offset_left = 921.0
+offset_top = 466.0
+offset_right = 1049.0
+offset_bottom = 596.0
+scale = Vector2(0.35, 0.35)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_3qgta")
+script = ExtResource("8_khu6u")
+
+[node name="Boton_velocidad_rapida" type="TextureButton" parent="."]
+offset_left = 979.0
+offset_top = 466.0
+offset_right = 1235.0
+offset_bottom = 594.0
+scale = Vector2(0.35, 0.35)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_u025q")
+script = ExtResource("10_m2jfe")
+
+[node name="Boton_velocidad_muyrapida" type="TextureButton" parent="."]
+offset_left = 1065.0
+offset_top = 466.0
+offset_right = 1415.0
+offset_bottom = 594.0
+scale = Vector2(0.35, 0.35)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_ws6ys")
+script = ExtResource("12_rhjdw")
+
+[node name="ContadorPecesNormales" type="Sprite2D" parent="."]
+position = Vector2(72, 32)
+scale = Vector2(0.391667, 0.457031)
+texture = ExtResource("13_ppps0")
+
+[node name="ConteoPeces" type="Label" parent="ContadorPecesNormales"]
+offset_left = 32.5532
+offset_top = -36.6496
+offset_right = 361.553
+offset_bottom = 107.35
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 80
+text = "1"
+
+[node name="ContadorPecesDorados" type="Sprite2D" parent="."]
+position = Vector2(194, 32)
+scale = Vector2(0.391667, 0.457031)
+texture = ExtResource("14_xhows")
+
+[node name="ConteoPecesDorados" type="Label" parent="ContadorPecesDorados"]
+offset_left = 35.5532
+offset_top = -36.812
+offset_right = 364.553
+offset_bottom = 116.188
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 80
+text = "1"
+
+[node name="BarraProgreso" parent="." instance=ExtResource("15_l30x2")]
+visible = false
+position = Vector2(234, 10)
+
+[node name="Pesca" parent="." instance=ExtResource("16_pmxsc")]
+visible = false
+position = Vector2(2, 324)
+scale = Vector2(0.654933, 0.626872)
+
+[node name="Pesca2" parent="." instance=ExtResource("16_pmxsc")]
+visible = false
+position = Vector2(81, 368)
+scale = Vector2(0.654933, 0.626872)
+
+[node name="Pesca3" parent="." instance=ExtResource("16_pmxsc")]
+visible = false
+position = Vector2(154, 423)
+scale = Vector2(0.654933, 0.626872)
+
+[node name="SitioMejorasPinguinos" type="Marker2D" parent="."]
+position = Vector2(226, 285)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_46k62")
+}
+
+[node name="TextoSeAcercaWave" type="Sprite2D" parent="."]
+position = Vector2(644, 377)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("18_ywjup")
+
+[node name="IniciarNivel" type="Sprite2D" parent="."]
+position = Vector2(661, 255)
+scale = Vector2(0.6, 0.6)
+
+[node name="OleadaFinal" type="Sprite2D" parent="."]
+position = Vector2(643, 374)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("23_nq06r")
+
+[node name="MenuVictoria" parent="." instance=ExtResource("24_i33q4")]
+visible = false
+offset_left = 594.0
+offset_top = 254.0
+offset_right = 594.0
+offset_bottom = 254.0
+
+[node name="TutorialPrimeraVictoria" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IconoSensei" type="Sprite2D" parent="TutorialPrimeraVictoria"]
+position = Vector2(60, 460)
+scale = Vector2(0.2, 0.193)
+texture = ExtResource("29_h4sqh")
+
+[node name="BocadilloTexto" type="Sprite2D" parent="TutorialPrimeraVictoria"]
+position = Vector2(494.735, 445.828)
+rotation = 1.57357
+scale = Vector2(0.254284, 1.55084)
+texture = ExtResource("27_dyxpn")
+flip_h = true
+
+[node name="TextoTutorialVictoria" type="Label" parent="TutorialPrimeraVictoria"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 389.0
+offset_right = 838.0
+offset_bottom = 464.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ClicParaContinuar" type="Label" parent="TutorialPrimeraVictoria"]
+visible = false
+layout_mode = 0
+offset_left = 336.0
+offset_top = 472.0
+offset_right = 839.0
+offset_bottom = 504.0
+theme_override_colors/font_color = Color(0.156863, 0.211765, 0.494118, 1)
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 32
+text = "Clic para continuar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinuarTutoVictoria" type="Button" parent="TutorialPrimeraVictoria"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1200.0
+offset_bottom = 513.0
+
+[node name="MenuDerrota" parent="." instance=ExtResource("25_pkt53")]
+visible = false
+offset_left = 595.0
+offset_top = 254.0
+offset_right = 595.0
+offset_bottom = 254.0
+
+[node name="TutorialNivel1" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1200.0
+offset_bottom = 512.0
+
+[node name="ColorRect" type="ColorRect" parent="TutorialNivel1"]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="PinguinoMaster" type="Sprite2D" parent="TutorialNivel1"]
+position = Vector2(1063, 255)
+texture = ExtResource("26_hbo8k")
+
+[node name="BocadilloTexto" type="Sprite2D" parent="TutorialNivel1"]
+position = Vector2(830, 273)
+rotation = 1.57357
+scale = Vector2(0.8, 1.2973)
+texture = ExtResource("27_dyxpn")
+flip_h = true
+
+[node name="Texto1" type="Label" parent="TutorialNivel1"]
+visible = false
+layout_mode = 0
+offset_left = 697.0
+offset_top = 72.0
+offset_right = 1064.0
+offset_bottom = 384.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 32
+text = "hola mu buenas me llamo juan alberto, no hagas muchos textos que me quedo muerto, jaja
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ClicParaContinuar" type="Label" parent="TutorialNivel1"]
+visible = false
+layout_mode = 0
+offset_left = 720.0
+offset_top = 424.0
+offset_right = 1116.0
+offset_bottom = 456.0
+theme_override_colors/font_color = Color(0.156863, 0.211765, 0.494118, 1)
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 32
+text = "Clic para continuar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continuar" type="Button" parent="TutorialNivel1"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1200.0
+offset_bottom = 513.0
+
+[node name="TarjetaPinguino" type="Sprite2D" parent="TutorialNivel1"]
+visible = false
+position = Vector2(62.1, 165.96)
+scale = Vector2(0.382031, 0.383125)
+texture = ExtResource("3_qnup3")
+
+[node name="FlechasPingu1" type="TileMapLayer" parent="TutorialNivel1"]
+visible = false
+position = Vector2(6, 0)
+tile_map_data = PackedByteArray("AAABAA4AAwAKAAMAAAADAA4AAwAKAAMAAAAFAA4AAwAKAAMAAAAHAAwAAwANAAMAAAAHAAoAAwANAAMAAAAHAAgAAwANAAMAAAA=")
+tile_set = ExtResource("28_pdpre")
+
+[node name="FlechasPingu2" type="TileMapLayer" parent="TutorialNivel1"]
+visible = false
+position = Vector2(6, 0)
+tile_map_data = PackedByteArray("AAAFAA8AAwAKAAMAAAADAA8AAwAKAAMAAAABAA8AAwAKAAMAAAAIAAwAAwANAAMAAAAIAAoAAwANAAMAAAAIAAgAAwANAAMAAAA=")
+tile_set = ExtResource("28_pdpre")
+
+[node name="FlechasPeces" type="TileMapLayer" parent="TutorialNivel1"]
+visible = false
+position = Vector2(5, 0)
+tile_map_data = PackedByteArray("AAACAAQAAwAKAAMAAAAEAAQAAwAKAAMAAAAGAAQAAwAKAAMAAAA=")
+tile_set = ExtResource("28_pdpre")
+
+[node name="FlechasPeces2" type="TileMapLayer" parent="TutorialNivel1"]
+visible = false
+position = Vector2(5, 0)
+tile_map_data = PackedByteArray("AAAGAAUAAwAKAAMAAAAEAAUAAwAKAAMAAAACAAUAAwAKAAMAAAA=")
+tile_set = ExtResource("28_pdpre")
+
+[node name="PecesContadorTutorial" type="Sprite2D" parent="TutorialNivel1"]
+visible = false
+position = Vector2(72, 32)
+scale = Vector2(0.391667, 0.457031)
+texture = ExtResource("13_ppps0")
+
+[node name="ConteoPeces" type="Label" parent="TutorialNivel1/PecesContadorTutorial"]
+offset_left = 32.5532
+offset_top = -36.6496
+offset_right = 361.553
+offset_bottom = 107.35
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="IconoPausaTutorial" type="Sprite2D" parent="TutorialNivel1"]
+visible = false
+position = Vector2(876, 489)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_ar0io")
+
+[node name="FlechasBotonPausa" type="TileMapLayer" parent="TutorialNivel1"]
+visible = false
+position = Vector2(5, 0)
+tile_map_data = PackedByteArray("AAA1ABwAAwALAAMAAAA3ABwAAwALAAMAAAA=")
+tile_set = ExtResource("28_pdpre")
+
+[node name="FlechasBotonPausa2" type="TileMapLayer" parent="TutorialNivel1"]
+visible = false
+position = Vector2(5, 0)
+tile_map_data = PackedByteArray("AAA1ABsAAwALAAMAAAA3ABsAAwALAAMAAAA=")
+tile_set = ExtResource("28_pdpre")
+
+[node name="FlechasBotonVelocidad" type="TileMapLayer" parent="TutorialNivel1"]
+visible = false
+position = Vector2(5, 0)
+tile_map_data = PackedByteArray("AAA6ABwAAwALAAMAAAA8ABwAAwALAAMAAAA+ABwAAwALAAMAAABAABwAAwALAAMAAABCABwAAwALAAMAAABEABwAAwALAAMAAABGABwAAwALAAMAAABIABwAAwALAAMAAAA=")
+tile_set = ExtResource("28_pdpre")
+
+[node name="FlechasBotonVelocidad2" type="TileMapLayer" parent="TutorialNivel1"]
+visible = false
+position = Vector2(5, 0)
+tile_map_data = PackedByteArray("AAA6ABsAAwALAAMAAAA8ABsAAwALAAMAAAA+ABsAAwALAAMAAABAABsAAwALAAMAAABCABsAAwALAAMAAABEABsAAwALAAMAAABGABsAAwALAAMAAABIABsAAwALAAMAAAA=")
+tile_set = ExtResource("28_pdpre")
+
+[node name="IconosVelocidad" type="Control" parent="TutorialNivel1"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VelocidadX1" type="Sprite2D" parent="TutorialNivel1/IconosVelocidad"]
+position = Vector2(943.5, 488)
+scale = Vector2(0.351562, 0.359375)
+texture = ExtResource("7_3qgta")
+
+[node name="VelocidadX2" type="Sprite2D" parent="TutorialNivel1/IconosVelocidad"]
+position = Vector2(1024, 489)
+scale = Vector2(0.359375, 0.339844)
+texture = ExtResource("9_u025q")
+
+[node name="VelocidadX3" type="Sprite2D" parent="TutorialNivel1/IconosVelocidad"]
+position = Vector2(1125.75, 488.4)
+scale = Vector2(0.338571, 0.321875)
+texture = ExtResource("11_ws6ys")
+
+[node name="IconoSensei" type="Sprite2D" parent="TutorialNivel1"]
+visible = false
+position = Vector2(266, 56)
+scale = Vector2(0.2, 0.193)
+texture = ExtResource("29_h4sqh")
+
+[node name="ImagenCampoBatalla" type="Sprite2D" parent="TutorialNivel1"]
+visible = false
+position = Vector2(724, 263)
+scale = Vector2(0.903153, 0.897025)
+texture = ExtResource("30_jsldh")
+
+[node name="Pez" type="Sprite2D" parent="TutorialNivel1"]
+visible = false
+position = Vector2(237, 129)
+scale = Vector2(0.39125, 0.436523)
+texture = ExtResource("31_0n01c")
+
+[node name="TutorialNivel2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="TutorialNivel2"]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="PinguinoMaster" type="Sprite2D" parent="TutorialNivel2"]
+position = Vector2(400, 255)
+texture = ExtResource("26_hbo8k")
+
+[node name="BocadilloTexto" type="Sprite2D" parent="TutorialNivel2"]
+position = Vector2(830, 273)
+rotation = 1.5708
+scale = Vector2(0.913, 1.297)
+texture = ExtResource("27_dyxpn")
+flip_h = true
+
+[node name="Texto1" type="Label" parent="TutorialNivel2"]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 70.0
+offset_right = 1119.0
+offset_bottom = 427.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 32
+text = "hola mu buenas me llamo juan alberto, no hagas muchos textos que me quedo muerto, jaja
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ClicParaContinuar" type="Label" parent="TutorialNivel2"]
+visible = false
+layout_mode = 0
+offset_left = 720.0
+offset_top = 424.0
+offset_right = 1116.0
+offset_bottom = 456.0
+theme_override_colors/font_color = Color(0.156863, 0.211765, 0.494118, 1)
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 32
+text = "Clic para continuar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinuarTuto2" type="Button" parent="TutorialNivel2"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1200.0
+offset_bottom = 513.0
+
+[node name="PinguPescadorIcono" type="Sprite2D" parent="TutorialNivel2"]
+visible = false
+position = Vector2(92.5, 375.25)
+scale = Vector2(0.166016, 0.172852)
+texture = ExtResource("32_j8dbf")
+
+[node name="PinguPescadoIconoHaPescado" type="Sprite2D" parent="TutorialNivel2"]
+visible = false
+position = Vector2(92.5, 375.25)
+scale = Vector2(0.166, 0.173)
+texture = ExtResource("33_224nm")
+
+[node name="Pez" type="Sprite2D" parent="."]
+position = Vector2(109, 344)
+scale = Vector2(0.39125, 0.436523)
+texture = ExtResource("31_0n01c")
+
+[node name="PezDorado" type="Sprite2D" parent="."]
+position = Vector2(167, 33)
+scale = Vector2(0.39125, 0.436523)
+texture = ExtResource("34_kx420")
+
+[node name="Menu" parent="." instance=ExtResource("17_vsm5p")]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 598.0
+offset_top = 259.0
+offset_right = 598.0
+offset_bottom = 259.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_3e1k7")
+
+[node name="Ganar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_m70co")
+
+[node name="Perder" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("37_166ux")
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer2/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer3/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer4/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer5/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer6/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer7/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer8/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" to="Tablero/HBoxContainer/VBoxContainer9/PanelContainer5" method="_on_mouse_exited"]
+[connection signal="pressed" from="BotonPausa_Play" to="BotonPausa_Play" method="_on_pressed"]
+[connection signal="pressed" from="Boton_velocidad_normal" to="Boton_velocidad_normal" method="_on_pressed"]
+[connection signal="pressed" from="Boton_velocidad_rapida" to="Boton_velocidad_rapida" method="_on_pressed"]
+[connection signal="pressed" from="Boton_velocidad_muyrapida" to="Boton_velocidad_muyrapida" method="_on_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="TutorialPrimeraVictoria/ContinuarTutoVictoria" to="." method="_on_continuar_tuto_victoria_pressed"]
+[connection signal="pressed" from="TutorialNivel1/Continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="TutorialNivel2/ContinuarTuto2" to="." method="_on_continuar_tuto_2_pressed"]
