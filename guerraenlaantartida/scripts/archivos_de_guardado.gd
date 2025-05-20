@@ -83,7 +83,12 @@ func _on_boton_cargar_datos_archivo_3_pressed() -> void:
 	cargarMapa()
 
 func cargarMapa():
-	get_tree().change_scene_to_file(ruta)
+	Global.comenzar_carga(ruta)
+	Global.musica_inicio.stop()
+	Global.manejar_musica_por_escena("res://escenas/pantalla_de_carga.tscn")
+	Global.rutaImagen1 = "res://img/FondoArchivosGuardado.png"
+	Global.rutaImagen2 = "res://img/ImagenCampamentoPantallaCarga.png"
+	get_tree().change_scene_to_file("res://escenas/pantalla_de_carga.tscn")
 
 func _on_boton_borrar_datos_archivo_1_pressed() -> void:
 	var confirmacion = await pedir_confirmacion("¿Estás seguro que deseas borrar la partida?")

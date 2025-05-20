@@ -18,6 +18,7 @@ var mejoraPinguinoPescadorExtra2 = false
 var mejoraPescadosNormalesInicio = false
 var mejoraPescadosDoradosInicio = false
 var mejoraAnzueloDorado = false
+var cargasSensei = 0
 var mejoraSenseiPinguino = false
 
 var tutorialNivel1 = false
@@ -36,8 +37,24 @@ var _carga_completa: bool = false
 
 var pinguino_seleccionado_aura_amarilla : Node = null
 
+var rutaImagen1 = null
+var rutaImagen2 = null
 
 var musica_player: AudioStreamPlayer = null
+
+var musica_inicio: AudioStreamPlayer
+
+
+func cargar_musica_incio():
+	if musica_inicio == null:
+		musica_inicio = AudioStreamPlayer.new()
+		musica_inicio.stream = load("res://sonidos/musicas/704399__tomentum__epic-movie-ending-bbc-symphony.ogg")
+		musica_inicio.bus = "Music"  # Opcional, si usas buses
+		musica_inicio.volume_db = -6
+		get_tree().root.add_child(musica_inicio)
+		musica_inicio.play()
+	elif not musica_inicio.playing:
+		musica_inicio.play()
 
 var escenas_con_musica := [
 	"res://escenas/campamento_principal.tscn",

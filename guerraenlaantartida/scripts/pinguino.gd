@@ -9,14 +9,24 @@ extends Node2D
 @export var afecta_voladores: bool
 
 var focas_en_rango: Array = []
-var disparo_timer: Timer  # Referencia al timer
+var disparo_timer: Timer
+
+# 🔥 Quemadura
+var quemado = false
+var tiempo_quemado = 3
+var daño_por_quemadura = 5
+var timer_quemadura: Timer
+
+# ❄️ Congelación
+var congelado = false
+var timer_congelado: Timer
+var tiempo_congelacion = 3.0
 
 func _ready():
-	
 	add_to_group("pinguino")
 	$BotonPinguino.modulate.a = 0.0
 
-	# Crear y configurar el timer
+	# Timer de disparo
 	disparo_timer = Timer.new()
 	disparo_timer.name = "DisparoTimer"
 	disparo_timer.wait_time = 1.0 / cadencia_disparo
@@ -25,15 +35,26 @@ func _ready():
 	add_child(disparo_timer)
 	disparo_timer.connect("timeout", Callable(self, "_on_disparo_timer_timeout"))
 
-	# Ajustar la velocidad de animación al ritmo de disparo
+	# Timer quemadura
+	timer_quemadura = Timer.new()
+	timer_quemadura.wait_time = 1.0
+	timer_quemadura.one_shot = false
+	add_child(timer_quemadura)
+	timer_quemadura.connect("timeout", Callable(self, "_on_timer_quemadura_timeout"))
+
+	# Timer congelación
+	timer_congelado = Timer.new()
+	timer_congelado.wait_time = tiempo_congelacion
+	timer_congelado.one_shot = true
+	add_child(timer_congelado)
+	timer_congelado.connect("timeout", Callable(self, "_on_timer_congelado_timeout"))
+
 	$AnimatedSprite2D.speed_scale = cadencia_disparo
 
 func set_cadencia_disparo(nueva: float) -> void:
 	cadencia_disparo = nueva
-
 	if disparo_timer:
 		disparo_timer.wait_time = 1.0 / cadencia_disparo
-
 	$AnimatedSprite2D.speed_scale = cadencia_disparo
 
 func _process(_delta: float) -> void:
@@ -49,7 +70,7 @@ func recibir_daño(cantidad: int):
 		panel = get_tree().root.get_node_or_null("Nivel/SitioMejorasPinguinos/panel_mejoras")
 
 	if panel and panel.pinguino_actual == self:
-		panel.set_datos(vida, get_daño()) 
+		panel.set_datos(vida, get_daño())
 
 func ataque():
 	var nuevo_proyectil = proyectil.instantiate()
@@ -57,6 +78,8 @@ func ataque():
 	$AnimatedSprite2D.play("atacar")
 
 func _on_disparo_timer_timeout():
+	if congelado:
+		return  # ❄️ No disparar si está congelado
 	if focas_en_rango.size() > 0:
 		ataque()
 
@@ -74,9 +97,37 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func get_daño() -> int:
 	var instancia = proyectil.instantiate()
-
 	if instancia.has_node("Proyectil1"):
 		var proyectil1 = instancia.get_node("Proyectil1")
 		return proyectil1.daño
 	else:
 		return instancia.daño
+
+# 🔥 Aplicar quemadura
+func aplicar_quemadura():
+	if not quemado:
+		quemado = true
+		tiempo_quemado = 3
+		timer_quemadura.start()
+	else:
+		tiempo_quemado = 3
+
+func _on_timer_quemadura_timeout():
+	if tiempo_quemado > 0:
+		vida -= daño_por_quemadura
+		tiempo_quemado -= 1
+	else:
+		quemado = false
+		timer_quemadura.stop()
+
+# ❄️ Aplicar congelación
+func aplicar_congelado():
+	if not congelado:
+		congelado = true
+		timer_congelado.start()
+	else:
+		timer_congelado.stop()
+		timer_congelado.start()
+
+func _on_timer_congelado_timeout():
+	congelado = false

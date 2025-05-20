@@ -22,8 +22,6 @@ func _process(delta: float) -> void:
 					var nivel = get_tree().get_nodes_in_group("nivel")[0]
 					nivel._reset()
 					nivel._actualizar_label_peces()
-				else:
-					print("No tienes suficientes peces para colocar el pingüino.")
 
 func _on_mouse_entered() -> void:
 	if conteo == 0 and Global.modo_compra:

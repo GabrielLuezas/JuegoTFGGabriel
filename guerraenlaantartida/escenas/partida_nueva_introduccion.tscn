@@ -1,0 +1,616 @@
+[gd_scene load_steps=19 format=3 uid="uid://rt3pwnj1uw8l"]
+
+[ext_resource type="Script" path="res://scripts/partida_nueva_introduccion.gd" id="1_je7o6"]
+[ext_resource type="Texture2D" uid="uid://djo0m2c1i7at8" path="res://img/CampamentoBase.png" id="2_b77fb"]
+[ext_resource type="Texture2D" uid="uid://cdcaoy2mayr4m" path="res://img/PinguinoReal.png" id="3_kprtd"]
+[ext_resource type="Texture2D" uid="uid://vx7omu1e25bn" path="res://img/PinguSensei.png" id="4_e7ghp"]
+[ext_resource type="Texture2D" uid="uid://drxvyrlndb5ym" path="res://img/Focas/FocaNormal/102.png" id="5_tbd83"]
+[ext_resource type="Texture2D" uid="uid://coa3nyincxajs" path="res://img/Focas/FocaBoss/Boss1.png" id="6_8q36e"]
+[ext_resource type="Texture2D" uid="uid://btejyy7pajj7g" path="res://img/Focas/FocaBoss/Boss4.png" id="7_6oap7"]
+[ext_resource type="Texture2D" uid="uid://8jbmpideri36" path="res://img/LogoDefinitivo.png" id="8_6gwbn"]
+[ext_resource type="FontFile" uid="uid://bph7b5e80n2ph" path="res://fonts/CompassPro.otf" id="8_20vte"]
+[ext_resource type="Texture2D" uid="uid://cv0064yjftv1q" path="res://img/Focas/FocaBoss/Boss2.png" id="10_atwwo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75xpo"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("6_8q36e")
+}, {
+"duration": 3.0,
+"texture": ExtResource("10_atwwo")
+}, {
+"duration": 3.0,
+"texture": ExtResource("7_6oap7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_7ud5l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Escena2/FocaBoss:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_6oap7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Escena1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Escena1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Escena2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Escena2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DialogoNegro:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Pero de repente, debido a unas épocas difíciles, el líder de las focas atacó a un pingüino para alimentarse."]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DialogoBlanco:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Pero de repente, debido a unas épocas difíciles, el líder de las focas atacó a un pingüino para alimentarse."]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Escena3:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Escena3:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_amb62"]
+resource_name = "empezarAnimacion"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Escena1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Escena1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xldnc"]
+resource_name = "empezarescena2"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Escena1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Escena1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Escena2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Escena2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DialogoNegro:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DialogoBlanco:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_yt5kt"]
+resource_name = "empezarescena3"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Escena2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Escena2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Escena3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Escena3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_43g3y"]
+resource_name = "morder"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Escena2/FocaBoss:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_8q36e"), ExtResource("10_atwwo"), ExtResource("7_6oap7")]
+}
+
+[sub_resource type="Animation" id="Animation_4pf4d"]
+resource_name = "terminar"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Escena3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5qno"]
+_data = {
+"RESET": SubResource("Animation_7ud5l"),
+"empezarAnimacion": SubResource("Animation_amb62"),
+"empezarescena2": SubResource("Animation_xldnc"),
+"empezarescena3": SubResource("Animation_yt5kt"),
+"morder": SubResource("Animation_43g3y"),
+"terminar": SubResource("Animation_4pf4d")
+}
+
+[node name="PartidaNuevaIntroduccion" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_je7o6")
+
+[node name="Escena1" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FotoCampamento" type="Sprite2D" parent="Escena1"]
+texture = ExtResource("2_b77fb")
+
+[node name="Pinguinos" type="Control" parent="Escena1"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pinguino" type="Sprite2D" parent="Escena1/Pinguinos"]
+position = Vector2(-126, -37)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_kprtd")
+
+[node name="Pinguino2" type="Sprite2D" parent="Escena1/Pinguinos"]
+position = Vector2(-231, 151)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_kprtd")
+
+[node name="Pinguino3" type="Sprite2D" parent="Escena1/Pinguinos"]
+position = Vector2(-461, 156)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_kprtd")
+
+[node name="Pinguino4" type="Sprite2D" parent="Escena1/Pinguinos"]
+position = Vector2(-483, -11)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_kprtd")
+
+[node name="Pinguino5" type="Sprite2D" parent="Escena1/Pinguinos"]
+position = Vector2(-73, -110)
+scale = Vector2(-0.200001, 0.2)
+texture = ExtResource("4_e7ghp")
+
+[node name="Pinguino6" type="Sprite2D" parent="Escena1/Pinguinos"]
+position = Vector2(-309, 70)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_kprtd")
+
+[node name="Focas" type="Control" parent="Escena1"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Foca" type="Sprite2D" parent="Escena1/Focas"]
+position = Vector2(259, -36)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_tbd83")
+
+[node name="Foca2" type="Sprite2D" parent="Escena1/Focas"]
+position = Vector2(89, 21)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_tbd83")
+
+[node name="Foca3" type="Sprite2D" parent="Escena1/Focas"]
+position = Vector2(413, 91)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_tbd83")
+
+[node name="Foca4" type="Sprite2D" parent="Escena1/Focas"]
+position = Vector2(326, 212)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_tbd83")
+
+[node name="Foca5" type="Sprite2D" parent="Escena1/Focas"]
+position = Vector2(171, 123)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_tbd83")
+
+[node name="Foca6" type="Sprite2D" parent="Escena1/Focas"]
+position = Vector2(97, -107)
+scale = Vector2(0.353125, 0.3375)
+texture = ExtResource("6_8q36e")
+
+[node name="Escena2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Escena2"]
+layout_mode = 0
+offset_left = -600.0
+offset_top = -256.0
+offset_right = 600.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="FocaBoss" type="AnimatedSprite2D" parent="Escena2"]
+position = Vector2(216, 43)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_75xpo")
+frame_progress = 0.571619
+
+[node name="Sprite2D" type="Sprite2D" parent="Escena2"]
+position = Vector2(-168, 30)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("3_kprtd")
+
+[node name="Escena3" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Escena3"]
+layout_mode = 0
+offset_left = -600.0
+offset_top = -256.0
+offset_right = 600.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Escena3"]
+position = Vector2(-413, -89)
+rotation = 3.14159
+scale = Vector2(0.92, -1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Escena3"]
+position = Vector2(-53, -88)
+rotation = 3.14159
+scale = Vector2(0.92, -1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Escena3"]
+position = Vector2(135, -89)
+rotation = 3.14159
+scale = Vector2(0.92, -1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Escena3"]
+position = Vector2(334, -90)
+rotation = -3.14159
+scale = Vector2(0.92, -1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Escena3"]
+position = Vector2(-216, -86)
+rotation = 3.14159
+scale = Vector2(0.92, -1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Escena3"]
+position = Vector2(60, 4)
+scale = Vector2(-0.92, 1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Escena3"]
+position = Vector2(456, 8)
+scale = Vector2(-0.92, 1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Escena3"]
+position = Vector2(252, 3)
+scale = Vector2(-0.92, 1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Escena3"]
+position = Vector2(-113, 7)
+scale = Vector2(-0.92, 1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Escena3"]
+position = Vector2(-299, 3)
+scale = Vector2(-0.92, 1)
+texture = ExtResource("8_6gwbn")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Escena3"]
+position = Vector2(-482, 0)
+scale = Vector2(-0.92, 1)
+texture = ExtResource("8_6gwbn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -600.0
+offset_top = 73.0
+offset_right = 600.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="DialogoNegro" type="Label" parent="."]
+layout_mode = 0
+offset_left = -595.0
+offset_top = 75.0
+offset_right = 603.0
+offset_bottom = 257.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_20vte")
+theme_override_font_sizes/font_size = 64
+text = "Pero de repente, debido a unas épocas difíciles, el líder de las focas atacó a un pingüino para alimentarse."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DialogoBlanco" type="Label" parent="."]
+layout_mode = 0
+offset_left = -601.0
+offset_top = 75.0
+offset_right = 601.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("8_20vte")
+theme_override_font_sizes/font_size = 64
+text = "Pero de repente, debido a unas épocas difíciles, el líder de las focas atacó a un pingüino para alimentarse."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j5qno")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

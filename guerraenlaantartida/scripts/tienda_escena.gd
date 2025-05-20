@@ -123,7 +123,7 @@ func _on_boton_mejora_sensei_pressed() -> void:
 		if confirmacion:
 			Global.dineroAcumulado -= 200
 			$TuDinero2.text = str(Global.dineroAcumulado)
-			Global.mejoraAnzueloDorado = true
+			Global.mejoraSenseiPinguino = true
 			aplicarFomatoTextoComprarObjeto()
 			actualizar_tienda()
 	else:

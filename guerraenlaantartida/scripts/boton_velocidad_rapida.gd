@@ -9,4 +9,3 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	Engine.time_scale = 2.0
-	print("Velocidad x2")

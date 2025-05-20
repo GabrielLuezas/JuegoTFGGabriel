@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccqujxyuoylwb"]
+
+[ext_resource type="FontFile" uid="uid://bph7b5e80n2ph" path="res://fonts/CompassPro.otf" id="1_60w1y"]
+[ext_resource type="Script" path="res://scripts/menu_no_ingame.gd" id="1_smr2x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ofro"]
+bg_color = Color(0.156863, 0.211765, 0.494118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yo53"]
+bg_color = Color(0.156863, 0.211765, 0.494118, 1)
+
+[node name="Menu_no_ingame" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_smr2x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -651.0
+offset_top = -308.0
+offset_right = 646.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.021, 0.026, 0.119, 0.7)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -51.5
+offset_right = 209.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 22
+
+[node name="Opciones" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_60w1y")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_7ofro")
+text = "OPCIONES"
+
+[node name="MenuPrincipal" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_60w1y")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_7yo53")
+text = "SALIR
+"
+
+[connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuPrincipal" to="." method="_on_menu_principal_pressed"]

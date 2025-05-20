@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://ccbog5vkw0xom"]
+
+[ext_resource type="Script" path="res://scripts/foca_hielo.gd" id="1_1h4lt"]
+[ext_resource type="Texture2D" uid="uid://vlymnwol6h3f" path="res://img/Focas/FocaHielo/401.png" id="9_1oo42"]
+[ext_resource type="Texture2D" uid="uid://ury1k8fgf3w1" path="res://img/Focas/FocaHielo/402.png" id="10_nd1iq"]
+[ext_resource type="Texture2D" uid="uid://orebyx5kcmqx" path="res://img/Focas/FocaHielo/400.png" id="11_py67j"]
+[ext_resource type="Texture2D" uid="uid://cbu78rwxep8ya" path="res://img/Focas/FocaHielo/Muerte2.png" id="12_2faej"]
+[ext_resource type="Texture2D" uid="uid://dmtomrfocndhh" path="res://img/Focas/FocaHielo/Congelada.png" id="12_xv56y"]
+[ext_resource type="Texture2D" uid="uid://dv426csrumkox" path="res://img/Focas/FocaHielo/Muerte21.png" id="13_htk2j"]
+[ext_resource type="Texture2D" uid="uid://cmrbb3u07r6gn" path="res://img/Focas/FocaHielo/403.png" id="14_nxo52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkj1x"]
+size = Vector2(25, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h404i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_1oo42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nd1iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_py67j")
+}],
+"loop": true,
+"name": &"Ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("12_xv56y")
+}, {
+"duration": 3.0,
+"texture": ExtResource("12_xv56y")
+}, {
+"duration": 3.0,
+"texture": ExtResource("12_xv56y")
+}, {
+"duration": 3.0,
+"texture": ExtResource("12_xv56y")
+}],
+"loop": true,
+"name": &"Congelado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_nd1iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2faej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_htk2j")
+}],
+"loop": true,
+"name": &"Morir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_1oo42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nd1iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nxo52")
+}],
+"loop": true,
+"name": &"Moverse",
+"speed": 5.0
+}]
+
+[node name="foca_hielo" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_1h4lt")
+
+[node name="Area2D" type="Area2D" parent="." groups=["focas"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(37, 2)
+shape = SubResource("RectangleShape2D_tkj1x")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 9.53558e-07)
+rotation = -3.14052
+scale = Vector2(0.368251, 0.375383)
+sprite_frames = SubResource("SpriteFrames_h404i")
+animation = &"Congelado"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

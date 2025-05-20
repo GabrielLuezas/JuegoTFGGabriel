@@ -1,9 +1,8 @@
 extends Control
-
 var ruta = "res://escenas/interior_casa_normal.tscn"
 
 var full_text := "Bienvenido al campamento central, estratega. Esta es nuestra base de operaciones, el centro de mando y el punto clave que debes proteger a toda costa."
-var type_speed := 0.05
+var type_speed := 0.03
 var paso_actual = 1
 
 var temporizador_flechas = Timer.new()
@@ -12,9 +11,15 @@ var flechas_a = null
 var flechas_b = null
 
 func _ready() -> void:
+	Global.musica_inicio.stop()
 	Engine.time_scale = 1.0
 	Global.reproducir_musica("res://sonidos/musicas/MusicaCampamento.ogg")
 	Global.manejar_musica_por_escena("res://escenas/campamento_principal.tscn")
+	
+	if Global.nivelMaximoConseguido >= 2:
+		$Botones/BotonTienda.show()
+	else:
+		$Botones/BotonTienda.hide()
 	
 	if Global.explicarCampamento:
 		$PinguPescador.show()
@@ -158,4 +163,17 @@ func _on_boton_pinguino_pescador_pressed() -> void:
 	flechas_b = $FlechasCasaJefe2
 	$FlechasCasaJefe1.show()
 	$FlechasCasaJefe2.show()
-	
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("abrirmenu"):
+		var menu_existente = get_tree().current_scene.get_node_or_null("MenuNoIngame")
+		
+		if menu_existente:
+			menu_existente.queue_free()  # Cierra el menú
+		else:
+			var escena_menu = preload("res://escenas/menu_no_ingame.tscn")
+			var menu = escena_menu.instantiate()
+			menu.name = "MenuNoIngame"  # Para poder detectarlo luego
+			get_tree().current_scene.add_child(menu)
+		

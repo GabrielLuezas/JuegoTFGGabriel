@@ -13,7 +13,6 @@ func _ready():
 	var dir = DirAccess.open(SAVE_DIR)
 	if not dir or not dir.dir_exists(SAVE_DIR):
 		DirAccess.make_dir_absolute(SAVE_DIR)
-		print("📁 Carpeta de guardado creada: ", SAVE_DIR)
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -22,7 +21,6 @@ func _notification(what):
 # Guardar en un archivo específico
 func save_game(slot):
 	if slot < 0 or slot >= SAVE_PATHS.size():
-		print("❌ Slot inválido para guardar.")
 		return
 
 	var save_data = {
@@ -53,14 +51,10 @@ func save_game(slot):
 	if file:
 		file.store_string(JSON.stringify(save_data))
 		file.close()
-		print("💾 Juego guardado en ", SAVE_PATHS[slot])
-	else:
-		print("❌ Error al guardar el archivo en slot ", slot)
 
 # Cargar desde un archivo específico
 func load_game(slot):
 	if slot < 0 or slot >= SAVE_PATHS.size():
-		print("❌ Slot inválido para cargar.")
 		return
 
 	if FileAccess.file_exists(SAVE_PATHS[slot]):
@@ -91,18 +85,15 @@ func load_game(slot):
 				Global.tutorialNivel3 = save_data.get("tutorial_nivel_3", false)
 				Global.tutorialNivel4 = save_data.get("tutorial_nivel_4", false)
 
-				print("✅ Juego cargado desde slot ", slot)
 				current_slot = slot
 			file.close()
 	else:
-		print("ℹ️ No se encontró archivo de guardado en slot ", slot, ". Creando uno nuevo...")
 		reset_global_data()
 		save_game(slot)
 
 # Eliminar un archivo de guardado
 func delete_save(slot):
 	if slot < 0 or slot >= SAVE_PATHS.size():
-		print("❌ Slot inválido para borrar.")
 		return
 
 	if FileAccess.file_exists(SAVE_PATHS[slot]):

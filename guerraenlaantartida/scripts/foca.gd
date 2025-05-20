@@ -67,8 +67,9 @@ func _process(_delta):
 		queue_free()
 
 	if progress_ratio == 1:
+		var path_node = get_parent()
 		queue_free()
-		get_tree().root.get_node("Nivel").terminarjuego()
+		get_tree().root.get_node("Nivel").terminarjuego(path_node.name)
 
 	if not atacando and not congelado and $AnimatedSprite2D.animation != "Congelado":
 		progress_ratio += velocidad * _delta
@@ -92,11 +93,9 @@ func _on_area_2d_area_entered(area):
 						daño -= armadura
 						armadura = 0
 				vida -= daño
-				print("Daño recibido:", proyectil.daño, " Armadura restante:", armadura, " Vida restante:", vida)
 		# 🔥 Disparo de fuego
 		if area.is_in_group("proyectil_fuego"):
 			if congelado:
-				print("🔥❄️ Disparo de fuego sobre foca congelada. Se descongela con penalización de velocidad.")
 				congelado = false
 				timer_congelado.stop()
 				quemado = false  # No se quema en este caso
@@ -112,17 +111,13 @@ func _on_area_2d_area_entered(area):
 		elif area.is_in_group("proyectil_hielo"):
 			if quemado:
 				vida -= 10
-				print("❄️🔥 Foca quemada recibe hielo. Se elimina quemadura y se aplica daño extra. No se congela.")
 				quemado = false
 				timer_quemadura.stop()
 			else:
 				bolas_recibidas += 1
-				print("❄️ Bola de hielo recibida. Total:", bolas_recibidas)
 				if bolas_recibidas >= 4:
 					aplicar_congelado()
 				elif congelado:
-					# 🔁 Reaplicar congelación si ya estaba congelada
-					print("🔁 Foca ya congelada. Reiniciando duración de congelación.")
 					timer_congelado.stop()
 					timer_congelado.wait_time = tiempo_congelacion
 					timer_congelado.start()
@@ -133,19 +128,14 @@ func aplicar_quemadura():
 		quemado = true
 		tiempo_quemado = 3
 		timer_quemadura.start()
-		print("🔥 Foca quemada")
 	else:
 		tiempo_quemado = 3
-		print("🔥 Quemadura reiniciada")
 
 func aplicar_congelado():
 	bolas_recibidas = 0
 	if not congelado:
 		congelado = true
 		velocidad = 0
-		print("❄️ Foca congelada por", tiempo_congelacion, "segundos")
-	else:
-		print("🔁 Foca ya congelada. Reiniciando congelación")
 
 	timer_congelado.wait_time = tiempo_congelacion
 	timer_congelado.start()
@@ -154,25 +144,21 @@ func aplicar_congelado():
 func _on_timer_quemadura_timeout():
 	if tiempo_quemado > 0:
 		vida -= daño_por_quemadura
-		print("🔥 Daño por quemadura:", daño_por_quemadura, " Vida restante:", vida)
 		tiempo_quemado -= 1
 	else:
 		quemado = false
 		timer_quemadura.stop()
-		print("🔥 Quemadura terminada")
 
 func _on_timer_congelado_timeout():
 	congelado = false
 	velocidad = velocidad_original
 	if not atacando:
 		$AnimatedSprite2D.play("Moverse")
-	print("❄️ Congelación terminada")
 
 func _on_timer_velocidad_reducida_timeout():
 	if velocidad_reducida_temporal:
 		velocidad = velocidad_original
 		velocidad_reducida_temporal = false
-		print("🐢 Penalización de velocidad terminada")
 
 func _on_area_2d_area_exited(area):
 	if area.get_parent() == objetivo:
@@ -193,4 +179,3 @@ func _on_timer_timeout():
 
 func actualiza_tiempo_congelado(tiempo_nuevo: float) -> void:
 	tiempo_congelacion = tiempo_nuevo
-	print("⏱️ Tiempo de congelación actualizado a:", tiempo_congelacion)

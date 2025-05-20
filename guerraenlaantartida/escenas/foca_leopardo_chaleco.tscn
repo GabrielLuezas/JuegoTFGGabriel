@@ -1,97 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgepwbm14hcyc"]
+[gd_scene load_steps=11 format=3 uid="uid://bgepwbm14hcyc"]
 
 [ext_resource type="Script" path="res://scripts/foca_chaleco.gd" id="1_g2h5r"]
-[ext_resource type="Texture2D" uid="uid://6dlk8i8faqn8" path="res://img/FocaAtacandoSinFondo.png" id="2_vxmue"]
-[ext_resource type="Texture2D" uid="uid://dbsy1bppypvdt" path="res://img/FocaEstaticaSinFodno.png" id="3_1mol5"]
-[ext_resource type="Texture2D" uid="uid://b615evk7t5s0d" path="res://img/FocaEstaticaCongelada.png" id="4_vgrus"]
-[ext_resource type="Texture2D" uid="uid://c2nan2yh5l2bk" path="res://img/FocaEstaticaCongeladaFase2.png" id="5_5kiks"]
-[ext_resource type="Texture2D" uid="uid://d0ttqn5kcqpqi" path="res://img/FocaEstaticaCongeladaFase3.png" id="6_awd7x"]
-[ext_resource type="Texture2D" uid="uid://d3ljsmcgrwn04" path="res://img/FocaEstaticaCongeladaFase4.png" id="7_32v4q"]
-[ext_resource type="Texture2D" uid="uid://3mom1sc8ci3a" path="res://img/FocaMovimientoSinFondo.png" id="8_btcgp"]
+[ext_resource type="Texture2D" uid="uid://cof1cdo1f2oug" path="res://img/Focas/FocaNormalChaleco/Congelada.png" id="5_uyeat"]
 [ext_resource type="Texture2D" uid="uid://b8r81n3a5tg65" path="res://img/Focas/FocaNormalChaleco/111.png" id="10_p647m"]
 [ext_resource type="Texture2D" uid="uid://ie0ov8olwa6a" path="res://img/Focas/FocaNormalChaleco/210.png" id="11_b1j0w"]
 [ext_resource type="Texture2D" uid="uid://b5j8gy5lf45r0" path="res://img/Focas/FocaNormalChaleco/113.png" id="12_r76ox"]
 [ext_resource type="Texture2D" uid="uid://vplp6rij4yhf" path="res://img/Focas/FocaNormalChaleco/Muerte31.png" id="13_3e4wf"]
 [ext_resource type="Texture2D" uid="uid://d21i351qpkvfs" path="res://img/Focas/FocaNormalChaleco/Muerte32.png" id="14_i2jx8"]
 [ext_resource type="Texture2D" uid="uid://bvko4mgq16oi6" path="res://img/Focas/FocaNormalChaleco/112.png" id="14_rom1a"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ll5d3"]
-animations = [{
-"frames": [{
-"duration": 2.0,
-"texture": ExtResource("2_vxmue")
-}, {
-"duration": 2.0,
-"texture": ExtResource("3_1mol5")
-}, {
-"duration": 2.0,
-"texture": ExtResource("2_vxmue")
-}, {
-"duration": 2.0,
-"texture": ExtResource("3_1mol5")
-}, {
-"duration": 2.0,
-"texture": ExtResource("2_vxmue")
-}, {
-"duration": 2.0,
-"texture": ExtResource("3_1mol5")
-}, {
-"duration": 2.0,
-"texture": ExtResource("2_vxmue")
-}, {
-"duration": 2.0,
-"texture": ExtResource("3_1mol5")
-}, {
-"duration": 2.0,
-"texture": ExtResource("2_vxmue")
-}],
-"loop": true,
-"name": &"Ataque",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 3.0,
-"texture": ExtResource("4_vgrus")
-}, {
-"duration": 3.0,
-"texture": ExtResource("5_5kiks")
-}, {
-"duration": 3.0,
-"texture": ExtResource("6_awd7x")
-}, {
-"duration": 3.0,
-"texture": ExtResource("7_32v4q")
-}],
-"loop": false,
-"name": &"Congelado",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 2.0,
-"texture": ExtResource("3_1mol5")
-}, {
-"duration": 2.0,
-"texture": ExtResource("8_btcgp")
-}, {
-"duration": 2.0,
-"texture": ExtResource("3_1mol5")
-}, {
-"duration": 2.0,
-"texture": ExtResource("8_btcgp")
-}, {
-"duration": 2.0,
-"texture": ExtResource("3_1mol5")
-}, {
-"duration": 2.0,
-"texture": ExtResource("8_btcgp")
-}, {
-"duration": 2.0,
-"texture": ExtResource("3_1mol5")
-}],
-"loop": true,
-"name": &"Moverse",
-"speed": 10.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkj1x"]
 size = Vector2(25, 61)
@@ -110,6 +26,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("5_uyeat")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_uyeat")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_uyeat")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_uyeat")
+}],
+"loop": true,
+"name": &"Congelado",
 "speed": 5.0
 }, {
 "frames": [{
@@ -145,13 +78,6 @@ animations = [{
 loop = false
 script = ExtResource("1_g2h5r")
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-visible = false
-rotation = 3.14159
-scale = Vector2(0.359, 0.359)
-sprite_frames = SubResource("SpriteFrames_ll5d3")
-animation = &"Moverse"
-
 [node name="Area2D" type="Area2D" parent="." groups=["focas"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -165,7 +91,7 @@ position = Vector2(0.293618, 0.573729)
 rotation = -3.14052
 scale = Vector2(0.368251, 0.375383)
 sprite_frames = SubResource("SpriteFrames_h404i")
-animation = &"Ataque"
+animation = &"Congelado"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

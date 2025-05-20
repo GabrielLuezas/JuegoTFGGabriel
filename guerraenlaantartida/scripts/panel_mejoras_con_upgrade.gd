@@ -3,6 +3,7 @@ extends Control
 var vida: int = 1
 var daño: int = 1
 var pinguino_actual = null
+@onready var libro_mejoras_escena = preload("res://escenas/libro_mejoras.tscn")
 
 
 func _ready() -> void:
@@ -24,7 +25,6 @@ func _ready() -> void:
 	
 
 func _on_boton_mejorar_nivel_pressed() -> void:
-	print(pinguino_actual)
 	if pinguino_actual:
 			pinguino_actual.nivelMejora = pinguino_actual.nivelMejora + 1
 			if pinguino_actual.mejora == "Disparo Multiple":
@@ -42,7 +42,6 @@ func _on_boton_mejorar_nivel_pressed() -> void:
 			var boton = pinguino_actual.get_node("BotonPinguino")
 			if boton:
 				boton._on_pressed()
-			print(pinguino_actual.nivelMejora)
 			if pinguino_actual.nivelMejora < 4 :
 				$CapaBotonMejoraPuede.show()
 				$CapaBotonMejoraPuedeIcono.show()
@@ -79,7 +78,19 @@ func _on_boton_vender_pressed() -> void:
 
 
 func _on_boton_libro_pressed() -> void:
-	pass # Replace with function body.
+	var nodo_nivel = get_tree().get_root().get_node("Nivel")
+	var libro = nodo_nivel.get_node("LibroMejoras")
+	
+	libro.show()
+	
+	while nodo_nivel and nodo_nivel.name != "Nivel":
+		nodo_nivel = nodo_nivel.get_parent()
+
+	if nodo_nivel:
+		nodo_nivel.pausa = true
+		nodo_nivel.toggle_pausa_menu_libro()
+	else:
+		push_error("No se encontró el nodo 'Nivel' en la jerarquía.")
 
 
 func _on_boton_cerrar_pressed() -> void:

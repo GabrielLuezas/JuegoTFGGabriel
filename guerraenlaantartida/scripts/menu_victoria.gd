@@ -24,6 +24,8 @@ func _process(delta):
 func _on_siguiente_nivel_pressed() -> void:
 	Engine.time_scale = 1.0
 	Global.comenzar_carga(ruta)
+	Global.rutaImagen1 = "res://img/ImagenPantallaDeCargaNivelFinalizado.png"
+	Global.rutaImagen2 = "res://img/ImagenMapaNormal.png"
 	get_tree().change_scene_to_file("res://escenas/pantalla_de_carga.tscn")
 
 func _on_campamento_principal_pressed() -> void:

@@ -25,7 +25,8 @@ func _on_boton_guardar_boton_pressed() -> void:
 	Global.nivelActual = 0
 	Global.nivelMaximoConseguido = 0
 	Global.dineroAcumulado = 0
-	get_tree().change_scene_to_file("res://escenas/mapa_seleccion_nivel.tscn")
+	get_tree().change_scene_to_file("res://escenas/partida_nueva_introduccion.tscn")
+	queue_free()
 	
 func _on_boton_atras_boton_pressed() -> void:
 	queue_free()

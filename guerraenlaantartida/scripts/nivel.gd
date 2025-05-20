@@ -5,6 +5,11 @@ var pinguino_preview = preload("res://escenas/pinguino_preview.tscn")
 @onready var foca_escena_chaleco = preload("res://escenas/foca_leopardo_chaleco.tscn")
 @onready var foca_escena_chaleco_casco = preload("res://escenas/foca_leopardo_chaleco_casco.tscn")
 @onready var foca_escena_blindada = preload("res://escenas/foca_blindada.tscn")
+@onready var foca_escena_payaso = preload("res://escenas/foca_payaso.tscn")
+@onready var foca_escena_hielo = preload("res://escenas/foca_hielo.tscn")
+@onready var foca_escena_ignea = preload("res://escenas/foca_ignea.tscn")
+@onready var boss_escena = preload("res://escenas/foca_boss.tscn")
+
 
 var conteo = 0
 var pausa = false
@@ -29,7 +34,7 @@ var datos_nivel: Dictionary
 var check_timer: Timer
 
 var full_text := "Oh, así que tú eres nuestro nuevo estratega.\nBienvenido al frente de batalla, %s. Aquí no hay tiempo para descansar, tu misión será defender nuestro territorio de los enemigos que no dejan de avanzar." % Global.nombreUsuario
-var type_speed := 0.05
+var type_speed := 0.03
 var siguiente_paso_tutorial = false
 var paso_enseñar_pinguino = false
 var paso_enseñar_peces = false
@@ -37,6 +42,7 @@ var paso_enseñar_menus_abajo = false
 var paso_enseñar_menus_abajo2 = false
 var paso_enseñar_tablero = false
 var paso_final_tutorial = false
+var paso_enseñar_escape = false
 
 var temporizador_flechas = Timer.new()
 var mostrar_a = true
@@ -57,6 +63,8 @@ func _ready():
 	_actualizar_label_peces()
 	_actualizar_label_peces_dorados()
 	
+	
+	
 	$Pez.hide()
 	$PezDorado.hide()
 	if nivelActual == 1:
@@ -69,6 +77,7 @@ func _ready():
 			$AnimationPlayer.play("iniciar_nivel")
 		else:
 			$TutorialNivel1.show()
+			$MusicaTuto.play()
 			$AnimationPlayer.play("moversensei")
 	if nivelActual == 2:
 		$ContadorPecesDorados.hide()
@@ -81,6 +90,7 @@ func _ready():
 		else: 
 			full_text = "Parece que has tenido éxito encontrando a un pescador. Proxing es uno de los mejores de la aldea, ¡seguro que te será muy útil en el campo de batalla!"
 			$TutorialNivel2.show()
+			$MusicaTuto.play()
 			$AnimationPlayer.play("moversensei_2")
 	if nivelActual == 3:
 		$ContadorPecesDorados.hide()
@@ -93,6 +103,7 @@ func _ready():
 			_actualizar_label_peces_dorados()
 			$AnimationPlayer.play("iniciar_nivel")
 		else: 
+			$MusicaTuto.play()
 			full_text = "Los pingüinos reales aún pueden volverse más fuertes. Estos tienen mejoras que cuestan 1 pez de oro cada una."
 			$TutorialNivel3.show()
 			show_text_slowly_tuto3(full_text)
@@ -100,10 +111,13 @@ func _ready():
 			flechas_b = $TutorialNivel3/FlechasPeces2
 			$ContadorPecesDorados.show()
 			iniciar_animacion_flechas()
-	if nivelActual >= 4:
+	if nivelActual >= 4 and nivelActual <=11:
 		$Pesca.show()
 		$AudioStreamPlayer2D.play()
 		$AnimationPlayer.play("iniciar_nivel")
+	if nivelActual == 12:
+		nivel_iniciado = true
+		iniciarBoss()
 	
 	if nivelActual >= 3:
 		comprobar_mejoras()
@@ -158,6 +172,19 @@ func _process(delta):
 			en_cooldown = false
 			$Control/Button.disabled = false
 
+func iniciarBoss():
+	var path_boss = get_node("3")
+	if path_boss:
+		var boss = boss_escena.instantiate()
+		path_boss.add_child(boss)
+		boss.rotation_degrees = 90
+		boss.progress_ratio = 0
+		boss.fase = 1
+		boss.set_detenido(true)
+		boss.hacer_fase()
+
+
+
 func iniciar_nivel():
 	nivel_iniciado = true
 	seguirGenerando = true
@@ -204,6 +231,7 @@ func generar_oleada_final():
 	if nivelActual == 11:
 		oleada_final_nivel_once()
 	$OleadaFinal.hide()
+	await get_tree().create_timer(4.0).timeout
 	iniciar_comprobacion_path_vacios()
 
 func oleada_final_nivel_uno():
@@ -307,19 +335,245 @@ func oleada_final_nivel_cinco():
 			foca.rotation_degrees = 90
 			foca.progress_ratio = 0
 func oleada_final_nivel_seis():
-	pass
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(1.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(1.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(1.0).timeout
+	generar_foca_payaso()
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco_casco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
 func oleada_final_nivel_siete():
-	pass
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(2.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(2.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(2.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(2.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(2.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
 func oleada_final_nivel_ocho():
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_hielo.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_ignea.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_hielo.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_ignea.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
 	pass
 func oleada_final_nivel_nueve():
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(6.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_hielo.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_ignea.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_hielo.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_ignea.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
 	pass
 func oleada_final_nivel_diez():
-	pass
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco_casco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco_casco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
 func oleada_final_nivel_once():
-	pass
-
-
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco_casco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_chaleco_casco.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
+	generar_foca_payaso()
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_blindada.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(6.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_ignea.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_hielo.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_ignea.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var foca = foca_escena_hielo.instantiate()
+			path.add_child(foca)
+			foca.rotation_degrees = 90
+			foca.progress_ratio = 0
+	await get_tree().create_timer(3.0).timeout
+	
 func generar_enemigos():
 	if seguirGenerando:
 		var numero = randi_range(1, 5)
@@ -329,6 +583,11 @@ func generar_enemigos():
 			var lista_enemigos = datos_nivel["enemigos"]
 			if lista_enemigos.size() > 0:
 				var enemigo_seleccionado = lista_enemigos[randi() % lista_enemigos.size()]
+				
+				if enemigo_seleccionado == "foca_payaso":
+					generar_foca_payaso()
+					return
+				
 				var escena_path = "res://escenas/%s.tscn" % enemigo_seleccionado
 				if ResourceLoader.exists(escena_path):
 					var enemigo_escena = load(escena_path)
@@ -342,6 +601,24 @@ func generar_enemigos():
 			print("No se encontró el nodo con nombre:", numero)
 	else:
 		print("Generación de enemigos detenida")
+
+
+func generar_foca_payaso():
+	$SonidoPayaso.play()
+	await get_tree().create_timer(2.0).timeout
+	for i in range(1, 6):
+		var path = get_node("%d" % i)
+		if path:
+			var escena_path = "res://escenas/foca_payaso.tscn"
+			if ResourceLoader.exists(escena_path):
+				var enemigo_escena = load(escena_path)
+				var enemigo = enemigo_escena.instantiate()
+				path.add_child(enemigo)
+				enemigo.rotation_degrees = 90
+				enemigo.progress_ratio = 0
+			else:
+				print("No se encontró la escena para: foca_payaso")
+
 
 func _on_button_pressed():
 	if conteo == 0 and Global.peces >= 5 and !en_cooldown:
@@ -374,17 +651,55 @@ func _unhandled_input(event):
 
 func toggle_pause():
 	pausa = !pausa
-	get_tree().paused = pausa
 	$Menu.visible = pausa
+	get_tree().paused = pausa
 
-func terminarjuego():
-	$AudioStreamPlayer2D.stop()
-	for area in get_tree().get_nodes_in_group("proyectil"):
-			if area is Area2D and area.get_parent():
-				area.get_parent().queue_free()
-	$MenuDerrota.show()
-	$Perder.play()
-	Engine.time_scale = 0.0
+func toggle_pausa_menu_libro():
+	get_tree().paused = pausa
+	
+func terminarjuego(nombre_path):
+	if Global.mejoraSenseiPinguino and Global.cargasSensei==1:
+		match nombre_path:
+			"1":
+				$PinguMaestro.position = Vector2(296, 88)
+				$PinguMaestro.show()
+				eliminar_enemigos_de_linea(nombre_path)
+			"2":
+				$PinguMaestro.position = Vector2(296, 175)
+				$PinguMaestro.show()
+				eliminar_enemigos_de_linea(nombre_path)
+			"3":
+				$PinguMaestro.position = Vector2(296, 255)
+				$PinguMaestro.show()
+				eliminar_enemigos_de_linea(nombre_path)
+			"4":
+				$PinguMaestro.position = Vector2(296, 331)
+				$PinguMaestro.show()
+				eliminar_enemigos_de_linea(nombre_path)
+			"5":
+				$PinguMaestro.position = Vector2(296, 412)
+				$PinguMaestro.show()
+				eliminar_enemigos_de_linea(nombre_path)
+			_:
+				print("Llegó por otro camino: ", nombre_path)
+	else:
+		$AudioStreamPlayer2D.stop()
+		for area in get_tree().get_nodes_in_group("proyectil"):
+				if area is Area2D and area.get_parent():
+					area.get_parent().queue_free()
+		$MenuDerrota.show()
+		$Perder.play()
+		Engine.time_scale = 0.0
+
+func eliminar_enemigos_de_linea(nombre_path):
+	var path = get_node_or_null(nombre_path)
+	if path == null:
+		print("No se encontró el path: ", nombre_path)
+		return
+
+	for child in path.get_children():
+		if child is PathFollow2D and child.name != "foca_boss":
+			child.queue_free()
 
 func _on_timer_timeout():
 	$Control/TextureProgressBar.value += 20
@@ -468,6 +783,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		Global.peces = 30
 		_actualizar_label_peces()
 		$TutorialNivel1.hide()
+		$MusicaTuto.stop()
 		$AudioStreamPlayer2D.play()
 		$AnimationPlayer.play("iniciar_nivel")
 		
@@ -569,13 +885,18 @@ func _on_continuar_pressed() -> void:
 					if paso_enseñar_menus_abajo2:
 						temporizador_flechas.stop()
 						if paso_enseñar_tablero:
-							if paso_final_tutorial:
-								$AnimationPlayer.play("dar_peces")
+							if paso_enseñar_escape:
+								if paso_final_tutorial:
+									$AnimationPlayer.play("dar_peces")
+								else:
+									paso_final_tutorial  = true
+									$AnimationPlayer.play("final_tutorial")
 							else:
 								$TutorialNivel1/ImagenCampoBatalla.hide()
 								$TutorialNivel1/PecesContadorTutorial.show()
-								paso_final_tutorial  = true
-								$AnimationPlayer.play("final_tutorial")
+								paso_enseñar_escape=true
+								full_text = "Pulsa la tecla Escape para abrir el menú. Esto también pausará la partida."
+								show_text_slowly(full_text)
 						else:
 							$TutorialNivel1/IconosVelocidad.hide()
 							$TutorialNivel1/FlechasBotonVelocidad.hide()
@@ -594,7 +915,6 @@ func _on_continuar_pressed() -> void:
 						temporizador_flechas.start()
 						full_text = "También puedes aumentar la velocidad del juego pulsando los botones x1, x2 o x3,\nen caso de que quieras ir más rápido porque ya tienes una buena línea de defensa."
 						show_text_slowly(full_text)
-						
 				else:
 					$TutorialNivel1/FlechasPeces.hide()
 					$TutorialNivel1/FlechasPeces2.hide()
@@ -639,6 +959,8 @@ func _al_cambiar_tiempo():
 		flechas_b.show()
 
 func comprobar_mejoras():
+	if Global.mejoraSenseiPinguino:
+		Global.cargasSensei = 1
 	if Global.mejoraCañaVieja:
 		$Pesca.min_tiempo_espera = 6.0
 		$Pesca.max_tiempo_espera = 7.0
@@ -731,6 +1053,7 @@ func _on_continuar_tuto_2_pressed() -> void:
 		$Pesca.show()
 		$TutorialNivel2.hide()
 		Global.tutorialNivel2 = true
+		$MusicaTuto.stop()
 		$AudioStreamPlayer2D.play()
 		$AnimationPlayer.play("iniciar_nivel")
 
@@ -745,7 +1068,7 @@ func reproducir_animacion_para(nombre_nodo: String):
 			anim_player.play("anim_pesca3")
 
 func reproducir_animacion_para_dorado(nombre_nodo: String):
-	var anim_player = $AnimationPlayerPinguinos
+	var anim_player = $AnimationPlayerPinguinos2
 	match nombre_nodo:
 		"Pesca":
 			anim_player.play("anim_pesca1_dorado")
@@ -783,6 +1106,7 @@ func _on_continuar_tuto_nivel_3_pressed() -> void:
 		var boton = pinguino_instance.get_node("BotonPinguino")  
 		await boton.pinguino_clickeado
 		tutorial3_pasos = 3
+		$TutorialNivel3/TapaderaPanel.show()
 		full_text = "Cada pingüino tiene 4 mejoras diferentes con efectos distintos, pero cuidado: un mismo pingüino solo puede tener un tipo de mejora activa a la vez."
 		await show_text_slowly_tuto3(full_text)
 
@@ -793,25 +1117,38 @@ func _on_continuar_tuto_nivel_3_pressed() -> void:
 		tutorial3_pasos = 4
 		full_text = "Cada mejora puede ser mejorada hasta un máximo de 4 niveles, costando siempre 1 pez de oro por cada nivel que suba."
 		await show_text_slowly_tuto3(full_text)
-	
 	elif tutorial3_pasos == 4:
+		$TutorialNivel3/ContinuarTutoNivel3.hide()
+		$TutorialNivel3/ClicParaContinuar.hide()
+		$TutorialNivel3/ColorRect.hide()
+		temporizador_flechas.start()
+		flechas_a = $TutorialNivel3/FlechasLibro1
+		flechas_b = $TutorialNivel3/FlechasLibro2
+		tutorial3_pasos = 5
+		full_text = "También puedes consultar qué hacen estas mejoras haciendo clic en el ícono del libro dentro del panel."
+		await show_text_slowly_tuto3(full_text)
+	elif tutorial3_pasos == 5:
+		temporizador_flechas.stop()
+		$TutorialNivel3/FlechasLibro1.hide()
+		$TutorialNivel3/FlechasLibro2.hide()
 		$TutorialNivel3/ContinuarTutoNivel3.hide()
 		$TutorialNivel3/ClicParaContinuar.hide()
 		$TutorialNivel3/ColorRect.hide()
 		var panel = $SitioMejorasPinguinos.get_node("panel_mejoras")
 		panel._on_boton_cerrar_pressed()
-		tutorial3_pasos = 5
+		$TutorialNivel3/TapaderaPanel.hide()
+		tutorial3_pasos = 6
 		full_text = "Te voy a dar 3 peces dorados para que pruebes a mejorar a los pingüinos. ¡Prepárate, que ya vienen los enemigos!"
 		await show_text_slowly_tuto3(full_text)
 		$AnimationPlayerPinguinos.play("dar_peces_dorados_tutorial")
 		await get_tree().create_timer(1.0).timeout
 		Global.pecesDorados = 3
 		_actualizar_label_peces_dorados()
-		
-	elif tutorial3_pasos == 5:
+	elif tutorial3_pasos == 6:
 		$Pesca.show()
 		$TutorialNivel3.hide()
 		Global.tutorialNivel3 = true
+		$MusicaTuto.stop()
 		$AudioStreamPlayer2D.play()
 		$AnimationPlayer.play("iniciar_nivel")
 

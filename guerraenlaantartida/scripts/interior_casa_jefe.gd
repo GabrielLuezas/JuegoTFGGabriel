@@ -36,6 +36,8 @@ func _al_cambiar_tiempo():
 func _on_mapa_pressed() -> void:
 	Global.comenzar_carga(ruta)
 	Global.manejar_musica_por_escena("res://escenas/pantalla_de_carga.tscn")
+	Global.rutaImagen1 = "res://img/InteriorCasasImportantes.png"
+	Global.rutaImagen2 = "res://img/FotoLibroTransicion.png"
 	get_tree().change_scene_to_file("res://escenas/pantalla_de_carga.tscn")
 
 

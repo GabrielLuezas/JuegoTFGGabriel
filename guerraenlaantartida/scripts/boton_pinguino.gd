@@ -14,9 +14,12 @@ func _on_pressed():
 		var marker = get_tree().root.get_node("Nivel/SitioMejorasPinguinos")
 		
 		if Global.pinguino_seleccionado_aura_amarilla and Global.pinguino_seleccionado_aura_amarilla != pinguino:
-			var sombra_anterior = Global.pinguino_seleccionado_aura_amarilla.get_node("AuraAmarilla")
-			if sombra_anterior:
-				sombra_anterior.visible = false
+			if is_instance_valid(Global.pinguino_seleccionado_aura_amarilla):
+				var sombra_anterior = Global.pinguino_seleccionado_aura_amarilla.get_node_or_null("AuraAmarilla")
+				if sombra_anterior:
+					sombra_anterior.visible = false
+			else:
+				Global.pinguino_seleccionado_aura_amarilla = null
 
 		# Mostrar la sombra del pinguino actual
 		var sombra_actual = pinguino.get_node("AuraAmarilla")

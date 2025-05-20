@@ -18,6 +18,8 @@ var fade_in_hecho: bool = false
 var fade_out_hecho: bool = false
 
 func _ready():
+	$MapaFondo.texture = load(Global.rutaImagen1)
+	$EleccionNivelFondo.texture = load(Global.rutaImagen2)
 	animaciones.play("fade_out")
 	animaciones.animation_finished.connect(_cuando_animacion_termina)
 	$EleccionNivelFondo.hide()
