@@ -16,7 +16,10 @@ func _ready() -> void:
 
 	pesca_timer = Timer.new()
 	pesca_timer.one_shot = true
-	pesca_timer.wait_time = randf_range(min_tiempo_espera, max_tiempo_espera)
+	if Global.nivelActual == 12:
+		pesca_timer.wait_time = randf_range(2, 4)
+	else:
+		pesca_timer.wait_time = randf_range(min_tiempo_espera, max_tiempo_espera)
 	pesca_timer.timeout.connect(_on_pesca_timeout)
 	add_child(pesca_timer)
 	pesca_timer.start()

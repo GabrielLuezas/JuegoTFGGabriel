@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://blu55nodsqi47"]
+[gd_scene load_steps=14 format=3 uid="uid://blu55nodsqi47"]
 
 [ext_resource type="Texture2D" uid="uid://cdcaoy2mayr4m" path="res://img/PinguinoReal.png" id="1_snc7a"]
 [ext_resource type="Script" path="res://scripts/pinguino.gd" id="1_ujqth"]
+[ext_resource type="Texture2D" uid="uid://44oujjwy07t0" path="res://img/PinguinoRealCongelado.png" id="2_sgxa8"]
 [ext_resource type="Texture2D" uid="uid://o2erbds5fv3w" path="res://img/AnimacionDisparoPinguino/Fase1DisparndoPinguinoReal.png" id="3_68uet"]
 [ext_resource type="Texture2D" uid="uid://c4xyes5tilbt6" path="res://img/AnimacionDisparoPinguino/Fase2DisparndoPinguinoReal.png" id="4_d7wtc"]
 [ext_resource type="Script" path="res://scripts/boton_pinguino.gd" id="5_c3mp6"]
@@ -12,6 +13,23 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ucgc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sgxa8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sgxa8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sgxa8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sgxa8")
+}],
+"loop": true,
+"name": &"Congelado",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 0.75,
 "texture": ExtResource("1_snc7a")
@@ -71,9 +89,8 @@ cadencia_disparo = 0.4
 position = Vector2(4, -2)
 scale = Vector2(0.359, 0.359)
 sprite_frames = SubResource("SpriteFrames_4ucgc")
-animation = &"atacar"
 
-[node name="Area2D" type="Area2D" parent="." groups=["ignorar_raycast", "pinguino"]]
+[node name="Area2D" type="Area2D" parent="." groups=["pinguino"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(28, -1)

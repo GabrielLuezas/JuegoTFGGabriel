@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://b3hhlsessq83u"]
+[gd_scene load_steps=77 format=4 uid="uid://b3hhlsessq83u"]
 
 [ext_resource type="Script" path="res://scripts/nivel.gd" id="1_oww0c"]
 [ext_resource type="Texture2D" uid="uid://hq5ny4e0hn16" path="res://img/makuked.png" id="2_jlcun"]
@@ -37,8 +37,12 @@
 [ext_resource type="Texture2D" uid="uid://c011g5i0flcrc" path="res://img/PezDorado.png" id="34_kx420"]
 [ext_resource type="AudioStream" uid="uid://c7rg4k7tcpax0" path="res://sonidos/musicas/MusicaNiveles.ogg" id="35_3e1k7"]
 [ext_resource type="PackedScene" uid="uid://bjsnjqoai0ftx" path="res://escenas/libro_mejoras.tscn" id="35_7alnd"]
+[ext_resource type="Texture2D" uid="uid://dvq2hfrcm0x1l" path="res://img/fase1.png" id="35_nr5u5"]
+[ext_resource type="Texture2D" uid="uid://c0cc8qei7wnf" path="res://img/fase2.png" id="36_ietbd"]
 [ext_resource type="AudioStream" uid="uid://fverh0aox00p" path="res://sonidos/musicas/MusicaGanar.ogg" id="36_m70co"]
+[ext_resource type="Texture2D" uid="uid://dap3lyhdax6v5" path="res://img/fase3.png" id="37_3fqqx"]
 [ext_resource type="AudioStream" uid="uid://bi3dqf1qwuyj6" path="res://sonidos/musicas/game-over-classic-206486.mp3" id="37_166ux"]
+[ext_resource type="Texture2D" uid="uid://bcj3wxvarx60b" path="res://img/fasefina.png" id="38_4oqlb"]
 [ext_resource type="AudioStream" uid="uid://c7yyhmfwsh8qh" path="res://sonidos/musicas/MusicaTutorial.mp3" id="39_717tw"]
 [ext_resource type="AudioStream" uid="uid://bvovrkdshb2c5" path="res://sonidos/audios/SonidoClown.mp3" id="40_4f8hr"]
 
@@ -410,6 +414,90 @@ tracks/29/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Fase1:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Fase1:scale")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Fase2:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Fase2:scale")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Fase3:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("FaseFinal:visible")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("FaseFinal:scale")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
 
 [sub_resource type="Animation" id="Animation_13l3b"]
 resource_name = "dar_peces"
@@ -712,6 +800,118 @@ tracks/8/keys = {
 "values": [Vector2(-35, 424)]
 }
 
+[sub_resource type="Animation" id="Animation_1th05"]
+resource_name = "fase_1"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fase1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fase1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.35, 0.35), Vector2(0.38, 0.38), Vector2(0.4, 0.4)]
+}
+
+[sub_resource type="Animation" id="Animation_gb4ck"]
+resource_name = "fase_2"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fase2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.35, 0.35), Vector2(0.38, 0.38), Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fase2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_j1rir"]
+resource_name = "fase_3"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fase3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fase3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.35, 0.35), Vector2(0.38, 0.38), Vector2(0.4, 0.4)]
+}
+
+[sub_resource type="Animation" id="Animation_w8de1"]
+resource_name = "fase_final"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaseFinal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FaseFinal:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.65, 0.65), Vector2(0.7, 0.7)]
+}
+
 [sub_resource type="Animation" id="Animation_y6fug"]
 resource_name = "final_tutorial"
 tracks/0/type = "value"
@@ -729,6 +929,47 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ecalu"]
 resource_name = "ataque_final"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IniciarNivel:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("18_8ucj0"), ExtResource("19_g0g4j"), ExtResource("20_ttp1p"), ExtResource("21_tq35s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IniciarNivel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 2, 2.5, 3, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(0.3, 0.3), Vector2(0.2, 0.2), Vector2(0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IniciarNivel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3x0la"]
+resource_name = "iniciar_nivel_boss"
 length = 4.0
 step = 1.0
 tracks/0/type = "value"
@@ -1079,8 +1320,13 @@ _data = {
 "explicarUnidades": SubResource("Animation_ur26p"),
 "explicar_menus_parte_inferior": SubResource("Animation_s81jw"),
 "explicar_terreno_juego": SubResource("Animation_527sg"),
+"fase_1": SubResource("Animation_1th05"),
+"fase_2": SubResource("Animation_gb4ck"),
+"fase_3": SubResource("Animation_j1rir"),
+"fase_final": SubResource("Animation_w8de1"),
 "final_tutorial": SubResource("Animation_y6fug"),
 "iniciar_nivel": SubResource("Animation_ecalu"),
+"iniciar_nivel_boss": SubResource("Animation_3x0la"),
 "moversensei": SubResource("Animation_mk8m2"),
 "moversensei_2": SubResource("Animation_k3vpe"),
 "oleada final": SubResource("Animation_ygg6k"),
@@ -1361,6 +1607,156 @@ _data = {
 "anim_pesca3": SubResource("Animation_bkai8"),
 "anim_pesca3_dorado": SubResource("Animation_yw53q"),
 "dar_peces_dorados_tutorial": SubResource("Animation_gd02i")
+}
+
+[sub_resource type="Animation" id="Animation_sfidk"]
+resource_name = "terminarjuego"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IconoSensei:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_gvsys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IconoSensei:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IconoSensei:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dvo7n"]
+resource_name = "cambiaracreditos"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IconoSensei:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_73iew"]
+_data = {
+"RESET": SubResource("Animation_gvsys"),
+"cambiaracreditos": SubResource("Animation_dvo7n"),
+"terminarjuego": SubResource("Animation_sfidk")
 }
 
 [node name="Nivel" type="Node2D" groups=["nivel"]]
@@ -1807,6 +2203,7 @@ script = ExtResource("4_nk23x")
 position = Vector2(40, 36.5)
 
 [node name="PinguMaestro" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(296, 412)
 scale = Vector2(-0.2, 0.2)
 texture = ExtResource("26_hbo8k")
@@ -2376,10 +2773,68 @@ position = Vector2(262, 447)
 scale = Vector2(0.403333, 0.436523)
 texture = ExtResource("34_kx420")
 
+[node name="Fase1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(653, 369)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("35_nr5u5")
+
+[node name="Fase2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(654, 370)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("36_ietbd")
+
+[node name="Fase3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(654, 370)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("37_3fqqx")
+
+[node name="FaseFinal" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(643, 374)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("38_4oqlb")
+
 [node name="LibroMejoras" parent="." instance=ExtResource("35_7alnd")]
 visible = false
 
-[node name="Bolas" type="Node2D" parent="."]
+[node name="TerminarJuego" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="TerminarJuego"]
+layout_mode = 1
+offset_right = 1200.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 1)
+
+[node name="TerminarJuegbo" type="AnimationPlayer" parent="TerminarJuego"]
+libraries = {
+"": SubResource("AnimationLibrary_73iew")
+}
+
+[node name="IconoSensei" type="Sprite2D" parent="TerminarJuego"]
+position = Vector2(595, 81)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("29_h4sqh")
+
+[node name="Label" type="Label" parent="TerminarJuego"]
+layout_mode = 0
+offset_top = 156.0
+offset_right = 1199.0
+offset_bottom = 515.0
+theme_override_fonts/font = ExtResource("14_0lcfp")
+theme_override_font_sizes/font_size = 64
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Menu" parent="." instance=ExtResource("17_vsm5p")]
 visible = false
@@ -2499,3 +2954,4 @@ stream = ExtResource("40_4f8hr")
 [connection signal="pressed" from="TutorialNivel1/Continuar" to="." method="_on_continuar_pressed"]
 [connection signal="pressed" from="TutorialNivel2/ContinuarTuto2" to="." method="_on_continuar_tuto_2_pressed"]
 [connection signal="pressed" from="TutorialNivel3/ContinuarTutoNivel3" to="." method="_on_continuar_tuto_nivel_3_pressed"]
+[connection signal="animation_finished" from="TerminarJuego/TerminarJuegbo" to="." method="_on_terminar_juegbo_animation_finished"]

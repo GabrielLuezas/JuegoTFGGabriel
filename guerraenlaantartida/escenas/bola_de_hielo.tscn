@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://colejfggp7m7v"]
+
+[ext_resource type="Script" path="res://scripts/bola_de_fuego.gd" id="1_dtult"]
+[ext_resource type="Texture2D" uid="uid://nn57gsbb2gx6" path="res://img/bolaDuHielo.png" id="2_toxft"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xyae7"]
+radius = 29.2746
+
+[node name="BolaDeHielo" type="PathFollow2D"]
+script = ExtResource("1_dtult")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_toxft")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bolahieloboss"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xyae7")

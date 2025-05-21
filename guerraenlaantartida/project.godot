@@ -39,6 +39,8 @@ ignorar_raycast=""
 proyectil_fuego=""
 proyectil_hielo=""
 proyectil_hielo_mejorado=""
+bolafuegoboss=""
+bolahieloboss=""
 
 [input]
 

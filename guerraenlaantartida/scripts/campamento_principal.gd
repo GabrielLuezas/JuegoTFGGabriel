@@ -1,5 +1,9 @@
 extends Control
 var ruta = "res://escenas/interior_casa_normal.tscn"
+var ruta2 = "res://escenas/interior_casa_normal2.tscn"
+var ruta3 = "res://escenas/interior_casa_normal3.tscn"
+var ruta4 = "res://escenas/interior_casa_normal4.tscn"
+var ruta5 = "res://escenas/interior_casa_normal5.tscn"
 
 var full_text := "Bienvenido al campamento central, estratega. Esta es nuestra base de operaciones, el centro de mando y el punto clave que debes proteger a toda costa."
 var type_speed := 0.03
@@ -46,31 +50,31 @@ func _on_boton_casa_1_dcha_pressed() -> void:
 
 
 func _on_boton_casa_2_dcha_pressed() -> void:
-	get_tree().change_scene_to_file(ruta)
+	get_tree().change_scene_to_file(ruta2)
 
 
 func _on_boton_casa_3_dcha_pressed() -> void:
-	get_tree().change_scene_to_file(ruta)
+	get_tree().change_scene_to_file(ruta3)
 
 
 func _on_boton_casa_4_dcha_pressed() -> void:
-	get_tree().change_scene_to_file(ruta)
+	get_tree().change_scene_to_file(ruta4)
 
 
 func _on_boton_casa_1_izq_pressed() -> void:
-	get_tree().change_scene_to_file(ruta)
+	get_tree().change_scene_to_file(ruta5)
 
 
 func _on_boton_casa_2_izq_pressed() -> void:
-	get_tree().change_scene_to_file(ruta)
+	get_tree().change_scene_to_file(ruta2)
 
 
 func _on_boton_casa_3_izq_pressed() -> void:
-	get_tree().change_scene_to_file(ruta)
+	get_tree().change_scene_to_file(ruta3)
 
 
 func _on_boton_casa_4_izq_pressed() -> void:
-	get_tree().change_scene_to_file(ruta)
+	get_tree().change_scene_to_file(ruta4)
 	
 func show_text_slowly_campamento(text: String) -> void:
 	await _reveal_text_campamento(text) 

@@ -49,6 +49,9 @@ func _ready():
 	add_child(timer_congelado)
 	timer_congelado.connect("timeout", Callable(self, "_on_timer_congelado_timeout"))
 
+	# Conectar colisión con otras áreas (fuego/hielo)
+	$Area2D.connect("area_entered", Callable(self, "_on_area_entered"))
+
 	$AnimatedSprite2D.speed_scale = cadencia_disparo
 
 func set_cadencia_disparo(nueva: float) -> void:
@@ -120,14 +123,20 @@ func _on_timer_quemadura_timeout():
 		quemado = false
 		timer_quemadura.stop()
 
-# ❄️ Aplicar congelación
-func aplicar_congelado():
-	if not congelado:
-		congelado = true
-		timer_congelado.start()
-	else:
-		timer_congelado.stop()
-		timer_congelado.start()
+# ❄️ Aplicar congelación con duración personalizable y animación
+func aplicar_congelado(tiempo: float = 3.0):
+	congelado = true
+	timer_congelado.stop()
+	timer_congelado.wait_time = tiempo
+	timer_congelado.start()
+	$AnimatedSprite2D.play("Congelado")
 
 func _on_timer_congelado_timeout():
 	congelado = false
+	$AnimatedSprite2D.play("default")
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bolafuegoboss"):
+		recibir_daño(75)
+	elif area.is_in_group("bolahieloboss"):
+		aplicar_congelado(10.0)

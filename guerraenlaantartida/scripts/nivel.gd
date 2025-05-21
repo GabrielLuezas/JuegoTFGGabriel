@@ -23,6 +23,7 @@ var seguirGenerando := false
 var nivel_iniciado := false
 var generacion_terminada := false
 var ganado := false
+var nivelboss = false
 
 var cooldown_duracion := 5.0
 var cooldown_tiempo := 0.0
@@ -55,6 +56,9 @@ var paso_tutorial_derrota = 0
 var tutorial2_pasos = 1
 var tutorial3_pasos = 1
 var tutorial4_pasos = 1
+
+var type_speed_ganar_boss := 0.05
+var mensaje_victoria_boss = "¡Has conseguido derrotar al jefe de las focas! A partir de ahora, los pingüinos volverán a reinar.\nGracias por salvarnos,\n%s." % Global.nombreUsuario
 
 func _ready():
 	nivelActual = Global.nivelActual
@@ -116,6 +120,9 @@ func _ready():
 		$AudioStreamPlayer2D.play()
 		$AnimationPlayer.play("iniciar_nivel")
 	if nivelActual == 12:
+		$Pesca.show()
+		nivelboss = true
+		$AudioStreamPlayer2D.play()
 		nivel_iniciado = true
 		iniciarBoss()
 	
@@ -140,8 +147,26 @@ func _ready():
 
 	var boton = $BotonPausa_Play
 	boton.texture_normal = preload("res://img/botonpausa.png")
-
+	
 func _process(delta):
+	
+	if $Pinguinos.get_child_count() > 0:
+		$Pinguinos.get_child(0).global_position = get_global_mouse_position()
+
+	conteo = $Pinguinos.get_child_count()
+
+	if en_cooldown:
+		cooldown_tiempo += delta
+		var progreso = clamp((cooldown_tiempo / cooldown_duracion) * 100.0, 0, 100)
+		$Control/TextureProgressBar.value = progreso
+
+		if progreso >= 100.0:
+			en_cooldown = false
+			$Control/Button.disabled = false
+	
+	if nivelboss:
+		return
+	
 	if pausa or !nivel_iniciado:
 		return
 
@@ -158,21 +183,9 @@ func _process(delta):
 			generacion_terminada = true
 			fin_generacion()
 
-	if $Pinguinos.get_child_count() > 0:
-		$Pinguinos.get_child(0).global_position = get_global_mouse_position()
-
-	conteo = $Pinguinos.get_child_count()
-
-	if en_cooldown:
-		cooldown_tiempo += delta
-		var progreso = clamp((cooldown_tiempo / cooldown_duracion) * 100.0, 0, 100)
-		$Control/TextureProgressBar.value = progreso
-
-		if progreso >= 100.0:
-			en_cooldown = false
-			$Control/Button.disabled = false
-
 func iniciarBoss():
+	$AnimationPlayer.play("iniciar_nivel_boss")
+	await get_tree().create_timer(5.0).timeout
 	var path_boss = get_node("3")
 	if path_boss:
 		var boss = boss_escena.instantiate()
@@ -659,27 +672,38 @@ func toggle_pausa_menu_libro():
 	
 func terminarjuego(nombre_path):
 	if Global.mejoraSenseiPinguino and Global.cargasSensei==1:
+		Global.cargasSensei = 0
 		match nombre_path:
 			"1":
 				$PinguMaestro.position = Vector2(296, 88)
 				$PinguMaestro.show()
 				eliminar_enemigos_de_linea(nombre_path)
+				await get_tree().create_timer(3.0).timeout
+				$PinguMaestro.hide()
 			"2":
 				$PinguMaestro.position = Vector2(296, 175)
 				$PinguMaestro.show()
 				eliminar_enemigos_de_linea(nombre_path)
+				await get_tree().create_timer(3.0).timeout
+				$PinguMaestro.hide()
 			"3":
 				$PinguMaestro.position = Vector2(296, 255)
 				$PinguMaestro.show()
 				eliminar_enemigos_de_linea(nombre_path)
+				await get_tree().create_timer(3.0).timeout
+				$PinguMaestro.hide()
 			"4":
 				$PinguMaestro.position = Vector2(296, 331)
 				$PinguMaestro.show()
 				eliminar_enemigos_de_linea(nombre_path)
+				await get_tree().create_timer(3.0).timeout
+				$PinguMaestro.hide()
 			"5":
 				$PinguMaestro.position = Vector2(296, 412)
 				$PinguMaestro.show()
 				eliminar_enemigos_de_linea(nombre_path)
+				await get_tree().create_timer(3.0).timeout
+				$PinguMaestro.hide()
 			_:
 				print("Llegó por otro camino: ", nombre_path)
 	else:
@@ -692,7 +716,7 @@ func terminarjuego(nombre_path):
 		Engine.time_scale = 0.0
 
 func eliminar_enemigos_de_linea(nombre_path):
-	var path = get_node_or_null(nombre_path)
+	var path = get_node_or_null(NodePath(nombre_path))
 	if path == null:
 		print("No se encontró el path: ", nombre_path)
 		return
@@ -812,49 +836,54 @@ func _comprobar_paths_vacios():
 		
 		
 func ganar():
-	if nivelActual == 1 and !Global.tutorialNivel1:
-		Global.tutorialNivel1 = true
-		if Global.nivelActual > Global.nivelMaximoConseguido:
-			Global.nivelMaximoConseguido = Global.nivelActual
-			Global.nivelActual = Global.nivelActual + 1
-		for area in get_tree().get_nodes_in_group("proyectil"):
-			if area is Area2D and area.get_parent():
-				area.get_parent().queue_free()
-		Engine.time_scale = 1.0
-		$MenuVictoria.show()
-		$TutorialPrimeraVictoria.show()
-		$MenuVictoria/VBoxContainer/SiguienteNivel.disabled = true
-		$MenuVictoria/VBoxContainer/CampamentoPrincipal.disabled = true
-		full_text = "¡Impresionante! Has logrado defender la aldea con éxito."
-		show_text_slowly_victoria(full_text)
-	elif nivelActual == 2:
-		Global.tutorialNivel2 = true
-		for area in get_tree().get_nodes_in_group("proyectil"):
-			if area is Area2D and area.get_parent():
-				area.get_parent().queue_free()
-		Engine.time_scale = 1.0
-		$MenuVictoria.show()
-		$Ganar.play()
-		$TutorialPrimeraVictoria.show()
-		paso_tutorial_victoria= 10
-		full_text = "Gunter ha vuelto a la aldea. Te recomiendo visitarlo."
-		show_text_slowly_victoria(full_text)
-		
-		if Global.nivelActual > Global.nivelMaximoConseguido:
-			Global.nivelMaximoConseguido = Global.nivelActual
-			Global.nivelActual = Global.nivelActual + 1
-			$MenuVictoria.animar_dinero()
+	if nivelActual == 12 and  Global.nivelMaximoConseguido==11: 
+		Global.nivelMaximoConseguido = 12
+		$TerminarJuego.show()
+		$TerminarJuego/TerminarJuegbo.play("terminarjuego")
 	else:
-		for area in get_tree().get_nodes_in_group("proyectil"):
-			if area is Area2D and area.get_parent():
-				area.get_parent().queue_free()
-		Engine.time_scale = 1.0
-		$MenuVictoria.show()
-		$Ganar.play()
-		if Global.nivelActual > Global.nivelMaximoConseguido:
-			Global.nivelMaximoConseguido = Global.nivelActual
-			Global.nivelActual = Global.nivelActual + 1
-			$MenuVictoria.animar_dinero()
+		if nivelActual == 1 and !Global.tutorialNivel1:
+			Global.tutorialNivel1 = true
+			if Global.nivelActual > Global.nivelMaximoConseguido:
+				Global.nivelMaximoConseguido = Global.nivelActual
+				Global.nivelActual = Global.nivelActual + 1
+			for area in get_tree().get_nodes_in_group("proyectil"):
+				if area is Area2D and area.get_parent():
+					area.get_parent().queue_free()
+			Engine.time_scale = 1.0
+			$MenuVictoria.show()
+			$TutorialPrimeraVictoria.show()
+			$MenuVictoria/VBoxContainer/SiguienteNivel.disabled = true
+			$MenuVictoria/VBoxContainer/CampamentoPrincipal.disabled = true
+			full_text = "¡Impresionante! Has logrado defender la aldea con éxito."
+			show_text_slowly_victoria(full_text)
+		elif nivelActual == 2:
+			Global.tutorialNivel2 = true
+			for area in get_tree().get_nodes_in_group("proyectil"):
+				if area is Area2D and area.get_parent():
+					area.get_parent().queue_free()
+			Engine.time_scale = 1.0
+			$MenuVictoria.show()
+			$Ganar.play()
+			$TutorialPrimeraVictoria.show()
+			paso_tutorial_victoria= 10
+			full_text = "Gunter ha vuelto a la aldea. Te recomiendo visitarlo."
+			show_text_slowly_victoria(full_text)
+			
+			if Global.nivelActual > Global.nivelMaximoConseguido:
+				Global.nivelMaximoConseguido = Global.nivelActual
+				Global.nivelActual = Global.nivelActual + 1
+				$MenuVictoria.animar_dinero()
+		else:
+			for area in get_tree().get_nodes_in_group("proyectil"):
+				if area is Area2D and area.get_parent():
+					area.get_parent().queue_free()
+			Engine.time_scale = 1.0
+			$MenuVictoria.show()
+			$Ganar.play()
+			if Global.nivelActual > Global.nivelMaximoConseguido:
+				Global.nivelMaximoConseguido = Global.nivelActual
+				Global.nivelActual = Global.nivelActual + 1
+				$MenuVictoria.animar_dinero()
 
 func show_text_slowly(text: String) -> void:
 	await _reveal_text(text)
@@ -1165,3 +1194,30 @@ func _reveal_text_tuto3(text: String) -> void:
 		await get_tree().create_timer(type_speed).timeout
 	$TutorialNivel3/ClicParaContinuar.show()
 	$TutorialNivel3/ContinuarTutoNivel3.show()
+
+
+func terminar_boss():
+	Engine.time_scale = 1.0
+	ganado = true
+	$AudioStreamPlayer2D.stop()
+	ganar()
+
+
+func _on_terminar_juegbo_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "terminarjuego":
+		show_text_slowly_final(mensaje_victoria_boss)
+	if anim_name == "cambiaracreditos":
+		get_tree().change_scene_to_file("res://escenas/pantalla_creditos.tscn")
+
+
+func show_text_slowly_final(text: String) -> void:
+	await _reveal_text_final(text)
+	$TerminarJuego/TerminarJuegbo.play("cambiaracreditos")
+	
+func _reveal_text_final(text: String) -> void:
+	text = text.strip_edges()
+	var current := ""
+	for i in text.length():
+		current += text[i]
+		$TerminarJuego/Label.text = current
+		await get_tree().create_timer(type_speed_ganar_boss).timeout
